@@ -1,7 +1,16 @@
 import "./Styles/reset.css"
+import "./Styles/styles.css"
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import SignIn from "./Pages/Sign-in"
 
 function app() {
-    return (<h1>Hello World</h1>)
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/" element={<SignIn />} />
+            </Routes>
+        </BrowserRouter>
+    )
 }
 
 export default app
