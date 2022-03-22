@@ -1,16 +1,18 @@
 import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "./style"
+import { CenterLoader, Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "./style"
 import signIn from "../../Services/signIn"
 import UserContext from "../../Contexts/userContext"
+import Loading from "../../Assets/Loading"
 
 function SignIn() {
     const { setUser } = useContext(UserContext)
+    const [button, setButton] = useState(true);
     const [formData, setFormData] = useState({
         email: "",
-        senha: ""
+        password: ""
     })
-    const navigate = useNavigate
+    const navigate = useNavigate();
 
     function handleInputChange(e) {
         formData[e.target.name] = e.target.value;
@@ -19,17 +21,17 @@ function SignIn() {
 
     function handleSignIn(e) {
         e.preventDefault();
-        if (formData.email.length === 0 || formData.senha.length === 0) {
+        if (formData.email.length === 0 || formData.password.length === 0) {
             alert("Favor Preencher os campos")
             window.location.reload()
         }
         const promise = signIn(formData)
         promise.then((response) => {
-            setUser({ ...formData })
+            setUser(response.data)
             navigate("/timeline")
         })
         promise.catch((error) => {
-            alert(error);
+            alert(`${error} Email ou Senha Incorretos`);
         });
     }
     return (
@@ -55,7 +57,11 @@ function SignIn() {
                         placeholder="Senha"
                         type="password"
                     />
-                    <StyledButton>Log In</StyledButton>
+                    {button ?
+                        <StyledButton onClick={() => setButton(false)}>Log In</StyledButton>
+                        :
+                        <StyledButton Loading={true}><CenterLoader><Loading height={35} width={43} /></CenterLoader></StyledButton>
+                    }
                     <StyledLink to="/sign-up">First time? Create an account!</StyledLink>
                 </Form>
             </LowerBar>

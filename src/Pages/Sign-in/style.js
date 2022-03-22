@@ -82,6 +82,13 @@ const StyledLink = styled(Link)`
     text-align: center;
     margin-top: 20px;
 `;
+const CenterLoader = styled.div`
+display:flex;
+align-items: center;
+justify-content: center;
+`
+
+
 export {
     Title,
     SubTitle,
@@ -91,5 +98,6 @@ export {
     Form,
     StyledInput,
     StyledButton,
-    StyledLink
+    StyledLink,
+    CenterLoader
 }
