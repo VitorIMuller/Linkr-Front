@@ -8,6 +8,7 @@ function app() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<SignIn />} />
+                <Route path="/timeline" element={<Timeline />} />
             </Routes>
         </BrowserRouter>
     )
