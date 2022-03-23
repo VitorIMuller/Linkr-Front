@@ -21,13 +21,21 @@ export function AuthProvider( {children} ) {
     } else {
       navigate('/'); // this navigate is not required as loginPage is currently set as '/', but it may change in the future
     }
-  }, []);
+  }, []); //eslint-disable-line
+
+  function logOut() {
+    setUser(null);
+    //setToken(null);
+    navigate('/');
+  }
+
 
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
+        logOut,
         /* token, setToken */ //props for line 13 states;  
       }}
     >
