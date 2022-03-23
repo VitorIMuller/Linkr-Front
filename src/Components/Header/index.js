@@ -1,4 +1,4 @@
-import useAuth from '../../Assets/useAuth';
+import useAuth from '../../Hooks/useAuth';
 import { HeaderWrapper, IconBox, Logo, Picture, UserMenu, DropDown } from './style';
 import { IoIosArrowUp as Open, IoIosArrowDown as Closed } from 'react-icons/io'
 

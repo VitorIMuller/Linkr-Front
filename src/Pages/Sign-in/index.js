@@ -2,11 +2,11 @@ import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CenterLoader, Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "./style"
 import signIn from "../../Services/signIn"
-import UserContext from "../../Contexts/userContext"
 import Loading from "../../Assets/Loading"
+import useAuth from "../../Hooks/useAuth"
 
 function SignIn() {
-    const { setUser } = useContext(UserContext)
+    const { setUser } = useAuth();
     const [button, setButton] = useState(true);
     const [formData, setFormData] = useState({
         email: "",

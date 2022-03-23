@@ -4,7 +4,7 @@
 
 import React, { createContext, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import useLocalStorage from '../hooks/useLocalStorage';
+import useLocalStorage from '../Hooks/useLocalStorage';
 
 export const AuthContext = createContext();
 
@@ -17,7 +17,7 @@ export function AuthProvider( {children} ) {
 
   useEffect(()=> {
     if ( user ) {
-      location.pathname === '/' && navigate('/home'); // /home is set here as a placeholder, change it to main page if necessary
+      location.pathname === '/' && navigate('/timeline'); // /home is set here as a placeholder, change it to main page if necessary
     } else {
       navigate('/'); // this navigate is not required as loginPage is currently set as '/', but it may change in the future
     }
