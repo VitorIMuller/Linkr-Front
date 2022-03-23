@@ -8,7 +8,7 @@ import useLocalStorage from '../hooks/useLocalStorage';
 
 export const AuthContext = createContext();
 
-export default function AuthProvider( {children} ) {
+export function AuthProvider( {children} ) {
   const [ user, setUser ] = useLocalStorage('user', null);
   /* const [ token, setToken ] = useLocalStorage('token', null);  */
   // left this preset line to be used when signIn and signUp features will be available
@@ -35,3 +35,5 @@ export default function AuthProvider( {children} ) {
     </AuthContext.Provider>
   )
 }
+
+export default AuthContext;
