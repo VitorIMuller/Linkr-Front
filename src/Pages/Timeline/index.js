@@ -1,11 +1,11 @@
 //import UserContext from "../../Contexts/userContext";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import profile_pic from "../../Assets/img/blank-profile-picture.png";
 import { MainContainer, Title, TitleContainer, NewPostContainer, Post } from "./style";
 import { IoHeartOutline } from 'react-icons/io5'
 
 export default function Timeline() {
-    // const { user, token } = useContext(userContext)
+    // const { user, token } = useAuth()
 
     const [loading, setLoading] = useState();
     const [error, setError] = useState();
