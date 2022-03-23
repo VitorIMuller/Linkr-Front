@@ -2,7 +2,6 @@
 import React, { useContext, useState } from "react";
 import profile_pic from "../../Assets/img/blank-profile-picture.png";
 import { MainContainer, Title, TitleContainer, NewPostContainer, Post } from "./style";
-import Heart from "react-animated-heart";
 import { IoHeartOutline } from 'react-icons/io5'
 
 export default function Timeline() {
@@ -10,7 +9,6 @@ export default function Timeline() {
 
     const [loading, setLoading] = useState();
     const [error, setError] = useState();
-    const [isClick, setClick] = useState(false);
 
     const user = {
         username: "Juvenaldo Juvenício",
