@@ -34,6 +34,8 @@ function SignUp() {
             promise.catch((error) => {
                 if (error.message === "Request failed with status code 404") {
                     alert("Email/senha incorretos ou não existem")
+                } else if (error.message === "Request failed with status code 409") {
+                    alert("Já existe uma conta cadastrada nesse email!")
                 }
                 setButton(true)
             });
