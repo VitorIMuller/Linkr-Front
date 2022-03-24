@@ -50,9 +50,11 @@ const UserMenu = styled.div`
 const DropDown = styled.div`
   width: 130px;
   height: 45px;
+  
+  color: #FFF;
   background-color: #151515;
 
-  display: ${({isOpen}) => isOpen ? 'flex' : 'none'};
+  display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
   transition: display 1s ease-in-out;
   justify-content: center;
   align-items: center;
@@ -61,8 +63,9 @@ const DropDown = styled.div`
   border-bottom-left-radius: 20px;
   
   position: fixed;
+  z-index: 99;
   right: 0;
-  top: -72px;
+  top: 68px;
 
 
   &> p{

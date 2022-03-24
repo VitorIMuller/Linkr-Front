@@ -1,10 +1,11 @@
-import { useState } from "react"
 import "./Styles/reset.css"
 import "./Styles/styles.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import SignIn from "./Pages/Sign-in"
-import AuthProvider from "./Contexts/authContext"
+import SignUp from "./Pages/Sign-up"
+import { AuthProvider } from "./Contexts/authContext"
 import Timeline from "./Pages/Timeline"
+import Hashtag from "./Pages/Hashtag"
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                     <Route path="/" element={<SignIn />} />
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/timeline" element={<Timeline />} />
+                    <Route path="/hashtag" element={<Hashtag />} />
                 </Routes>
             </AuthProvider>
         </Router>

@@ -1,12 +1,13 @@
-//import UserContext from "../../Contexts/userContext";
 import React, { useState } from "react";
 import profile_pic from "../../Assets/img/blank-profile-picture.png";
-import { MainContainer, TitleContainer, NewPostContainer } from "./style";
+import { MainContainer, TitleContainer, NewPostContainer } from "../Timeline/style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
 
-export default function Timeline() {
+export default function Hashtag() {
+
+    //LEMBRAR DE COLOCAR ROTA NO ROUTE COM O ID DO HASHTAG
     const { user, token } = useAuth();
 
     const [loading, setLoading] = useState();
@@ -40,9 +41,8 @@ export default function Timeline() {
         <MainContainer>
             <Header />
             <TitleContainer>
-                <span>timeline</span>
+                <span>#Hastag</span>
             </TitleContainer>
-            <NewPostContainer />
             {posts.map((post) =>
                 <Post
                     key={1}
