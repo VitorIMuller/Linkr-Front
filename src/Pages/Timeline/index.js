@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import profile_pic from "../../Assets/img/blank-profile-picture.png";
 import { MainContainer, TitleContainer, NewPostContainer } from "./style";
 import Post from "../../Components/Post";
-//import Header from "../../Components/Header";
+import Header from "../../Components/Header";
 
 export default function Timeline() {
     // const { user, token } = useAuth()
@@ -38,7 +38,7 @@ export default function Timeline() {
 
     return (
         <MainContainer>
-            {/* <Header /> */}
+            <Header />
             <TitleContainer>
                 <span>timeline</span>
             </TitleContainer>
