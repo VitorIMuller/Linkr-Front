@@ -19,7 +19,7 @@ function Header() {
           {isOpen === true ? Open : Closed}
         </IconBox>
         <Picture
-          src={user?.picture}
+          src={user?.image}
           alt='user profile picture'
           onClick={handleMenu()}
         />

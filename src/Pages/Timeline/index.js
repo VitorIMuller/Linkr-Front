@@ -4,17 +4,14 @@ import profile_pic from "../../Assets/img/blank-profile-picture.png";
 import { MainContainer, TitleContainer, NewPostContainer } from "./style";
 import Post from "../../Components/Post";
 import Header from "../../Components/Header";
+import { IoHeartOutline } from 'react-icons/io5'
+import useAuth from "../../Hooks/useAuth";
 
 export default function Timeline() {
-    // const { user, token } = useAuth()
+    const { user, token } = useAuth()
 
     const [loading, setLoading] = useState();
     const [error, setError] = useState();
-
-    const user = {
-        username: "Juvenaldo Juvenício",
-        image: profile_pic
-    }
 
     const metadata = {
         title: "Depende.",
