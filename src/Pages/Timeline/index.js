@@ -4,6 +4,7 @@ import profile_pic from "../../Assets/img/blank-profile-picture.png";
 import { MainContainer, TitleContainer, NewPostContainer } from "./style";
 import Post from "../../Components/Post";
 //import Header from "../../Components/Header";
+import Publish from "../../Components/Publish";
 
 export default function Timeline() {
     // const { user, token } = useAuth()
@@ -42,7 +43,9 @@ export default function Timeline() {
             <TitleContainer>
                 <span>timeline</span>
             </TitleContainer>
-            <NewPostContainer />
+            <NewPostContainer>
+                <Publish/>
+            </NewPostContainer>
             <Post
                 key={1}
                 postId={1}
