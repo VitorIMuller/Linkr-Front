@@ -10,8 +10,6 @@ const MainContainer = styled.main`
 `
 
 const TitleContainer = styled.div`
-    margin-top: 72px;
-
     min-height: 87px;
     min-width: 100vw;
 

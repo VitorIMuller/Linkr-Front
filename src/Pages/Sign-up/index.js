@@ -7,9 +7,9 @@ import Loading from "../../Assets/Loading"
 function SignUp() {
     const [button, setButton] = useState(true);
     const [formData, setFormData] = useState({
+        name: "",
         email: "",
         password: "",
-        username: "",
         image: ""
     })
     const navigate = useNavigate();
@@ -21,8 +21,8 @@ function SignUp() {
 
     function handleSignUp(e) {
         e.preventDefault();
-        const { email, password, username, image } = formData;
-        if (email.length === 0 || password.length === 0 || username.length === 0 || image.length === 0) {
+        const { email, password, name, image } = formData;
+        if (email.length === 0 || password.length === 0 || name.length === 0 || image.length === 0) {
             alert("Favor preencher todos os campos");
             setButton(true);
         } else {
@@ -66,8 +66,8 @@ function SignUp() {
                     />
                     <StyledInput
                         onChange={handleInputChange}
-                        value={formData.username}
-                        name="username"
+                        value={formData.name}
+                        name="name"
                         placeholder="username"
                         type="text"
                     />

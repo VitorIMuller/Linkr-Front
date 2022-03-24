@@ -22,9 +22,8 @@ function SignIn() {
     function handleSignIn(e) {
         e.preventDefault();
         if (formData.email.length === 0 || formData.password.length === 0) {
-            // alert("Favor Preencher os campos")
-            // window.location.reload()
-            navigate("/timeline")
+            alert("Favor Preencher os campos")
+            window.location.reload()
         }
         setButton(false)
         const promise = signIn(formData)

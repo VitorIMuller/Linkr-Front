@@ -3,8 +3,10 @@ import { PostBody } from "./style";
 import { IoHeartOutline } from 'react-icons/io5'
 import Metadata from "./Metadata";
 
-export default function Post({ url, postId, title, description, image, message, username, profilePic }) {
+export default function Post({ url, postId, title, description, image, message, name, profilePic }) {
     const [like, setLike] = useState();
+
+    console.log(name);
 
     return (
         <PostBody>
@@ -16,7 +18,7 @@ export default function Post({ url, postId, title, description, image, message, 
                 <span className="likes-quantity">1 like</span>
             </div>
             <div className="right-side-post">
-                <span className="username-post">{username}</span>
+                <span className="username-post">{name}</span>
                 <span className="user-message-post">
                     {message}
                 </span>
