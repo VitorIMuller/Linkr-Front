@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CenterLoader, Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "./style"
 import signIn from "../../Services/signIn"
@@ -25,13 +25,17 @@ function SignIn() {
             alert("Favor Preencher os campos")
             window.location.reload()
         }
+        setButton(false)
         const promise = signIn(formData)
         promise.then((response) => {
             setUser(response.data)
             navigate("/timeline")
         })
         promise.catch((error) => {
-            alert(`${error} Email ou Senha Incorretos`);
+            if (error.message === "Request failed with status code 404") {
+                alert("Email/senha incorretos ou não existem")
+            }
+            window.location.reload()
         });
     }
     return (
@@ -47,18 +51,18 @@ function SignIn() {
                         onChange={handleInputChange}
                         value={formData.email}
                         name="email"
-                        placeholder="Email"
+                        placeholder="e-mail"
                         type="email"
                     />
                     <StyledInput
                         onChange={handleInputChange}
                         value={formData.password}
                         name="password"
-                        placeholder="Senha"
+                        placeholder="password"
                         type="password"
                     />
                     {button ?
-                        <StyledButton onClick={() => setButton(false)}>Log In</StyledButton>
+                        <StyledButton>Log In</StyledButton>
                         :
                         <StyledButton Loading={true}><CenterLoader><Loading height={35} width={43} /></CenterLoader></StyledButton>
                     }
