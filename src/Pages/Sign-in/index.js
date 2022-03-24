@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+import { useContext, useState } from "react"
+=======
 import { useState } from "react"
+>>>>>>> 8862ae0a5cfe467c26decd3c7b0d068dd25a815c
 import { useNavigate } from "react-router-dom"
 import { CenterLoader, Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "./style"
 import signIn from "../../Services/signIn"
@@ -25,17 +29,24 @@ function SignIn() {
             alert("Favor Preencher os campos")
             window.location.reload()
         }
+<<<<<<< HEAD
+=======
         setButton(false)
+>>>>>>> 8862ae0a5cfe467c26decd3c7b0d068dd25a815c
         const promise = signIn(formData)
         promise.then((response) => {
             setUser(response.data)
             navigate("/timeline")
         })
         promise.catch((error) => {
+<<<<<<< HEAD
+            alert(`${error} Email ou Senha Incorretos`);
+=======
             if (error.message === "Request failed with status code 404") {
                 alert("Email/senha incorretos ou não existem")
             }
             window.location.reload()
+>>>>>>> 8862ae0a5cfe467c26decd3c7b0d068dd25a815c
         });
     }
     return (
@@ -51,18 +62,30 @@ function SignIn() {
                         onChange={handleInputChange}
                         value={formData.email}
                         name="email"
+<<<<<<< HEAD
+                        placeholder="Email"
+=======
                         placeholder="e-mail"
+>>>>>>> 8862ae0a5cfe467c26decd3c7b0d068dd25a815c
                         type="email"
                     />
                     <StyledInput
                         onChange={handleInputChange}
                         value={formData.password}
                         name="password"
+<<<<<<< HEAD
+                        placeholder="Senha"
+                        type="password"
+                    />
+                    {button ?
+                        <StyledButton onClick={() => setButton(false)}>Log In</StyledButton>
+=======
                         placeholder="password"
                         type="password"
                     />
                     {button ?
                         <StyledButton>Log In</StyledButton>
+>>>>>>> 8862ae0a5cfe467c26decd3c7b0d068dd25a815c
                         :
                         <StyledButton Loading={true}><CenterLoader><Loading height={35} width={43} /></CenterLoader></StyledButton>
                     }
