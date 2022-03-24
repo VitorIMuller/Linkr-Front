@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CenterLoader, Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "./style"
 import signIn from "../../Services/signIn"
@@ -22,8 +22,9 @@ function SignIn() {
     function handleSignIn(e) {
         e.preventDefault();
         if (formData.email.length === 0 || formData.password.length === 0) {
-            alert("Favor Preencher os campos")
-            window.location.reload()
+            // alert("Favor Preencher os campos")
+            // window.location.reload()
+            navigate("/timeline")
         }
         const promise = signIn(formData)
         promise.then((response) => {
