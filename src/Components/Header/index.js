@@ -15,17 +15,17 @@ function Header() {
     <HeaderWrapper>
       <Logo>linkr</Logo>
       <UserMenu>
-        <IconBox onClick={ handleMenu() }>
-          { isOpen === true ? Open : Closed }
+        <IconBox onClick={handleMenu()}>
+          {isOpen === true ? Open : Closed}
         </IconBox>
-        <Picture 
-          src={ user.picture } 
+        <Picture
+          src={user.picture}
           alt='user profile picture'
-          onClick={ handleMenu() }
+          onClick={handleMenu()}
         />
       </UserMenu>
       <DropDown isOpen={isOpen}>
-        <p onClick={ logOut() }>Logout</p>
+        <p onClick={logOut()}>Logout</p>
       </DropDown>
     </HeaderWrapper>
   )

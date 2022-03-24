@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = "https://apilinkr.herokuapp.com/";
 
 function signUp(formData) {
     const promise = axios.post(`${BASE_URL}/sign-up`, formData)
