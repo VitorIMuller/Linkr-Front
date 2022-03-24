@@ -27,11 +27,15 @@ function SignUp() {
             setButton(true);
         } else {
             const promise = signUp(formData);
+            setButton(false)
             promise.then(() => {
                 navigate("/");
             });
             promise.catch((error) => {
-                alert(error);
+                if (error.message === "Request failed with status code 404") {
+                    alert("Email/senha incorretos ou não existem")
+                }
+                setButton(true)
             });
         }
     }
@@ -73,7 +77,7 @@ function SignUp() {
                         type="url"
                     />
                     {button ?
-                        <StyledButton onClick={() => setButton(false)}>Sign Up</StyledButton>
+                        <StyledButton>Sign Up</StyledButton>
                         :
                         <StyledButton Loading={true}><CenterLoader><Loading height={35} width={43} /></CenterLoader></StyledButton>
                     }

@@ -25,13 +25,13 @@ function SignIn() {
             alert("Favor Preencher os campos")
             window.location.reload()
         }
+        setButton(false)
         const promise = signIn(formData)
         promise.then((response) => {
             setUser(response.data)
             navigate("/timeline")
         })
         promise.catch((error) => {
-            console.log(error)
             if (error.message === "Request failed with status code 404") {
                 alert("Email/senha incorretos ou não existem")
             }
@@ -62,7 +62,7 @@ function SignIn() {
                         type="password"
                     />
                     {button ?
-                        <StyledButton onClick={() => setButton(false)}>Log In</StyledButton>
+                        <StyledButton>Log In</StyledButton>
                         :
                         <StyledButton Loading={true}><CenterLoader><Loading height={35} width={43} /></CenterLoader></StyledButton>
                     }
