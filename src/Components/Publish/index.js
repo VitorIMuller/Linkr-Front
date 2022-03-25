@@ -2,15 +2,12 @@ import React, { useState } from 'react';
 import { Post, PostForm, PostUserInfo, PostUrl, PostDescription, ButtonPublish} from './style.js';
 import api from '../../Services/api.js';
 import useAuth from "../../Hooks/useAuth";
-import { useNavigate } from 'react-router-dom';
-
 
 export default function Publish(){
 
     const { user } = useAuth();
     const [formData, setFormData] = useState({});
-    const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);   
   
     async function handleSubmit(e) {
       e.preventDefault();
@@ -25,7 +22,8 @@ export default function Publish(){
       } 
       catch (error) {
         console.log(error);
-        alert(`Houve um erro ao publicar seu link`);
+        alert(`              Houve um erro ao publicar seu link 
+              ${error}`);
         window.location.reload();
       }
     }
