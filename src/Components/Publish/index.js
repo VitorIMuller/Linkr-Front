@@ -46,7 +46,7 @@ export default function Publish(){
             />
             <PostDescription
                 name="description"
-                    placeholder="Comment about the link you're sharing! (optional)"
+                    placeholder="Awesome article about #javascript"
                     type="text"
                     value={formData.description || ''}
                     onChange={handleInputChange}
