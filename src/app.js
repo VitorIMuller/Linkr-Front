@@ -1,4 +1,3 @@
-
 import "./Styles/reset.css"
 import "./Styles/styles.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
