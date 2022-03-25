@@ -10,7 +10,6 @@ import { Link } from "react-router-dom";
 export default function Post({ url, postId, title, description, image, message, name, profilePic, userId }) {
     const [like, setLike] = useState();
     const { hashtagRedirect } = useAuth();
-    console.log(userId)
     return (
         <PostBody>
             <div className="left-side-post">
