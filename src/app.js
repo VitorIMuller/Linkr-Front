@@ -7,7 +7,6 @@ import { AuthProvider } from "./Contexts/authContext"
 import Timeline from "./Pages/Timeline"
 
 function App() {
-
     return (
         <Router>
             <AuthProvider>

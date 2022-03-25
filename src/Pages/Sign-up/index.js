@@ -21,7 +21,7 @@ function SignUp() {
 
     function handleSignUp(e) {
         e.preventDefault();
-        const { name, email, password, image } = formData;
+        const { email, password, name, image } = formData;
         if (email.length === 0 || password.length === 0 || name.length === 0 || image.length === 0) {
             alert("Favor preencher todos os campos");
             setButton(true);
@@ -68,7 +68,7 @@ function SignUp() {
                         onChange={handleInputChange}
                         value={formData.name}
                         name="name"
-                        placeholder="name"
+                        placeholder="username"
                         type="text"
                     />
                     <StyledInput

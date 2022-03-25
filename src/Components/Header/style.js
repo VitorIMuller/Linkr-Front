@@ -6,8 +6,11 @@ const HeaderWrapper = styled.div`
   background-color: #151515;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+  padding: 0 18px;
+
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   position: relative;
 `
@@ -22,8 +25,9 @@ const Logo = styled.p`
 `
 
 const IconBox = styled.div`
-  width: 20px;
+  width: 30px;
   height: 72px;
+  color: #fff;
 
   display: flex;
   justify-content: center;
@@ -41,7 +45,7 @@ const UserMenu = styled.div`
   height: 72px;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;  
 
   cursor: pointer;
@@ -50,9 +54,11 @@ const UserMenu = styled.div`
 const DropDown = styled.div`
   width: 130px;
   height: 45px;
+  
+  color: #FFF;
   background-color: #151515;
 
-  display: ${({isOpen}) => isOpen ? 'flex' : 'none'};
+  display: ${({ isOpen }) => isOpen ? 'flex' : 'none'};
   transition: display 1s ease-in-out;
   justify-content: center;
   align-items: center;
@@ -61,8 +67,9 @@ const DropDown = styled.div`
   border-bottom-left-radius: 20px;
   
   position: fixed;
+  z-index: 99;
   right: 0;
-  top: -72px;
+  top: 68px;
 
 
   &> p{
