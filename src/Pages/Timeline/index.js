@@ -59,8 +59,8 @@ export default function Timeline() {
                                     description={post.urlDescription}
                                     image={post.urlImage}
                                     message={post.userMessage}
-                                    name={user?.name}
-                                    profilePic={user?.image}
+                                    name={post.name}
+                                    profilePic={post.image}
                                 />
                             )
                         )}

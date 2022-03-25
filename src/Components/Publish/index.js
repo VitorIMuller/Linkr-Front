@@ -7,7 +7,7 @@ import useAuth from "../../Hooks/useAuth";
 export default function Publish(){
 
     const { user } = useAuth();
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({url: '', userMessage: ''});
     const [loading, setLoading] = useState(false);
 
   
@@ -16,7 +16,7 @@ export default function Publish(){
       setLoading(true);
   
       try {
-        const response = await api.createPost(formData);
+        const response = await api.createPost(formData, user.token);
         console.log('response: ', response);
         setLoading(false);
         setFormData({});
@@ -38,18 +38,18 @@ export default function Publish(){
             <PostForm  onSubmit={handleSubmit} >
             <h2>What are you going to share today?</h2>
             <PostUrl
-                name="link"
+                name="url"
                 placeholder="http://..."
                 type="url"
-                value={formData.link || ''}
+                value={formData.url}
                 onChange={handleInputChange}
                 required
             />
             <PostDescription
-                name="description"
+                name="userMessage"
                     placeholder="Awesome article about #javascript"
                     type="text"
-                    value={formData.description || ''}
+                    value={formData.userMessage}
                     onChange={handleInputChange}
             />
             <ButtonPublish> 
