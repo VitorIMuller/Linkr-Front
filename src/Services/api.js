@@ -34,12 +34,25 @@ async function getPost(token) {
 
     return promise;
 }
+async function getPostByUserId(token, userId) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/posts/${userId}`, auth);
+
+    return promise;
+}
+async function getUser(userId) {
+    const promise = await axios.get(`http://localhost:4000/users`, [userId])
+    return promise;
+}
 
 const api = {
     signUp,
     signIn,
     createPost,
-    getPost
+    getPost,
+    getPostByUserId,
+    getUser
 }
 
 export default api;

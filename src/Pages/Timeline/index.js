@@ -1,4 +1,3 @@
-//import UserContext from "../../Contexts/userContext";
 import { useState, useEffect } from "react";
 import { MainContainer, TitleContainer, NewPostContainer } from "./style";
 import Post from "../../Components/Post";
@@ -32,7 +31,6 @@ export default function Timeline() {
     }
 
     useEffect(fetchPosts, [user]);
-
     return (
         <MainContainer>
             <Header />
@@ -58,6 +56,7 @@ export default function Timeline() {
                                     message={post.userMessage}
                                     name={post?.name}
                                     profilePic={post?.image}
+                                    userId={post?.userId}
                                 />
                             )
                         )}

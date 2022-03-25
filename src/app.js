@@ -17,7 +17,7 @@ function App() {
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/timeline" element={<Timeline />} />
                     <Route path="/hashtag" element={<Hashtag />} />
-                    <Route path="/user" element={<UserPage />} />
+                    <Route path="/user/:userId" element={<UserPage />} />
                 </Routes>
             </AuthProvider>
         </Router>
