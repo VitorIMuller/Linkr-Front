@@ -2,13 +2,14 @@ import styled from 'styled-components';
 
 const Post = styled.div`
   display: flex;
-  width: 100%;
+  width: 610px;
   height: 210px;
   margin: 0 0 30px 0;
   background-color: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  @media (max-width: 420px) {
+  border: none;
+  @media (max-width: 610px) {
     width: 100vw;
     height: 164px;
     padding: 10px 15px 12px 16px;
@@ -25,7 +26,7 @@ const PostUserInfo = styled.div`
   & img {
     border-radius: 50%;
   }
-  @media (max-width: 420px) {
+  @media (max-width: 610px) {
     display: none;
   }
 `;
@@ -54,7 +55,7 @@ const PostForm = styled.form`
     color: #949494;
     border: none;
   }
-  @media (max-width: 420px) {
+  @media (max-width: 610px) {
     width: 100vw;
     margin: 0;
     & h2 {
@@ -85,6 +86,10 @@ const ButtonPublish = styled.button`
     background-color: #9F9F9F;
     pointer-events: none;
   }
+  @media (max-width: 610px) {
+    height: 22px;
+    font-size: 13px;   
+  } 
 `;
 
 const PostUrl = styled.input`

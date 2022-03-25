@@ -40,9 +40,9 @@ export default function Timeline() {
             <TitleContainer>
                 <span>timeline</span>
             </TitleContainer>
-            <NewPostContainer>
+            {/* <NewPostContainer> */}
                 <Publish/>
-            </NewPostContainer>
+            {/* </NewPostContainer> */}
             {isLoading
                 ? "Loading..."
                 : posts?.length === 0
