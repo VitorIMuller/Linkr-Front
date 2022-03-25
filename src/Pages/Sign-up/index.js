@@ -1,8 +1,8 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CenterLoader, Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "../Sign-in/style"
-import signUp from "../../Services/signUp"
 import Loading from "../../Assets/Loading"
+import api from "../../Services/api"
 
 function SignUp() {
     const [button, setButton] = useState(true);
@@ -26,7 +26,7 @@ function SignUp() {
             alert("Favor preencher todos os campos");
             setButton(true);
         } else {
-            const promise = signUp(formData);
+            const promise = api.signUp(formData);
             setButton(false)
             promise.then(() => {
                 navigate("/");

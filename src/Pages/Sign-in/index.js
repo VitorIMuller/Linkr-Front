@@ -1,9 +1,9 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { CenterLoader, Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "./style"
-import signIn from "../../Services/signIn"
 import Loading from "../../Assets/Loading"
 import useAuth from "../../Hooks/useAuth"
+import api from "../../Services/api"
 
 function SignIn() {
     const { setUser } = useAuth();
@@ -26,7 +26,7 @@ function SignIn() {
             window.location.reload()
         }
         setButton(false)
-        const promise = signIn(formData)
+        const promise = api.signIn(formData)
         promise.then((response) => {
             setUser(response.data)
             navigate("/timeline")
