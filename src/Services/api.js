@@ -21,7 +21,7 @@ async function signIn(formData) {
 async function createPost(body, token) {
     const auth = createHeaders(token);
 
-    const promise = await axios.post(`${BASE_URL}/posts`, auth);
+    const promise = await axios.post(`${BASE_URL}/posts`, body);
 
     return promise;
 }

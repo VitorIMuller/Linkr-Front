@@ -5,6 +5,7 @@ import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
 import api from "../../Services/api";
+import Publish from "../../Components/Publish";
 
 export default function Timeline() {
     const { user } = useAuth();
@@ -39,7 +40,9 @@ export default function Timeline() {
             <TitleContainer>
                 <span>timeline</span>
             </TitleContainer>
-            <NewPostContainer />
+            <NewPostContainer>
+                <Publish/>
+            </NewPostContainer>
             {isLoading
                 ? "Loading..."
                 : posts?.length === 0
