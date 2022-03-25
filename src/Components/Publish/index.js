@@ -6,13 +6,13 @@ import useAuth from "../../Hooks/useAuth";
 export default function Publish(){
 
     const { user } = useAuth();
-    const [formData, setFormData] = useState({});
+    const [formData, setFormData] = useState({url: '', userMessage: ''});
     const [loading, setLoading] = useState(false);   
   
     async function handleSubmit(e) {
       e.preventDefault();
       setLoading(true);
-  
+      
       try {
         const response = await api.createPost(formData, user.token);
         console.log('response: ', response);
