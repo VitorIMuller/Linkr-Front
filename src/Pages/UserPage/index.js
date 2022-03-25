@@ -1,23 +1,24 @@
 import { useState, useEffect } from "react";
-import { MainContainer, TitleContainer, NewPostContainer } from "./style";
+import { MainContainer, TitleContainer } from "../Timeline/style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
 import api from "../../Services/api";
+import { useParams } from "react-router-dom";
 
-export default function Timeline() {
+export default function UserPage() {
     const { user } = useAuth();
+    const { userId } = useParams();
 
     const [posts, setPosts] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
     function fetchPosts() {
-
         setLoading(true);
 
-        api.getPost(user?.token).then(res => {
-
+        console.log(`userId userpage ${userId}`)
+        api.getPostByUserId(user?.token, userId).then(res => {
             setPosts(res.data);
             setLoading(false);
 
@@ -29,16 +30,15 @@ export default function Timeline() {
             console.log(error);
         });
     }
-    console.log(posts)
 
     useEffect(fetchPosts, [user]);
+
     return (
         <MainContainer>
             <Header />
             <TitleContainer>
-                <span>timeline</span>
+                <span>{`${posts[0]?.name}'s posts`}</span>
             </TitleContainer>
-            <NewPostContainer />
             {isLoading
                 ? "Loading..."
                 : posts?.length === 0
@@ -55,9 +55,8 @@ export default function Timeline() {
                                     description={post.urlDescription}
                                     image={post.urlImage}
                                     message={post.userMessage}
-                                    name={post.name}
-                                    profilePic={post.profilePic}
-                                    userId={post.userId}
+                                    name={post?.name}
+                                    profilePic={post?.image}
                                 />
                             )
                         )}

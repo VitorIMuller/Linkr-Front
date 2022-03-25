@@ -5,12 +5,11 @@ import Metadata from "./Metadata";
 import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
 import ReactHashtag from "@mdnm/react-hashtag";
 import useAuth from '../../Hooks/useAuth';
+import { Link } from "react-router-dom";
 
-export default function Post({ url, postId, title, description, image, message, name, profilePic }) {
-    // eslint-disable-next-line no-unused-vars
+export default function Post({ url, postId, title, description, image, message, name, profilePic, userId }) {
     const [like, setLike] = useState();
     const { hashtagRedirect } = useAuth();
-
     return (
         <PostBody>
             <div className="left-side-post">
@@ -21,9 +20,9 @@ export default function Post({ url, postId, title, description, image, message, 
                 <span className="likes-quantity">1 like</span>
             </div>
             <div className="right-side-post">
-                <span className="username-post">{name}</span>
+                <div><Link to={`/user/${userId}`} className="username-post">{name}</Link></div>
                 <span className="user-message-post">
-                    { 
+                    {
                         <ReactHashtag onHashtagClick={value => hashtagRedirect(value)}>
                             {message}
                         </ReactHashtag>
