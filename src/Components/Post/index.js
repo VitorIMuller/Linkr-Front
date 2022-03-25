@@ -3,9 +3,13 @@ import { PostBody } from "./style";
 import { IoHeartOutline } from 'react-icons/io5'
 import Metadata from "./Metadata";
 import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
+import ReactHashtag from "@mdnm/react-hashtag";
+import useAuth from '../../Hooks/useAuth';
 
 export default function Post({ url, postId, title, description, image, message, name, profilePic }) {
+    // eslint-disable-next-line no-unused-vars
     const [like, setLike] = useState();
+    const { hashtagRedirect } = useAuth();
 
     return (
         <PostBody>
@@ -19,7 +23,11 @@ export default function Post({ url, postId, title, description, image, message, 
             <div className="right-side-post">
                 <span className="username-post">{name}</span>
                 <span className="user-message-post">
-                    {message}
+                    { 
+                        <ReactHashtag onHashtagClick={value => hashtagRedirect(value)}>
+                            {message}
+                        </ReactHashtag>
+                    }
                 </span>
                 <a href={url}>
                     <Metadata
