@@ -23,7 +23,8 @@ export function AuthProvider({ children }) {
   }
 
   function hashtagRedirect(value) {
-    navigate(`/hashtag/${value}`);
+    const param = value.split('#')[1];
+    navigate(`/hashtag/${param}`);
   }
 
   return (
