@@ -21,7 +21,7 @@ export default function Post({ url, postId, title, description, image, message, 
                 <span className="user-message-post">
                     {message}
                 </span>
-                <a href={url}>
+                <a href={url} target="_blank" rel="noopener noreferrer">
                     <Metadata
                         url={url}
                         postId={postId}
