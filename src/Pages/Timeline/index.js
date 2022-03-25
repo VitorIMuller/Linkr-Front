@@ -52,7 +52,7 @@ export default function Timeline() {
                     description={metadata.description}
                     image={metadata.image}
                     message={post.message}
-                    name={user.name}
+                    name={user?.name}
                     profilePic={profile_pic}
                 />
             )}

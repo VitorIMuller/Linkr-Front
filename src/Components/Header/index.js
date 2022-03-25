@@ -20,7 +20,7 @@ function Header() {
           {isOpen === true ? <Open color="white" fontSize="30px"/> : <Closed color="white" fontSize="30px"/>}
         </IconBox>
         <Picture
-          src={user.image && default_profile_pic}
+          src={user ? user.image : default_profile_pic}
           alt='user profile picture'
           onClick={() => handleMenu()}
         />

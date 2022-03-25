@@ -69,7 +69,7 @@ const DropDown = styled.div`
   position: fixed;
   z-index: 99;
   right: 0;
-  top: 68px;
+  top: 72px;
 
 
   &> p{

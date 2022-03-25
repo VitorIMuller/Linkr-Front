@@ -22,7 +22,6 @@ export function AuthProvider({ children }) {
     navigate('/');
   }
 
-
   return (
     <AuthContext.Provider
       value={{
