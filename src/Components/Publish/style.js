@@ -8,6 +8,12 @@ const Post = styled.div`
   background-color: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  @media (max-width: 420px) {
+    width: 100vw;
+    height: 164px;
+    padding: 10px 15px 12px 16px;
+    border-radius: 0;
+  }
 `;
 
 const PostUserInfo = styled.div`
@@ -19,6 +25,9 @@ const PostUserInfo = styled.div`
   & img {
     border-radius: 50%;
   }
+  @media (max-width: 420px) {
+    display: none;
+  }
 `;
 
 const PostForm = styled.form`
@@ -29,6 +38,7 @@ const PostForm = styled.form`
   font-family: 'Lato';
   font-style: normal;
   font-weight: 300;
+  
   & h2 {
     font-size: 20px;
     line-height: 24px;
@@ -42,7 +52,17 @@ const PostForm = styled.form`
     font-size: 15px;
     line-height: 18px;
     color: #949494;
+    border: none;
   }
+  @media (max-width: 420px) {
+    width: 100vw;
+    margin: 0;
+    & h2 {
+      font-size: 17px;
+      line-height: 20px;
+      text-align: center;
+    }
+  } 
 `;
 
 const ButtonPublish = styled.button`
@@ -60,8 +80,10 @@ const ButtonPublish = styled.button`
   font-size: 14px;
   line-height: 17px;
   color: #ffffff;
+  border: none;
   :disabled {
     background-color: #9F9F9F;
+    pointer-events: none;
   }
 `;
 

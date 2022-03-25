@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import { Post, PostForm, PostUserInfo, PostUrl, PostDescription, ButtonPublish} from './style.js';
 import api from '../../Services/api.js';
 import useAuth from "../../Hooks/useAuth";
+import { useNavigate } from 'react-router-dom';
 
 
 export default function Publish(){
 
     const { user } = useAuth();
-    const [formData, setFormData] = useState({url: '', userMessage: ''});
+    const [formData, setFormData] = useState({});
     const [loading, setLoading] = useState(false);
-
+    const navigate = useNavigate();
   
     async function handleSubmit(e) {
       e.preventDefault();
@@ -20,9 +21,12 @@ export default function Publish(){
         console.log('response: ', response);
         setLoading(false);
         setFormData({});
-      } catch (error) {
+        window.location.reload();
+      } 
+      catch (error) {
         console.log(error);
-        alert(error);
+        alert(`Houve um erro ao publicar seu link`);
+        window.location.reload();
       }
     }
   
@@ -47,12 +51,12 @@ export default function Publish(){
             />
             <PostDescription
                 name="userMessage"
-                    placeholder="Awesome article about #javascript"
-                    type="text"
-                    value={formData.userMessage}
-                    onChange={handleInputChange}
+                placeholder="Awesome article about #javascript"
+                type="text"
+                value={formData.userMessage}
+                onChange={handleInputChange}
             />
-            <ButtonPublish> 
+            <ButtonPublish disabled={loading}> 
                 { loading ? 'Loading...' : 'Publish' } 
             </ButtonPublish>
             </PostForm>
