@@ -22,12 +22,17 @@ export function AuthProvider({ children }) {
     navigate('/');
   }
 
+  function hashtagRedirect(value) {
+    navigate(`/hashtag/${value}`);
+  }
+
   return (
     <AuthContext.Provider
       value={{
         user,
         setUser,
         logOut,
+        hashtagRedirect
       }}
     >
       {children}
