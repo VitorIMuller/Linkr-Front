@@ -19,6 +19,8 @@ const PostBody = styled.div`
         flex-direction: column;
         align-items: center;
 
+        color: #FFF;
+
         img {
             width: 40px;
             height: 40px;
@@ -27,17 +29,36 @@ const PostBody = styled.div`
         }
 
         .heart {
+            font-size: 25px;
             padding-top: 17px;
             padding-bottom: 10px;
-            color: #FFF;
+            
+            & > * {
+                width: 100%;
+                height: 100%;
+                transition: all .2s;
+            
+                filter: brightness(0.9);
+                cursor: pointer;
+            }
+
+            .liked {
+                color: red;
+            }
+
+            .liked:hover  {
+                filter: brightness(1.8);
+            }
+
+            .not-liked:hover  {
+                filter: brightness(1.8);
+            }
         }
 
         .likes-quantity {
-            font-size: 9px;
+            font-size: 12px;
             font-weight: 400;
             line-height: 10.8px;
-
-            color: #FFF;
         }
     }
 
