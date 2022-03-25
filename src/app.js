@@ -6,6 +6,7 @@ import SignUp from "./Pages/Sign-up"
 import { AuthProvider } from "./Contexts/authContext"
 import Timeline from "./Pages/Timeline"
 import Hashtag from "./Pages/Hashtag"
+import UserPage from "./Pages/UserPage"
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/sign-up" element={<SignUp />} />
                     <Route path="/timeline" element={<Timeline />} />
                     <Route path="/hashtag" element={<Hashtag />} />
+                    <Route path="/user" element={<UserPage />} />
                 </Routes>
             </AuthProvider>
         </Router>
