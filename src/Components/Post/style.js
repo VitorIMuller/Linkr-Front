@@ -45,10 +45,14 @@ const PostBody = styled.div`
         display: flex;
         flex-direction: column;
 
-          overflow-wrap: break-word;
-            word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
 
         padding-left: 15px;
+
+        a {
+            all: unset;
+        }
 
         .username-post {
             font-size: 17px;

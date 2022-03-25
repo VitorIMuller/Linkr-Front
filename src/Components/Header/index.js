@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { HeaderWrapper, IconBox, Logo, Picture, UserMenu, DropDown } from './style';
 import { IoIosArrowUp as Open, IoIosArrowDown as Closed } from 'react-icons/io'
@@ -5,11 +6,10 @@ import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
 
 function Header() {
   const { user, logOut } = useAuth();
-
-  let isOpen = false;
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleMenu() {
-    isOpen = !isOpen;
+    setIsOpen(!isOpen)
   }
 
   return (
@@ -17,10 +17,10 @@ function Header() {
       <Logo>linkr</Logo>
       <UserMenu>
         <IconBox onClick={() => handleMenu()}>
-          {isOpen === true ? <Open color="white" /> : <Closed color="white" />}
+          {isOpen === true ? <Open color="white" fontSize="30px" /> : <Closed color="white" fontSize="30px" />}
         </IconBox>
         <Picture
-          src={user.image && default_profile_pic}
+          src={user ? user.image : default_profile_pic}
           alt='user profile picture'
           onClick={() => handleMenu()}
         />

@@ -1,40 +1,37 @@
 //import UserContext from "../../Contexts/userContext";
-import React, { useState } from "react";
-import profile_pic from "../../Assets/img/blank-profile-picture.png";
+import { useState, useEffect } from "react";
 import { MainContainer, TitleContainer, NewPostContainer } from "./style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
+import api from "../../Services/api";
 
 export default function Timeline() {
-    const { user, token } = useAuth();
+    const { user } = useAuth();
 
-    const [loading, setLoading] = useState();
-    const [error, setError] = useState();
+    const [posts, setPosts] = useState([]);
+    const [isLoading, setLoading] = useState(false);
+    const [error, setError] = useState(false);
 
-    const metadata = {
-        title: "Depende.",
-        description: "Depende?",
-        url: "Hmm",
-        image: "https://i.kym-cdn.com/photos/images/newsfeed/001/462/400/978.jpg"
+    function fetchPosts() {
+
+        setLoading(true);
+
+        api.getPost(user?.token).then(res => {
+
+            setPosts(res.data);
+            setLoading(false);
+
+        }).catch(error => {
+
+            setLoading(false);
+            setError(true);
+
+            console.log(error);
+        });
     }
 
-    const posts = [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tenetur perspiciatis a ducimus expedita, nemo unde sunt. Obcaecati blanditiis facere modi, quibusdam excepturi in assumenda placeat odit unde distinctio. Qui.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tenetur perspiciatis a ducimus expedita, nemo unde sunt. Obcaecati blanditiis facere modi, quibusdam excepturi in assumenda placeat odit unde distinctio. Qui.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tenetur perspiciatis a ducimus expedita, nemo unde sunt. Obcaecati blanditiis facere modi, quibusdam excepturi in assumenda placeat odit unde distinctio. Qui.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tenetur perspiciatis a ducimus expedita, nemo unde sunt. Obcaecati blanditiis facere modi, quibusdam excepturi in assumenda placeat odit unde distinctio. Qui.",
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum tenetur perspiciatis a ducimus expedita, nemo unde sunt. Obcaecati blanditiis facere modi, quibusdam excepturi in assumenda placeat odit unde distinctio. Qui."
-    ]
-
-    // const urlMetadata = require('url-metadata')
-    // urlMetadata('http://bit.ly/2ePIrDy').then(
-    //     function (metadata) { // success handler
-    //         console.log(metadata)
-    //     },
-    //     function (error) { // failure handler
-    //         console.log(error)
-    //     })
+    useEffect(fetchPosts, [user]);
 
     return (
         <MainContainer>
@@ -43,20 +40,27 @@ export default function Timeline() {
                 <span>timeline</span>
             </TitleContainer>
             <NewPostContainer />
-            {posts.map((post) =>
-                <Post
-                    key={1}
-                    postId={1}
-                    url={metadata.url}
-                    title={metadata.title}
-                    description={metadata.description}
-                    image={metadata.image}
-                    message={post.message}
-                    name={user.name}
-                    profilePic={profile_pic}
-                />
-            )}
+            {isLoading
+                ? "Loading..."
+                : posts?.length === 0
+                    ? "There are no posts yet"
+                    : error === true
+                        ? "An error occured while trying to fetch the posts, please refresh the page"
+                        : (
+                            posts?.map((post) =>
+                                <Post
+                                    key={post.id}
+                                    postId={post.id}
+                                    url={post.url}
+                                    title={post.urlTitle}
+                                    description={post.urlDescription}
+                                    image={post.urlImage}
+                                    message={post.userMessage}
+                                    name={post?.name}
+                                    profilePic={post?.image}
+                                />
+                            )
+                        )}
         </MainContainer>
     );
-
 }
