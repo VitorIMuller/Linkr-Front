@@ -17,6 +17,7 @@ export default function UserPage() {
     function fetchPosts() {
         setLoading(true);
 
+        console.log(`userId userpage ${userId}`)
         api.getPostByUserId(user?.token, userId).then(res => {
             setPosts(res.data);
             setLoading(false);

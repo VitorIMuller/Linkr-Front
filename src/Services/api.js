@@ -21,7 +21,7 @@ async function signIn(formData) {
 async function createPost(body, token) {
     const auth = createHeaders(token);
 
-    const promise = await axios.post(`${BASE_URL}/posts`, auth);
+    const promise = await axios.post(`${BASE_URL}/posts`, auth, body);
 
     return promise;
 }
@@ -36,15 +36,13 @@ async function getPost(token) {
 }
 async function getPostByUserId(token, userId) {
     const auth = createHeaders(token);
+    console.log(userId)
 
-    const promise = await axios.get(`${BASE_URL}/posts/${userId}`, auth);
+    const promise = await axios.get(`${BASE_URL}/user/${userId}`, auth);
 
     return promise;
 }
-async function getUser(userId) {
-    const promise = await axios.get(`http://localhost:4000/users`, [userId])
-    return promise;
-}
+
 
 const api = {
     signUp,
@@ -52,7 +50,6 @@ const api = {
     createPost,
     getPost,
     getPostByUserId,
-    getUser
 }
 
 export default api;

@@ -29,6 +29,7 @@ export default function Timeline() {
             console.log(error);
         });
     }
+    console.log(posts)
 
     useEffect(fetchPosts, [user]);
     return (
@@ -54,9 +55,9 @@ export default function Timeline() {
                                     description={post.urlDescription}
                                     image={post.urlImage}
                                     message={post.userMessage}
-                                    name={post?.name}
-                                    profilePic={post?.image}
-                                    userId={post?.userId}
+                                    name={post.name}
+                                    profilePic={post.profilePic}
+                                    userId={post.userId}
                                 />
                             )
                         )}
