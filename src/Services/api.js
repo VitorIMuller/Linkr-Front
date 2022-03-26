@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "https://apilinkr.herokuapp.com";
+//const BASE_URL = "http://localhost:5000";
 
 function createHeaders(token) {
     return { headers: { Authorization: `Bearer ${token}` } };
@@ -21,7 +22,7 @@ async function signIn(formData) {
 async function createPost(body, token) {
     const auth = createHeaders(token);
 
-    const promise = await axios.post(`${BASE_URL}/posts`, auth, body);
+    const promise = await axios.post(`${BASE_URL}/posts`, body, auth);
 
     return promise;
 }
@@ -41,12 +42,38 @@ async function getPostByUserId(token, userId) {
     return promise;
 }
 
-async function getPostByHashtag(token, userId) {
+async function toggleLike(body, token) {
     const auth = createHeaders(token);
-    const promise = await axios.get(`${BASE_URL}/post/${userId}`, auth);
+
+    const promise = await axios.post(`${BASE_URL}/likes/toggle`, body, auth);
 
     return promise;
 }
+
+async function getTotalLikes(postId, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/likes/${postId}/total`, auth);
+
+    return promise;
+}
+
+async function getUsersLikes(postId, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/likes/${postId}`, auth);
+
+    return promise;
+}
+async function getPostByHashtag(token, hashtag) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/post/${hashtag}`, auth);
+
+    return promise;
+}
+
+
+
 
 const api = {
     signUp,
@@ -54,6 +81,9 @@ const api = {
     createPost,
     getPost,
     getPostByUserId,
+    toggleLike,
+    getTotalLikes,
+    getUsersLikes,
     getPostByHashtag
 }
 

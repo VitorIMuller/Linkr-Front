@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { MainContainer } from "../Timeline/style";
-import { TitleContainer } from "../Hashtag/style";
+import { TitleContainer, MainContainer } from "../Hashtag/style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
@@ -36,8 +35,7 @@ export default function HashtagPage() {
         <MainContainer>
             <Header />
             <TitleContainer>
-                <img src={posts[0]?.image}></img>
-                <span>{`${posts[0]?.name}'s posts`}</span>
+                <span>{`# ${hashtag}`}</span>
             </TitleContainer>
             {isLoading
                 ? "Loading..."

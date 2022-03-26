@@ -1,41 +1,49 @@
 import styled from "styled-components";
 
 const MainContainer = styled.main`
-    min-width: 100%;
-    min-height: 100vh;
-
-    background-color: #333333;
-
-    font-family: 'Oswald', sans-serif;
-`
-
-const TitleContainer = styled.div`
-    min-height: 87px;
-    min-width: 100vw;
+    width: 100%;
 
     display: flex;
-    justify-content: left;
+    flex-direction: column;
     align-items: center;
+    
+    background-color: #333333;
+    
+    font-family: 'Oswald', sans-serif;
 
-    padding-left: 17px;
-
-    span {
-        font-size: 33px;
-        font-weight: 700;
-        color: #FFF;
-        font-family: 'Oswald', sans-serif;
+    @media (max-width: 610px) {
+        width: 100vw;
     }
 `
 
-const NewPostContainer = styled.div`
-    width: 100%;
-    min-height: 164px;
+const TimelineContainer = styled.div`
+    padding-bottom: 100px;
 
-    background-color: #FFF;
+    @media (max-width: 610px) {
+        width: 100vw;
+        padding-bottom: 15px;
+    }
+`
+
+const TitleContainer = styled.div`
+
+    margin: 53px auto 43px auto;
+
+    font-size: 43px;
+    font-weight: 700;
+    color: #FFF;
+    font-family: 'Oswald', sans-serif;
+
+    @media (max-width: 610px) {
+        font-size: 33px;
+
+        margin: 19px 0;
+        padding-left: 17px;
+    }
 `
 
 export {
     TitleContainer,
     MainContainer,
-    NewPostContainer
+    TimelineContainer
 }

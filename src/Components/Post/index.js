@@ -1,43 +1,43 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
-import { PostBody } from "./style";
-import { IoHeartOutline } from 'react-icons/io5'
-import Metadata from "./Metadata";
-import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
-import ReactHashtag from "@mdnm/react-hashtag";
 import useAuth from '../../Hooks/useAuth';
-import { Link } from "react-router-dom";
+import ReactHashtag from "@mdnm/react-hashtag";
 
-export default function Post({ url, postId, title, description, image, message, name, profilePic, userId }) {
-    const [like, setLike] = useState();
-    const { hashtagRedirect } = useAuth();
+import LikeHeart from "./LikeHeart";
+import Metadata from "./Metadata";
+import { MetadataContainer, PostBody, TextContainer, UserContainer, UserMessage, UserName, UserPicture } from "./style";
+import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
+
+export default function Post({ url, postId, title, description, image, message, name, profilePic }) {
+    const { hashtagRedirect, user } = useAuth();
+
     return (
         <PostBody>
-            <div className="left-side-post">
-                <img src={profilePic} alt="profile_pic" />
-                <div className="heart">
-                    <IoHeartOutline></IoHeartOutline>
-                </div>
-                <span className="likes-quantity">1 like</span>
-            </div>
-            <div className="right-side-post">
-                <div><Link to={`/user/${userId}`} className="username-post">{name}</Link></div>
-                <span className="user-message-post">
-                    {
-                        <ReactHashtag onHashtagClick={value => hashtagRedirect(value)}>
-                            {message}
-                        </ReactHashtag>
-                    }
-                </span>
-                <a href={url}>
-                    <Metadata
-                        url={url}
-                        postId={postId}
-                        title={title}
-                        description={description}
-                        image={image}
-                    />
-                </a>
-            </div>
+            <UserContainer>
+                <UserPicture>
+                    <img src={profilePic ? profilePic : default_profile_pic} />
+                </UserPicture>
+                <LikeHeart postId={postId} />
+            </UserContainer>
+            <TextContainer>
+                <UserName to={`/user/${user.id}`} className="username-post">{name}</UserName>
+                <UserMessage>
+                    {<ReactHashtag onHashtagClick={value => hashtagRedirect(value)}>
+                        {message}
+                    </ReactHashtag>}
+                </UserMessage>
+                <MetadataContainer>
+                    <a href={url} target="_blank" rel="noopener noreferrer">
+                        <Metadata
+                            url={url}
+                            postId={postId}
+                            title={title}
+                            description={description}
+                            image={image}
+                        />
+                    </a>
+                </MetadataContainer>
+            </TextContainer>
         </PostBody>
     );
 }

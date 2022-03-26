@@ -23,7 +23,24 @@ const TitleContainer = styled.div`
     }
 
 `
+const MainContainer = styled.main`
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: #333333;
+    
+    font-family: 'Oswald', sans-serif;
+
+    @media (max-width: 610px) {
+        width: 100vw;
+    }
+`
 
 export {
-    TitleContainer
+    TitleContainer,
+    MainContainer
 }

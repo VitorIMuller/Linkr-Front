@@ -1,15 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+
 const TopBar = styled.div`
-    min-height: 175px;
     min-width: 100vw;
+    min-height: 175px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     background-color: #151515;
-
-
 `
 
 const Title = styled.div`
