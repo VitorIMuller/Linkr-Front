@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
 import { MainContainer } from "../Timeline/style";
+<<<<<<< HEAD
+import { TitleContainer } from "../Hashtag/style";
+=======
+>>>>>>> 1b118848ade06dd4929d9d9ea2a196bea63a4aeb
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
@@ -33,14 +37,21 @@ export default function UserPage() {
         });
     }
 
+    console.log(posts)
     useEffect(fetchPosts, [user]);
 
     return (
         <MainContainer>
             <Header />
             <TitleContainer>
+<<<<<<< HEAD
+
+                <div><img src={posts[0]?.profilePic}></img></div>
+                <span>{`${posts[0]?.username}'s posts`}</span>
+=======
                 <div><img src={posts[0]?.profilePic}></img></div>
                 <span>{`${posts[0]?.name}'s posts`}</span>
+>>>>>>> 1b118848ade06dd4929d9d9ea2a196bea63a4aeb
             </TitleContainer>
             {
                 isLoading
@@ -59,8 +70,13 @@ export default function UserPage() {
                                         description={post.urlDescription}
                                         image={post.urlImage}
                                         message={post.userMessage}
+<<<<<<< HEAD
+                                        name={post?.username}
+                                        profilePic={post?.profilePic}
+=======
                                         name={post?.name}
                                         profilePic={post?.image}
+>>>>>>> 1b118848ade06dd4929d9d9ea2a196bea63a4aeb
                                     />
                                 )
                             )
@@ -70,6 +86,8 @@ export default function UserPage() {
 }
 
 
+<<<<<<< HEAD
+=======
 const TitleContainer = styled.div`
     min-height: 87px;
     min-width: 100vw;
@@ -88,3 +106,4 @@ const TitleContainer = styled.div`
     }
 
 `
+>>>>>>> 1b118848ade06dd4929d9d9ea2a196bea63a4aeb

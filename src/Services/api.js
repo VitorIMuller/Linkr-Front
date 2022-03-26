@@ -37,8 +37,10 @@ async function getPost(token) {
 }
 async function getPostByUserId(token, userId) {
     const auth = createHeaders(token);
-
-    const promise = await axios.get(`${BASE_URL}/user/${userId}`, auth);
+<<<<<<< HEAD
+    const promise = await axios.get(`http://localhost:4000/user/${userId}`, auth);
+=======
+>>>>>>> 1b118848ade06dd4929d9d9ea2a196bea63a4aeb
 
     return promise;
 }
@@ -59,6 +61,7 @@ async function getTotalLikes(postId, token) {
     return promise;
 }
 
+<<<<<<< HEAD
 async function getUsersLikes(postId, token) {
     const auth = createHeaders(token);
 
@@ -66,6 +69,38 @@ async function getUsersLikes(postId, token) {
 
     return promise;
 }
+async function getPostByHashtag(token, hashtag) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/post/${hashtag}`, auth);
+=======
+async function toggleLike(body, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.post(`${BASE_URL}/likes/toggle`, body, auth);
+
+    return promise;
+}
+
+async function getTotalLikes(postId, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/likes/${postId}/total`, auth);
+>>>>>>> 1b118848ade06dd4929d9d9ea2a196bea63a4aeb
+
+    return promise;
+}
+
+<<<<<<< HEAD
+
+=======
+async function getUsersLikes(postId, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/likes/${postId}`, auth);
+
+    return promise;
+}
+>>>>>>> 1b118848ade06dd4929d9d9ea2a196bea63a4aeb
 
 
 const api = {
@@ -76,7 +111,12 @@ const api = {
     getPostByUserId,
     toggleLike,
     getTotalLikes,
+<<<<<<< HEAD
+    getUsersLikes,
+    getPostByHashtag
+=======
     getUsersLikes
+>>>>>>> 1b118848ade06dd4929d9d9ea2a196bea63a4aeb
 }
 
 export default api;
