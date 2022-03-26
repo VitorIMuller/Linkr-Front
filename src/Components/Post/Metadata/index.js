@@ -1,18 +1,17 @@
-import { MetadataContainer } from "./style";
-
+import { ImageContainer, MetadataContainer, TextContainer, UrlDescription, UrlImage, UrlLink, UrlTitle } from "./style";
 
 export default function Metadata({ url, postId, title, description, image }) {
 
     return (
         <MetadataContainer>
-            <div className="text">
-                <div className="title">{title}</div>
-                <div className="description">{description}</div>
-                <div className="link">{url}</div>
-            </div>
-            <div className="image">
-                <img src={image} alt="post_image" />
-            </div>
+            <TextContainer>
+                <UrlTitle>{title}</UrlTitle>
+                <UrlDescription>{description}</UrlDescription>
+                <UrlLink>{url}</UrlLink>
+            </TextContainer>
+            <ImageContainer>
+                <UrlImage src={image} />
+            </ImageContainer>
         </MetadataContainer>
     );
 }

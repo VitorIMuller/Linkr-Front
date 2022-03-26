@@ -4,7 +4,6 @@ const Post = styled.div`
   display: flex;
   width: 610px;
   height: 210px;
-  margin: 0 0 30px 0;
   background-color: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
@@ -75,7 +74,7 @@ const ButtonPublish = styled.button`
   justify-content: center;
   background-color: #1877F2;
   border-radius: 5px;
-  font-family: "Oswald";
+  font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -94,7 +93,7 @@ const ButtonPublish = styled.button`
 
 const PostUrl = styled.input`
   height: 30px;
-  margin: 10px 0 8px 0;
+  margin: 10px 0 5px 0;
 `;
 
 const PostDescription = styled.input`
@@ -102,8 +101,8 @@ const PostDescription = styled.input`
 `;
 
 export {
-    
-  Post ,
+
+  Post,
   PostUserInfo,
   PostForm,
   PostUrl,
