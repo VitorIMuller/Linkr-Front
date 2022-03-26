@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <HeaderWrapper>
-      <Logo>linkr</Logo>
+      <Logo to="/timeline">linkr</Logo>
       <UserMenu>
         <IconBox onClick={() => handleMenu()}>
           {isOpen === true ? <Open color="white" fontSize="30px" /> : <Closed color="white" fontSize="30px" />}

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const HeaderWrapper = styled.div`
   width: 100%;
@@ -15,13 +16,14 @@ const HeaderWrapper = styled.div`
   position: relative;
 `
 
-const Logo = styled.p`
+const Logo = styled(Link)`
   font-family: 'Passion One';
   font-style: normal;
   font-weight: 700;
   font-size: 45px;
   line-height: 50px;
   color: #fff;
+  text-decoration: none;
 `
 
 const IconBox = styled.div`

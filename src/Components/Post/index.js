@@ -13,7 +13,7 @@ export default function Post({ url, postId, title, description, image, message, 
     return (
         <PostBody>
             <div className="left-side-post">
-                <img src={image ? default_profile_pic : profilePic} alt="profile_pic" />
+                <img src={profilePic} alt="profile_pic" />
                 <div className="heart">
                     <IoHeartOutline></IoHeartOutline>
                 </div>

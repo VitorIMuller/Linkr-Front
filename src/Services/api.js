@@ -36,13 +36,17 @@ async function getPost(token) {
 }
 async function getPostByUserId(token, userId) {
     const auth = createHeaders(token);
-    console.log(userId)
-
     const promise = await axios.get(`${BASE_URL}/user/${userId}`, auth);
 
     return promise;
 }
 
+async function getPostByHashtag(token, userId) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/post/${userId}`, auth);
+
+    return promise;
+}
 
 const api = {
     signUp,
@@ -50,6 +54,7 @@ const api = {
     createPost,
     getPost,
     getPostByUserId,
+    getPostByHashtag
 }
 
 export default api;
