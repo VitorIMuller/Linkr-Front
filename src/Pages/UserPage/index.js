@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import { MainContainer } from "../Timeline/style";
+import { TitleContainer } from "../Hashtag/style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
 import api from "../../Services/api";
 import { useParams } from "react-router-dom";
-import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
-import styled from "styled-components";
 
 export default function UserPage() {
     const { user } = useAuth();
@@ -33,14 +32,16 @@ export default function UserPage() {
         });
     }
 
+    console.log(posts)
     useEffect(fetchPosts, [user]);
 
     return (
         <MainContainer>
             <Header />
             <TitleContainer>
+
                 <div><img src={posts[0]?.profilePic}></img></div>
-                <span>{`${posts[0]?.name}'s posts`}</span>
+                <span>{`${posts[0]?.username}'s posts`}</span>
             </TitleContainer>
             {
                 isLoading
@@ -59,8 +60,8 @@ export default function UserPage() {
                                         description={post.urlDescription}
                                         image={post.urlImage}
                                         message={post.userMessage}
-                                        name={post?.name}
-                                        profilePic={post?.image}
+                                        name={post?.username}
+                                        profilePic={post?.profilePic}
                                     />
                                 )
                             )
@@ -70,21 +71,3 @@ export default function UserPage() {
 }
 
 
-const TitleContainer = styled.div`
-    min-height: 87px;
-    min-width: 100vw;
-
-    display: flex;
-    justify-content: left;
-    align-items: center;
-
-    padding-left: 17px;
-
-    span {
-        font-size: 33px;
-        font-weight: 700;
-        color: #FFF;
-        font-family: 'Oswald', sans-serif;
-    }
-
-`

@@ -8,7 +8,7 @@ import Metadata from "./Metadata";
 import { MetadataContainer, PostBody, TextContainer, UserContainer, UserMessage, UserName, UserPicture } from "./style";
 import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
 
-export default function Post({ url, postId, title, description, image, message, name, profilePic }) {
+export default function Post({ url, postId, title, description, image, message, name, profilePic, userId }) {
     const { hashtagRedirect, user } = useAuth();
 
     return (
@@ -20,7 +20,7 @@ export default function Post({ url, postId, title, description, image, message, 
                 <LikeHeart postId={postId} />
             </UserContainer>
             <TextContainer>
-                <UserName to={`/user/${user.id}`} className="username-post">{name}</UserName>
+                <UserName to={`/user/${userId}`} className="username-post">{name}</UserName>
                 <UserMessage>
                     {<ReactHashtag onHashtagClick={value => hashtagRedirect(value)}>
                         {message}
