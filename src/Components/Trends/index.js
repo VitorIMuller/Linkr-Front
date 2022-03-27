@@ -1,19 +1,23 @@
 import ReactHashtag from "@mdnm/react-hashtag";
 import { useState, useEffect } from "react";
+import Loading from "../../Assets/Loading";
+import useAuth from "../../Hooks/useAuth";
 import api from "../../Services/api";
 import { TrendingBox, Title, Separator } from "./style";
 
 export default function Trends() {
+  const { user, hashtagRedirect } = useAuth();
   const [ trending, setTrending ] = useState();
-  const [ loading, setLoading ] = useState(true);
+  const [ loading, setLoading ] = useState();
   
   function getTrending() {
     const limit = 10;
-    api.getTrendingHashtags(limit).then( res => {
+    setLoading(true)
+    api.getTrendingHashtags(limit, user.token).then( res => {
       setTrending(res.data);
-      setLoading(!loading);
+      setLoading(false);
     }).catch( error => {
-      setLoading(!loading);
+      setLoading(false);
       console.log(error);
     });
   }
@@ -28,11 +32,13 @@ export default function Trends() {
       <Separator/>
       {
         loading 
-        ? "trending hashtags are loading"
-        : trending.length === 0
-        ? "there are no trending hashtag from the last 24 hours"
-        : trending?.map( hashtag => (
-            <ReactHashtag>{`#${hashtag}`}</ReactHashtag>
+        ? <Loading />
+        : trending?.length === 0
+        ? <span>there are no trending hashtags from the last 24 hours</span>
+        : trending?.map( el => (
+            <ReactHashtag key={el.id} onHashtagClick={ value => hashtagRedirect(value)}>
+              {`#${el.hashtag}`}
+            </ReactHashtag>
           ))
       }
     </TrendingBox>

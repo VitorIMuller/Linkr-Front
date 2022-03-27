@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { MainContainer, TitleContainer, TimelineContainer } from "./style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
-import Header from "../../Components/Header";
 import api from "../../Services/api";
 import Publish from "../../Components/Publish";
+import Trends from '../../Components/Trends'
 
 export default function Timeline() {
     const { user } = useAuth();
@@ -35,7 +35,7 @@ export default function Timeline() {
 
     return (
         <MainContainer>
-            <Header />
+            <Trends />
             <TimelineContainer>
                 <TitleContainer>
                     timeline

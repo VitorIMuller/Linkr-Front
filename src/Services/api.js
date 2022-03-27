@@ -73,8 +73,9 @@ async function getPostByHashtag(token, hashtag) {
     return promise;
 }
 
-async function getTrendingHashtags(limit) {
-    const promise = await axios.get(`${BASE_URL}/trending/${limit}`);
+async function getTrendingHashtags(limit, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/trending/${limit}`, auth);
 
     return promise;
 }

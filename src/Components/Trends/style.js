@@ -5,11 +5,18 @@ const TrendingBox = styled.div`
   
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 
   border-radius: 16px;
-  padding: 12px 16px;
-  color: #171717;
+  
+  background-color: #171717;
+  color: #fff;
+
+  &> span {
+    width: 100%;
+    text-align: left;
+    padding: 8px 16px;
+  }
 
   &> span:first-of-type {
     margin-top: 18px;
@@ -21,11 +28,16 @@ const TrendingBox = styled.div`
 `
 
 const Title = styled.p`
+  width: 100%;
+
   font-family: 'Oswald';
   font-style: normal;
   font-weight: 700;
   font-size: 27px;
   line-height: 40px;
+  text-align: left;
+
+  padding: 12px 16px;
  
   color: #fff;
 `
@@ -33,7 +45,7 @@ const Title = styled.p`
 const Separator = styled.div`
   width: 100%;
   height: 1.5px;
-  color: #484848;
+  background-color: #484848;
 `
 
 export {
