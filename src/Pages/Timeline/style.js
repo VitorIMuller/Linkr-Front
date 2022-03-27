@@ -12,12 +12,11 @@ const MainContainer = styled.main`
     font-family: 'Oswald', sans-serif;
 
     @media (max-width: 610px) {
-        width: 100vw;
+        width: 100%;
     }
 `
 
 const TimelineContainer = styled.div`
-    width: 50%;
 
     display: flex; 
     flex-direction: column;
@@ -26,7 +25,7 @@ const TimelineContainer = styled.div`
     padding-bottom: 100px;
 
     @media (max-width: 610px) {
-        width: 100vw;
+        width: 100%;
     }
 `
 
