@@ -5,7 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
 import api from "../../Services/api";
 import Publish from "../../Components/Publish";
-import FadingDots from "../../Assets/FadingDots.js";
+import FadingDots from "../../Assets/CircularLoading.js";
 
 export default function Timeline() {
     const { user } = useAuth();

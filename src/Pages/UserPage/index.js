@@ -7,7 +7,6 @@ import Header from "../../Components/Header";
 import api from "../../Services/api";
 import { useParams } from "react-router-dom";
 import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
-import styled from "styled-components";
 
 export default function UserPage() {
     const { user } = useAuth();

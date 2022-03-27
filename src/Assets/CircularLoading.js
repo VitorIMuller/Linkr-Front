@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import "../Styles/FadingDots.css";
+import "../Styles/CircularLoading.css";
 
 export default function FadingDots() {
     return (
