@@ -73,9 +73,17 @@ async function getUsersLikes(postId, token) {
 
     return promise;
 }
+
 async function getPostByHashtag(token, hashtag) {
     const auth = createHeaders(token);
     const promise = await axios.get(`${BASE_URL}/post/${hashtag}`, auth);
+
+    return promise;
+}
+
+async function getTrendingHashtags(limit, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/trending/${limit}`, auth);
 
     return promise;
 }
@@ -90,6 +98,7 @@ const api = {
     getTotalLikes,
     getUsersLikes,
     getPostByHashtag,
+    getTrendingHashtags,
     getUsernameLikes
 }
 

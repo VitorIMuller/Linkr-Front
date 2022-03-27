@@ -68,7 +68,7 @@ const DropDown = styled.div`
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-bottom-left-radius: 20px;
   
-  position: fixed;
+  position: absolute;
   z-index: 99;
   right: 0;
   top: 72px;
