@@ -9,7 +9,7 @@ const Post = styled.div`
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
   @media (max-width: 610px) {
-    width: 100vw;
+    width: 100%;
     height: 164px;
     padding: 10px 15px 12px 16px;
     border-radius: 0;
