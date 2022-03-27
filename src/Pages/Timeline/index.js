@@ -6,6 +6,7 @@ import Header from "../../Components/Header";
 import api from "../../Services/api";
 import Publish from "../../Components/Publish";
 import FadingDots from "../../Assets/CircularLoading.js";
+import SearchUser from "../../Components/UserSearch";
 
 export default function Timeline() {
     const { user } = useAuth();
@@ -42,6 +43,7 @@ export default function Timeline() {
             <Header />
             <MainContainer>
                 <TimelineContainer>
+                    <SearchUser/>
                     <TitleContainer>
                         timeline
                     </TitleContainer>
