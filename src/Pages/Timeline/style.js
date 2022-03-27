@@ -17,6 +17,7 @@ const MainContainer = styled.main`
 `
 
 const TimelineContainer = styled.div`
+    margin: 0 50%;
 
     display: flex; 
     flex-direction: column;
@@ -32,8 +33,7 @@ const TimelineContainer = styled.div`
 const TitleContainer = styled.div`
     width: 100%;
 
-    display: flex;
-    justify-content: flex-start;
+    text-align: left !important;
 
     margin-top: 53px;  
     margin-bottom: 43px;  
@@ -54,7 +54,7 @@ const TitleContainer = styled.div`
 `
 
 const NoPost = styled.div`
-    width: 100%;
+    width: 60%;
     
     justify-content: center;
     text-align: center;
