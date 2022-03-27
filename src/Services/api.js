@@ -37,7 +37,7 @@ async function getPost(token) {
 }
 async function getPostByUserId(token, userId) {
     const auth = createHeaders(token);
-    const promise = await axios.get(`http://localhost:4000/user/${userId}`, auth);
+    const promise = await axios.get(`${BASE_URL}/user/${userId}`, auth);
 
     return promise;
 }
