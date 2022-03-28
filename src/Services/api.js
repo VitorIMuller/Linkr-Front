@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://apilinkr.herokuapp.com";
-//const BASE_URL = "http://localhost:5000";
+// const BASE_URL = "https://apilinkr.herokuapp.com";
+const BASE_URL = "http://localhost:5000";
 
 function createHeaders(token) {
     return { headers: { Authorization: `Bearer ${token}` } };
@@ -90,6 +90,15 @@ async function getPostByHashtag(token, hashtag) {
     return promise;
 }
 
+async function getUsers( characters, token){
+    const auth = createHeaders(token);
+    if (characters < 3 ) return [];
+
+    const promise = await axios.get(`${BASE_URL}/users/search?characters=${characters}`, auth);
+    console.log (`API: ${characters}`);
+
+    return promise;
+}
 async function getTrendingHashtags(limit, token) {
     const auth = createHeaders(token);
     const promise = await axios.get(`${BASE_URL}/trending/${limit}`, auth);
@@ -108,8 +117,10 @@ const api = {
     getTotalLikes,
     getUsersLikes,
     getPostByHashtag,
+    getUsernameLikes,
+    getUsers,
     getTrendingHashtags,
-    getUsernameLikes
+   
 }
 
 export default api;
