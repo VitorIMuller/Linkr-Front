@@ -64,7 +64,6 @@ export default function SearchUser() {
                 <div className="list-users">
                     {isLoading ?
                         <Loader><LoadingFind /></Loader>
-
                         :
                         <>
                             {list?.map((el, i) =>

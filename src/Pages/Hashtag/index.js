@@ -24,7 +24,6 @@ export default function HashtagPage() {
     const location = useLocation();
 
     function fetchPosts() {
-        window.scrollTo(0, 0);
         setLoading(true);
         api.getPostByHashtag(user?.token, hashtag).then(res => {
             setPosts(res.data);
@@ -38,6 +37,7 @@ export default function HashtagPage() {
             console.log(error);
         });
     }
+    window.scrollTo(0, 0);
 
     useEffect(fetchPosts, [user, location.pathname]);
 
