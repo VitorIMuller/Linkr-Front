@@ -2,15 +2,17 @@ import styled from 'styled-components';
 
 const Search = styled.form`
     
-    width: 95vw;
+    width: 100%;
     height: 45px;
     display: flex;
-    margin-top: 10px;
+    margin-top: 82px;
     border-radius: 8px;
     font-family: 'Lato';
     font-style: normal;
     font-weight: 400;
    
+    background-color: #333;
+
     & input {
     width: 100%;
     padding-left: 13px;
@@ -21,7 +23,17 @@ const Search = styled.form`
     line-height: 20px;
     color: #C6C6C6;
     border: none;
-  }
+    }
+
+    @media (max-width: 610px) {
+        width: 100%;
+        border-radius: none;
+        font-size: 17px;
+
+        & >input{
+            border-radius: none;
+        }
+    }
 `;
 const NoUser = styled.div`
     width: 350px;

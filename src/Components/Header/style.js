@@ -13,7 +13,22 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 99;
+
+  & >form{
+    margin-top: 0px;
+    width: 40%;
+    border-radius: 8px;
+
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
 `
 
 const Logo = styled(Link)`

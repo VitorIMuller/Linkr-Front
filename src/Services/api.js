@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const BASE_URL = "https://apilinkr.herokuapp.com";
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://apilinkr.herokuapp.com";
+//const BASE_URL = "http://localhost:5000";
 
 function createHeaders(token) {
     return { headers: { Authorization: `Bearer ${token}` } };
@@ -85,7 +85,7 @@ async function getUsersLikes(postId, token) {
 
 async function getPostByHashtag(token, hashtag) {
     const auth = createHeaders(token);
-    const promise = await axios.get(`${BASE_URL}/post/${hashtag}`, auth);
+    const promise = await axios.get(`${BASE_URL}/posts/hashtag/${hashtag}`, auth);
 
     return promise;
 }
