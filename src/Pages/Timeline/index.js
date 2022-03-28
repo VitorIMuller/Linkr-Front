@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MainContainer, TitleContainer, TimelineContainer, NoPost, LoadingContainer, LeftWrapper, RightWrapper } from "./style";
+import { MainContainer, TitleContainer, TimelineContainer, NoPost, LoadingContainer, LeftWrapper, RightWrapper, SearchContainer } from "./style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import api from "../../Services/api";
@@ -42,10 +42,10 @@ export default function Timeline() {
     return (
         <>
             <Header />
-            {/* <SearchUser/> */}
             <MainContainer>
                 <LeftWrapper>
                     <TimelineContainer>
+
                         <TitleContainer>
                             timeline
                         </TitleContainer>

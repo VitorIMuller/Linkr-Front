@@ -127,5 +127,5 @@ export {
     NoPost,
     LeftWrapper,
     RightWrapper,
-    LoadingContainer
+    LoadingContainer,
 }
