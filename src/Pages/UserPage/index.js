@@ -21,7 +21,7 @@ export default function UserPage() {
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
 
     function fetchPosts() {
-        window.scrollTo(0, 0);
+
         setLoading(true);
 
         console.log(`userId userpage ${userId}`)
@@ -37,7 +37,7 @@ export default function UserPage() {
             console.log(error);
         });
     }
-
+    window.scrollTo(0, 0);
     console.log(posts)
     useEffect(fetchPosts, [userId, user?.token]);
 
@@ -72,6 +72,7 @@ export default function UserPage() {
                                                 message={post.userMessage}
                                                 name={post?.username}
                                                 profilePic={post?.profilePic}
+                                                userId={post?.userId}
                                             />
                                         )
                                     )
