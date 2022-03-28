@@ -9,10 +9,12 @@ export default function Trends() {
   const { user, hashtagRedirect } = useAuth();
   const [ trending, setTrending ] = useState();
   const [ loading, setLoading ] = useState();
+  const [ intervalKey, setIntervalKey ] = useState();
   
   function getTrending() {
     const limit = 10;
-    setLoading(true)
+    setLoading(true);
+    intervalKey && clearInterval(intervalKey);
     api.getTrendingHashtags(limit, user.token).then( res => {
       setTrending(res.data);
       setLoading(false);
@@ -22,9 +24,15 @@ export default function Trends() {
     });
   }
 
-  useEffect(getTrending, []);
+  useEffect( () => {
+    getTrending();
+    schedulesHashtagRerender(); 
+  }, []);
 
-  setInterval(getTrending, 10*60000); // gets trending hashtags on 10 minutes intervals
+  function schedulesHashtagRerender() {
+    const interval = setInterval(getTrending, 10*60000);
+    setIntervalKey(interval);
+  }
 
   return(
     <TrendingBox>
@@ -36,7 +44,7 @@ export default function Trends() {
         : trending?.length === 0
         ? <span>there are no trending hashtags from the last 24 hours</span>
         : trending?.map( el => (
-            <ReactHashtag key={el.id} onHashtagClick={ value => hashtagRedirect(value)}>
+            <ReactHashtag key={el.hashtag} onHashtagClick={ value => hashtagRedirect(value)}>
               {`#${el.hashtag}`}
             </ReactHashtag>
           ))

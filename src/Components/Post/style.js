@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from 'react-router-dom';
 
 const PostBody = styled.div`
-    width: 610px;
+    width: 90%;
 
     display: flex;
 
@@ -18,6 +18,10 @@ const PostBody = styled.div`
         border-radius: 0;
 
         padding: 15px 9px;
+    }
+
+    @media (min-width: 912px) {
+        width: 72%
     }
 `;
 

@@ -13,7 +13,12 @@ const HeaderWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  z-index: 99;
 `
 
 const Logo = styled(Link)`

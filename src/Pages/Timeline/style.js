@@ -5,51 +5,77 @@ const MainContainer = styled.main`
     height: 100%;
 
     display: flex;
-    justify-content: center;
+    margin-top: 72px;
     
     background-color: #333333;
-    
     font-family: 'Oswald', sans-serif;
+`
 
-    @media (max-width: 610px) {
+const LeftWrapper = styled.div`
+    width: 60%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    background-color: #333333;
+
+    @media (max-width: 767px) {
         width: 100%;
+    }
+`
+const RightWrapper = styled.div`
+    width: 40%;
+    padding-left: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    background-color: #333333;
+
+    @media (max-width: 767px) { //fits on smallest tablet
+        display: none;
     }
 `
 
 const TimelineContainer = styled.div`
-    margin: 0 50%;
+    width: 100%;
 
     display: flex; 
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
 
     padding-bottom: 100px;
 
-    @media (max-width: 610px) {
+    @media (max-width: 767px) {
         width: 100%;
+        align-items: center;
     }
 `
 
 const TitleContainer = styled.div`
-    width: 100%;
+    width: 90%;
 
-    text-align: left !important;
+    text-align: left;
 
     margin-top: 53px;  
-    margin-bottom: 43px;  
+    margin-bottom: 43px;
 
     font-size: 43px;
     font-weight: 700;
     line-height: 49px;
     color: #FFF;
 
-    background-color: #333333;
-
     @media (max-width: 610px) {
         font-size: 33px;
 
         margin: 19px 0;
         padding-left: 17px;
+    }
+
+    @media (min-width: 912px) {
+        width: 72%
     }
 `
 
@@ -78,5 +104,7 @@ export {
     TitleContainer,
     MainContainer,
     TimelineContainer,
-    NoPost
+    NoPost,
+    LeftWrapper,
+    RightWrapper
 }
