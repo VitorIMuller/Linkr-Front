@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { MainContainer, TitleContainer, TimelineContainer, NoPost } from "./style";
+import { MainContainer, TitleContainer, TimelineContainer, NoPost, LoadingContainer } from "./style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import api from "../../Services/api";
@@ -47,7 +47,10 @@ export default function Timeline() {
                     </TitleContainer>
                     <Publish />
                     {isLoading
-                        ? <CircularLoading />
+                        ?
+                        <LoadingContainer>
+                            <CircularLoading />
+                        </LoadingContainer>
                         : posts?.length === 0
                             ? <NoPost>{NoPostYetMessage}</NoPost>
                             : error === true

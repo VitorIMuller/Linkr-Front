@@ -1,29 +1,10 @@
-import styled from "styled-components";
 import "../Styles/CircularLoading.css";
 
 export default function CircularLoading() {
     return (
-        <DotsContainer>
-            <svg className="circular-loading" viewBox="25 25 50 50">
-                <circle cx="50" cy="50" r="20"></circle>
-            </svg>
-        </DotsContainer>
+        <svg className="circular-loading" viewBox="25 25 50 50">
+            <circle cx="50" cy="50" r="20"></circle>
+        </svg>
     );
 }
 
-const DotsContainer = styled.div`
-    width: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding-top: 200px;
-    padding-bottom: 500px;
-
-    color: #FFF;
-
-    @media (max-width: 610px) {
-        padding-top: 150px;
-    }
-`;
