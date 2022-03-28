@@ -14,22 +14,22 @@ const SearchIcon = styled(AiOutlineSearch)`
     color: #C6C6C6;
 `;
 const ContainerInputFindUser = styled.div`
-    width: 100%;
+    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    @media screen and (max-width: 900px) {
+    @media screen and (max-width: 767px) {
         display: none;
     }
 `;
 const InputFindUser = styled.div`
-    width: 563px;
+    width: 100%;
     height: 45px;
     position: relative;
 
     .debounce-input {
-        width: 563px;
+        width: 100%;
         height: 45px;
         padding-left: 17px;
         

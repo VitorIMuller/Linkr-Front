@@ -39,7 +39,7 @@ export default function DeletePost({ isDeleting, setDeleting, postId }) {
             console.log(error);
             setLoading(false);
             setDeleting(false);
-            alert("An occured while deleting the post. Please, try again.");
+            alert("An error occured while deleting the post. Please, try again.");
         }
     }
 
