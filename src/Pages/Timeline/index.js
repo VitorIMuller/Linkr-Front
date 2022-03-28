@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { MainContainer, TitleContainer, TimelineContainer, NoPost } from "./style";
+import { MainContainer, TitleContainer, TimelineContainer, NoPost, LoadingContainer } from "./style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import api from "../../Services/api";
 import Publish from "../../Components/Publish";
-import FadingDots from "../../Assets/CircularLoading.js";
+import CircularLoading from "../../Assets/CircularLoading.js";
 import Header from '../../Components/Header'
 
 export default function Timeline() {
@@ -47,7 +47,10 @@ export default function Timeline() {
                     </TitleContainer>
                     <Publish />
                     {isLoading
-                        ? <FadingDots />
+                        ?
+                        <LoadingContainer>
+                            <CircularLoading />
+                        </LoadingContainer>
                         : posts?.length === 0
                             ? <NoPost>{NoPostYetMessage}</NoPost>
                             : error === true
