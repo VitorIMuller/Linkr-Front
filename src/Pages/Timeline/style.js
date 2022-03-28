@@ -100,7 +100,7 @@ const NoPost = styled.div`
 `;
 
 const LoadingContainer = styled.div`
-    width: 100%;
+    width: 90%;
 
     display: flex;
     justify-content: center;
@@ -113,6 +113,10 @@ const LoadingContainer = styled.div`
 
     @media (max-width: 610px) {
         padding-top: 150px;
+    }
+
+    @media (min-width: 912px) {
+        width: 72%
     }
 `;
 

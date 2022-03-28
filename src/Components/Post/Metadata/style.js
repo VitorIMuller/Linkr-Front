@@ -37,8 +37,7 @@ const UrlTitle = styled.div`
     font-weight: 400;
     line-height: 19.2px;
     color: #CECECE;
-
-    overflow: hidden;
+    
     text-overflow: ellipsis;
     line-clamp: 3;
 
@@ -64,8 +63,7 @@ const UrlDescription = styled.div`
     font-weight: 400;
     line-height: 13.2px;
     color: #9B9595;
-
-    overflow: hidden;
+    
     text-overflow: ellipsis;
     line-clamp: 2;
 
@@ -117,11 +115,18 @@ const UrlImage = styled.img`
         max-width: 115px;
         max-height: 115px;
     }
+
+    @media (max-width: 767px) {
+        max-height: 155px;
+    }
 `
 
 const ImageContainer = styled.div`
     width: 50%;
     height: 100%;
+
+    object-fit: cover;
+    object-position: center;
 
     cursor: pointer;
 
