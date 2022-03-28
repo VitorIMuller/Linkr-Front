@@ -32,11 +32,11 @@ const HeaderWrapper = styled.div`
 `
 
 const Logo = styled(Link)`
+  width: 100px;
   font-family: 'Passion One';
   font-style: normal;
   font-weight: 700;
   font-size: 45px;
-  line-height: 50px;
   color: #fff;
   text-decoration: none;
 `
