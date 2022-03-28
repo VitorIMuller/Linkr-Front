@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import "../Styles/CircularLoading.css";
 
-export default function FadingDots() {
+export default function CircularLoading() {
     return (
         <DotsContainer>
-            <svg className="circular" viewBox="25 25 50 50">
+            <svg className="circular-loading" viewBox="25 25 50 50">
                 <circle cx="50" cy="50" r="20"></circle>
             </svg>
         </DotsContainer>

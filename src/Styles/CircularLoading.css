@@ -1,10 +1,10 @@
-.circular {
+.circular-loading {
   width: 3.75em;
   transform-origin: center;
   animation: rotate 2s linear infinite;
 }
 
-circle {
+.circular-loading circle {
   fill: none;
   stroke: #FFF;
   stroke-width: 2;
