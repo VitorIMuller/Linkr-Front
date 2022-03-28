@@ -38,7 +38,6 @@ const RightWrapper = styled.div`
         display: none;
     }
 `
-
 const TimelineContainer = styled.div`
     width: 100%;
 
@@ -52,7 +51,7 @@ const TimelineContainer = styled.div`
         width: 100%;
         align-items: center;
     }
-`
+`;
 
 const TitleContainer = styled.div`
     width: 90%;
@@ -98,7 +97,24 @@ const NoPost = styled.div`
         font-size: 25px;
         padding-top: 100px;
     }
-`
+`;
+
+const LoadingContainer = styled.div`
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 200px;
+    padding-bottom: 500px;
+
+    color: #FFF;
+
+    @media (max-width: 610px) {
+        padding-top: 150px;
+    }
+`;
 
 export {
     TitleContainer,
@@ -106,5 +122,6 @@ export {
     TimelineContainer,
     NoPost,
     LeftWrapper,
-    RightWrapper
+    RightWrapper,
+    LoadingContainer
 }

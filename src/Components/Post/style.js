@@ -57,11 +57,33 @@ const UserPicture = styled.div`
 `;
 
 const TextContainer = styled.div`
-    width: calc(100% - 72px);
+    width: calc(100% - 55px);
     
     display: flex;
     flex-direction: column;
+
+    position: relative;
 `;
+
+const IconContainer = styled.div`
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    color: #FFF;
+    
+    .edit {
+        width: 18px;
+        height: 18px;
+    }
+
+    .trashcan {
+        width: 18px;
+        height: 18px;
+
+        margin-left: 15px;
+    }
+`
 
 const UserName = styled(Link)`
     max-width: 455px;
@@ -128,5 +150,6 @@ export {
     TextContainer,
     UserName,
     UserMessage,
-    MetadataContainer
+    MetadataContainer,
+    IconContainer
 }
