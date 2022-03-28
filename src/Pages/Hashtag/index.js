@@ -5,7 +5,8 @@ import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
 import api from "../../Services/api";
 import { useParams } from "react-router-dom";
-import Trends from '../../Components/Trends'
+import Trends from '../../Components/Trends';
+import { useLocation } from "react-router-dom";
 
 export default function HashtagPage() {
     const { user } = useAuth();
@@ -14,6 +15,8 @@ export default function HashtagPage() {
     const [posts, setPosts] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+
+    const location = useLocation();
 
     function fetchPosts() {
         setLoading(true);
@@ -30,7 +33,7 @@ export default function HashtagPage() {
         });
     }
 
-    useEffect(fetchPosts, [user]);
+    useEffect(fetchPosts, [user, location.pathname]);
 
     return (
         <>
