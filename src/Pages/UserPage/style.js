@@ -1,12 +1,12 @@
 import styled from "styled-components"
 
-const TitleContainer = styled.div`
+const TitleContainer = styled.p`
     width: 90%;
     display: flex;
     text-align: left;
 
     margin-top: 53px;  
-    margin-bottom: 15px;
+    margin-bottom: 31px;
 
     font-size: 43px;
     font-weight: 700;
@@ -51,6 +51,12 @@ const LeftWrapper = styled.div`
     align-items: flex-end;
 
     background-color: #333333;
+
+    padding-bottom: 100px;
+
+    &> div:first-of-type{
+        margin-top: 0;
+    }
 
     @media (max-width: 767px) {
         width: 100%;
