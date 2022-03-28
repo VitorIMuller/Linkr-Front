@@ -2,17 +2,22 @@ import styled from 'styled-components';
 
 const Post = styled.div`
   display: flex;
-  width: 610px;
+  width: 90%;
   height: 210px;
   background-color: #FFFFFF;
   border-radius: 16px;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   border: none;
+
   @media (max-width: 610px) {
     width: 100%;
     height: 164px;
     padding: 10px 15px 12px 16px;
     border-radius: 0;
+  }
+
+  @media (min-width: 912px) {
+      width: 72%
   }
 `;
 
@@ -21,8 +26,10 @@ const PostUserInfo = styled.div`
   flex-direction: column;
   width: 50px;
   height: 150px;
-  margin: 16px auto auto 16px;
+  margin: 16px 16px auto 16px;
   & img {
+    height: 50px;
+    width: 50px;
     border-radius: 50%;
   }
   @media (max-width: 610px) {
@@ -31,9 +38,9 @@ const PostUserInfo = styled.div`
 `;
 
 const PostForm = styled.form`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 503px;
   margin: 21px 28px 16px 0;
   font-family: 'Lato';
   font-style: normal;
