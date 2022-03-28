@@ -42,6 +42,20 @@ const MainContainer = styled.main`
     font-family: 'Oswald', sans-serif;
 `
 
+const UserContainer = styled.div`
+    margin: 0 50%;
+
+    display: flex; 
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 100px;
+
+    @media (max-width: 610px) {
+        width: 100%;
+    }
+`;
+
 const LeftWrapper = styled.div`
     width: 60%;
 
@@ -82,5 +96,6 @@ export {
     TitleContainer,
     MainContainer,
     LeftWrapper,
-    RightWrapper
+    RightWrapper,
+    UserContainer
 }

@@ -127,6 +127,8 @@ const UserMessage = styled.div`
         color: #FFF;
 
         gap: 5px;
+
+        cursor: pointer;
     }
 
     @media (max-width: 610px) {
@@ -138,6 +140,8 @@ const UserMessage = styled.div`
 `;
 
 const MetadataContainer = styled.div` 
+    max-height: 10em;
+    
     a {
         all: unset;
     }

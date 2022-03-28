@@ -1,57 +1,106 @@
 import styled from 'styled-components';
+import { AiOutlineSearch } from "react-icons/ai"
 
-const Search = styled.form`
-    
+const Image = styled.img`
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    `;
+const SearchIcon = styled(AiOutlineSearch)`
+    top: 9px;
+    right: 10px;
+    font-size: 25px;
+    position: absolute;
+    color: #C6C6C6;
+`;
+const ContainerInputFindUser = styled.div`
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @media screen and (max-width: 767px) {
+        display: none;
+    }
+`;
+const InputFindUser = styled.div`
     width: 100%;
     height: 45px;
-    display: flex;
-    margin-top: 82px;
-    border-radius: 8px;
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-   
-    background-color: #333;
+    position: relative;
 
-    & input {
-    width: 100%;
-    padding-left: 13px;
-    background-color: #EFEFEF;
-    border-radius: 8px;
-    font-weight: 400;
-    font-size: 19px;
-    line-height: 20px;
-    color: #C6C6C6;
-    border: none;
-    }
-
-    @media (max-width: 610px) {
+    .debounce-input {
         width: 100%;
-        border-radius: none;
-        font-size: 17px;
+        height: 45px;
+        padding-left: 17px;
+        
+        background-color: white;
+        
+        border-radius: 8px;
+        border: none;
+        
+        font-family: Lato;
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 23px;
+        color: #515151;
+        
+        z-index: 2;
+        
+        ::placeholder {
+        color: #C6C6C6;
+        }
+    }
+    
+    .list-users {
+        width: 100%;
+        min-height: 45px;
 
-        & >input{
-            border-radius: none;
+        padding-top: 30px;
+        padding-bottom: 15px;
+        
+        border-radius: 8px;
+        border: none;
+
+        background-color: #E7E7E7;
+        font-weight: regular;
+        color: red;
+
+        position: absolute;
+        top: 0;
+        z-index: -1;
+
+        
+        div:first-child{
+        margin-top: 30px;
+        }
+        
+        div {
+        padding: 3px 17px;
+        
+        display: flex;
+        align-items: center;
+        
+        color: #515151;
+        cursor: pointer;
         }
     }
 `;
-const NoUser = styled.div`
-    width: 350px;
-    
+
+const NameList = styled.div`
+    font-family: 'Lato', sans-serif;
+    font-size: 19px;
+
+`;
+const Loader = styled.div`
+    display: flex;
+    align-items: center;
     justify-content: center;
-    text-align: center;
-
-    font-size: 17px;
-    font-weight: 400;
-    color: #C6C6C6;
-
-    @media (max-width: 610px) {
-    width: 80%;
-
-    font-size: 17px;
-    }
 `
-export { 
-    Search,
-    NoUser
-} ;
+export {
+    InputFindUser,
+    ContainerInputFindUser,
+    Image,
+    SearchIcon,
+    NameList,
+    Loader
+};

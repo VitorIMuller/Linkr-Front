@@ -5,6 +5,8 @@ import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
 import api from "../../Services/api";
 import { useParams } from "react-router-dom";
+import { LoadingContainer, NoPost } from "../Timeline/style";
+import CircularLoading from "../../Assets/CircularLoading";
 import Trends from '../../Components/Trends';
 import { useLocation } from "react-router-dom";
 
@@ -16,9 +18,13 @@ export default function HashtagPage() {
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
+    const NoPostYetMessage = "There are no posts yet";
+    const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
+
     const location = useLocation();
 
     function fetchPosts() {
+        window.scrollTo(0, 0);
         setLoading(true);
         api.getPostByHashtag(user?.token, hashtag).then(res => {
             setPosts(res.data);
@@ -44,11 +50,14 @@ export default function HashtagPage() {
                         {`# ${hashtag}`}
                     </TitleContainer>
                     {isLoading
-                        ? "Loading..."
+                        ?
+                        <LoadingContainer>
+                            <CircularLoading />
+                        </LoadingContainer>
                         : posts?.length === 0
-                            ? "There are no posts yet"
+                            ? <NoPost>{NoPostYetMessage}</NoPost>
                             : error === true
-                                ? "An error occured while trying to fetch the posts, please refresh the page"
+                                ? <NoPost>{ServerErrorMessage}</NoPost>
                                 : (
                                     posts?.map((post) =>
                                         <Post
