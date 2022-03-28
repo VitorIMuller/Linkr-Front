@@ -90,12 +90,12 @@ async function getPostByHashtag(token, hashtag) {
     return promise;
 }
 
-async function getUsers( characters, token){
+async function getUsers(characters, token) {
     const auth = createHeaders(token);
-    if (characters < 3 ) return [];
+    if (characters < 3) return [];
 
     const promise = await axios.get(`${BASE_URL}/users/search?characters=${characters}`, auth);
-    console.log (`API: ${characters}`);
+    console.log(`API: ${characters}`);
 
     return promise;
 }
@@ -120,7 +120,7 @@ const api = {
     getUsernameLikes,
     getUsers,
     getTrendingHashtags,
-   
+
 }
 
 export default api;
