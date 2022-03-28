@@ -35,6 +35,15 @@ async function getPost(token) {
 
     return promise;
 }
+
+async function deletePost(postId, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.delete(`${BASE_URL}/post/delete/${postId}`, auth);
+
+    return promise;
+}
+
 async function getPostByUserId(token, userId) {
     const auth = createHeaders(token);
     const promise = await axios.get(`${BASE_URL}/user/${userId}`, auth);
@@ -102,6 +111,7 @@ const api = {
     signIn,
     createPost,
     getPost,
+    deletePost,
     getPostByUserId,
     toggleLike,
     getTotalLikes,

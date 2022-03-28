@@ -14,7 +14,7 @@ const MainContainer = styled.main`
     @media (max-width: 610px) {
         width: 100%;
     }
-`
+`;
 
 const TimelineContainer = styled.div`
     margin: 0 50%;
@@ -28,7 +28,7 @@ const TimelineContainer = styled.div`
     @media (max-width: 610px) {
         width: 100%;
     }
-`
+`;
 
 const TitleContainer = styled.div`
     width: 100%;
@@ -51,7 +51,7 @@ const TitleContainer = styled.div`
         margin: 19px 0;
         padding-left: 17px;
     }
-`
+`;
 
 const NoPost = styled.div`
     width: 60%;
@@ -72,11 +72,29 @@ const NoPost = styled.div`
         font-size: 25px;
         padding-top: 100px;
     }
-`
+`;
+
+const LoadingContainer = styled.div`
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding-top: 200px;
+    padding-bottom: 500px;
+
+    color: #FFF;
+
+    @media (max-width: 610px) {
+        padding-top: 150px;
+    }
+`;
 
 export {
     TitleContainer,
     MainContainer,
     TimelineContainer,
-    NoPost
+    NoPost,
+    LoadingContainer
 }

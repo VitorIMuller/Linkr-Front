@@ -45,31 +45,30 @@ export default function LikeHeart({ postId }) {
 
         let tooltipText = '';
 
-        const LOGGED_USER_LIKED = ownUserLiked === true;
-        const TOTAL = likes.total - 2;
-        const CHECK_PLURAL = TOTAL > 1 ? 's' : '';
+        const total = likes.total - 2;
+        const plural = total > 1 ? 's' : '';
 
         if (names.length > 1) {
-            LOGGED_USER_LIKED
+            ownUserLiked
                 ? tooltipText += `Você, ${names[0].name}`
-                : (TOTAL === 0
+                : (total === 0
                     ? tooltipText += `${names[0].name} e ${names[1].name}`
                     : tooltipText += `${names[0].name}, ${names[1].name}`
                 );
 
-            TOTAL === 1
-                ? tooltipText += ` e outra${CHECK_PLURAL} ${TOTAL} pessoa${CHECK_PLURAL} curtiram`
-                : (TOTAL > 1
-                    ? tooltipText += ` e outra${CHECK_PLURAL} ${TOTAL} pessoa${CHECK_PLURAL} curtiram`
+            total === 1
+                ? tooltipText += ` e outra${plural} ${total} pessoa${plural} curtiram`
+                : (total > 1
+                    ? tooltipText += ` e outra${plural} ${total} pessoa${plural} curtiram`
                     : tooltipText += ` curtiram`);
 
         } else if (names.length === 1) {
-            LOGGED_USER_LIKED
+            ownUserLiked
                 ? tooltipText += `Você e ${names[0].name} curtiram`
                 : tooltipText += `${names[0].name} curtiu`;
 
         } else {
-            LOGGED_USER_LIKED
+            ownUserLiked
                 ? tooltipText += `Você curtiu`
                 : tooltipText += `Seja o primeiro a curtir!`
         }
