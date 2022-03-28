@@ -14,7 +14,7 @@ const MetadataContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
-    width: calc(100% - 155px);
+    width: 50%;
 
     display: flex;
     flex-direction: column;
@@ -107,8 +107,11 @@ const UrlLink = styled.div`
 `
 
 const UrlImage = styled.img`
-    max-width: 155px;
-    max-height: 155px;
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
 
     @media (max-width: 610px) {
         max-width: 115px;
@@ -117,8 +120,8 @@ const UrlImage = styled.img`
 `
 
 const ImageContainer = styled.div`
-    max-width: 155px;
-    max-height: 155px;
+    width: 50%;
+    height: 100%;
 
     cursor: pointer;
 

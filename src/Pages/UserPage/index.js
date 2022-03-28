@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { LoadingContainer, MainContainer, NoPost } from "../Timeline/style";
-import { TitleContainer } from "../Hashtag/style";
+import { LoadingContainer, NoPost } from "../Timeline/style";
+import { MainContainer, TitleContainer, LeftWrapper, RightWrapper } from "./style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
@@ -8,6 +8,8 @@ import api from "../../Services/api";
 import { useParams } from "react-router-dom";
 import CircularLoading from "../../Assets/CircularLoading";
 import { UserContainer } from "./style";
+import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
+import Trends from '../../Components/Trends'
 
 export default function UserPage() {
     const { user } = useAuth();
@@ -45,7 +47,7 @@ export default function UserPage() {
         <>
             <Header />
             <MainContainer>
-                <UserContainer>
+                <LeftWrapper>
                     {isLoading ? "" :
                         <TitleContainer>
                             <div><img src={posts[0]?.profilePic}></img></div>
@@ -54,10 +56,7 @@ export default function UserPage() {
                     }
                     {
                         isLoading
-                            ?
-                            <LoadingContainer>
-                                <CircularLoading />
-                            </LoadingContainer>
+                            ? <LoadingContainer> <CircularLoading /> </LoadingContainer>
                             : posts?.length === 0
                                 ? <NoPost>{NoPostYetMessage}</NoPost>
                                 : error === true
@@ -79,7 +78,10 @@ export default function UserPage() {
                                         )
                                     )
                     }
-                </UserContainer>
+                </LeftWrapper>
+                <RightWrapper>
+                    <Trends />
+                </RightWrapper>
             </MainContainer >
         </>
     );

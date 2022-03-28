@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const TrendingBox = styled.div`
-  width: 300px;
+  width: 90%;
   
   display: flex;
   flex-direction: column;
@@ -12,10 +12,20 @@ const TrendingBox = styled.div`
   background-color: #171717;
   color: #fff;
 
+  position: sticky;
+  top: 215px;
+  left: 60vw;
+
   &> span {
     width: 100%;
     text-align: left;
     padding: 8px 16px;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 23px;
   }
 
   &> span:first-of-type {
@@ -24,6 +34,10 @@ const TrendingBox = styled.div`
 
   &> span:last-of-type {
     margin-bottom: 18px;
+  }
+
+  @media (min-width: 912px) {
+        width: 72%
   }
 `
 
@@ -44,7 +58,7 @@ const Title = styled.p`
 
 const Separator = styled.div`
   width: 100%;
-  height: 1.5px;
+  height: 1px;
   background-color: #484848;
 `
 
