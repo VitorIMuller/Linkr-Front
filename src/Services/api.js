@@ -106,6 +106,13 @@ async function getTrendingHashtags(limit, token) {
     return promise;
 }
 
+async function editPost(body, postid, token){
+    const auth = createHeaders(token);
+    
+    const promise = await axios.put(`${BASE_URL}/posts/${postid}`, body, auth);
+    return promise;
+}
+
 const api = {
     signUp,
     signIn,
@@ -120,7 +127,7 @@ const api = {
     getUsernameLikes,
     getUsers,
     getTrendingHashtags,
-
+    editPost,
 }
 
 export default api;

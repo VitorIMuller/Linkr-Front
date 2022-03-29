@@ -63,6 +63,8 @@ const TextContainer = styled.div`
     flex-direction: column;
 
     position: relative;
+
+    
 `;
 
 const IconContainer = styled.div`
