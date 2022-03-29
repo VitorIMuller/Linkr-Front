@@ -8,6 +8,7 @@ import api from "../../Services/api";
 import { useParams } from "react-router-dom";
 import CircularLoading from "../../Assets/CircularLoading";
 import Trends from '../../Components/Trends'
+import FollowButton from "../../Components/FollowButton";
 
 export default function UserPage() {
     const { user } = useAuth();
@@ -79,6 +80,7 @@ export default function UserPage() {
                     }
                 </LeftWrapper>
                 <RightWrapper>
+                    <FollowButton />
                     <Trends />
                 </RightWrapper>
             </MainContainer >

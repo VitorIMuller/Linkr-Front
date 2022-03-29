@@ -4,8 +4,8 @@ function LoadingFind({ height, width }) {
     return (
         <Oval
             ariaLabel="loading-indicator"
-            height={30}
-            width={30}
+            height={height}
+            width={width}
             strokeWidth={5}
             strokeWidthSecondary={5}
             color="grey"
