@@ -75,6 +75,8 @@ const IconContainer = styled.div`
     .edit {
         width: 18px;
         height: 18px;
+
+        cursor: pointer;
     }
 
     .trashcan {
@@ -82,6 +84,8 @@ const IconContainer = styled.div`
         height: 18px;
 
         margin-left: 15px;
+
+        cursor: pointer;
     }
 `
 
