@@ -76,21 +76,17 @@ export default function Post({ url, postId, title, description, image, message, 
                     </ReactHashtag>}
                 </UserMessage>
                 <span>{
-                        isEditing ?
+                        isEditing &&
                         (
-                        <form onSubmit={editPost} onKeyDown={verifyEsc}>
-                            <input
-                            ref={inputRef}
-                            value={textToEdit}
-                            onChange={e => setTextToEdit(e.target.value)}
-                            >
-                            </input>
-                        </form>
-                        )
-                        :
-                        (
-                            <></>
-                        // <h2>{textToEdit}</h2>
+                            <form onSubmit={editPost} onKeyDown={verifyEsc}>
+                                <input
+                                    ref={inputRef}
+                                    value={textToEdit}
+                                    onChange={e => setTextToEdit(e.target.value)}
+                                    className = 'edit-input'
+                                >
+                                </input>
+                            </form>
                         )
                     }
                 </span>
