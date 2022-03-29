@@ -77,7 +77,7 @@ const TextContainer = styled.div`
         line-height: 17px;
 
         color: #4C4C4C;
-      
+        border: none;
     }
 `;
 
