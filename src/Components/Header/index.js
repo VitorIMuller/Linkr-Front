@@ -15,7 +15,7 @@ function Header() {
 
   return (
     <HeaderWrapper>
-      <Logo to="/timeline">linkr</Logo>
+      <Logo to="/timeline" onClick={() => window.scrollTo(0, 0)}>linkr</Logo>
       <SearchUser />
       <UserMenu>
         <IconBox onClick={() => handleMenu()}>
