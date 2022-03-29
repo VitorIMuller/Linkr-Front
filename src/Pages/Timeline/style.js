@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const MainContainer = styled.main`
     width: 100%;
-    height: 100vh;
+    height: 100%;
 
     display: flex;
     margin-top: 72px;

@@ -87,6 +87,8 @@ const RightWrapper = styled.div`
 
     background-color: #333333;
 
+    position: relative;
+
     @media (max-width: 767px) {
         display: none;
     }
