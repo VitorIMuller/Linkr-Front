@@ -63,6 +63,22 @@ const TextContainer = styled.div`
     flex-direction: column;
 
     position: relative;
+    
+    gap: 7px;
+    .edit-input{
+        width: 100%;
+        height: 44px;
+        border-radius: 7px;
+
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+
+        color: #4C4C4C;
+        border: none;
+    }
 `;
 
 const IconContainer = styled.div`
