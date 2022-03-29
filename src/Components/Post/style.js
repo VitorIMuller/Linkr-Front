@@ -63,6 +63,22 @@ const TextContainer = styled.div`
     flex-direction: column;
 
     position: relative;
+    
+    gap: 7px;
+    .edit-input{
+        width: 100%;
+        height: 44px;
+        border-radius: 7px;
+
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+
+        color: #4C4C4C;
+        border: none;
+    }
 `;
 
 const IconContainer = styled.div`
@@ -75,6 +91,8 @@ const IconContainer = styled.div`
     .edit {
         width: 18px;
         height: 18px;
+
+        cursor: pointer;
     }
 
     .trashcan {
@@ -82,6 +100,8 @@ const IconContainer = styled.div`
         height: 18px;
 
         margin-left: 15px;
+
+        cursor: pointer;
     }
 `
 
@@ -127,6 +147,8 @@ const UserMessage = styled.div`
         color: #FFF;
 
         gap: 5px;
+
+        cursor: pointer;
     }
 
     @media (max-width: 610px) {
@@ -138,6 +160,8 @@ const UserMessage = styled.div`
 `;
 
 const MetadataContainer = styled.div` 
+    max-height: 10em;
+    
     a {
         all: unset;
     }

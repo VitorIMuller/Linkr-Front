@@ -26,6 +26,8 @@ const TrendingBox = styled.div`
     font-weight: 700;
     font-size: 19px;
     line-height: 23px;
+
+    cursor: pointer;
   }
 
   &> span:first-of-type {

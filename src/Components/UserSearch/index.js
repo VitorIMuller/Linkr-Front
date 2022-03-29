@@ -1,78 +1,83 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { DebounceInput } from "react-debounce-input";
-import { NoUser, Search } from "./style";
 import useAuth from "../../Hooks/useAuth";
-import DataUsers from "./Users";
-import FadingDots from "../../Assets/CircularLoading.js";
 import api from "../../Services/api";
+import { useNavigate } from "react-router-dom";
+import {
+    InputFindUser,
+    ContainerInputFindUser,
+    Image,
+    SearchIcon,
+    NameList,
+    Loader
+} from "./style"
+import LoadingFind from "../../Assets/LoadingFind";
 
-export default function SearchUser(){
+export default function SearchUser() {
 
     const { user } = useAuth();
-
-    const [value, setValue] = useState("");    
-    const [key, setKey] = useState(true);
-    const [users, setUsers] = useState([]);
+    const navigate = useNavigate()
+    const [name, setName] = useState("");
+    const [list, setList] = useState([])
     const [isLoading, setLoading] = useState(false);
-    const [error, setError] = useState(false); 
-    
-    const time = 300;
-    const qntCharacters = 3;
-    
-    const NoUserYetMessage = "No corresponding users";
-    const ServerErrorMessage = `An error occurred while trying to fetch the users , please refresh the page`;
-   
-    function handleInputChange(e) {
-           
-            setValue(e.target.value);
-            setLoading(true);
-            api.getUsers( value , user.token).then(res => {
 
-                setUsers(res.data);
+    function getUsers() {
+        if (name) {
+            setLoading(true)
+            api.getUsers(name, user.token).then(res => {
+                console.log(res.data)
+                setList(res.data)
                 setLoading(false);
-    
             }).catch(error => {
-    
-                setLoading(false);
-                setError(true);
-    
                 console.log(error);
-            });
+
+                setLoading(false);
+            })
+
+        } else {
+            setList([])
+        }
+
+    }
+    useEffect(() => {
+        getUsers()
+    }, [name])
+
+    function handleClick(id) {
+        navigate(`/user/${id}`)
+        setList([])
+        setName("")
     }
 
     return (
-        <>
-            <Search >
-                <DebounceInput 
-                    
-                    debounceTimeout={time}
-                    value={value}
-                    forceNotifyByEnter={true}
-                    forceNotifyOnBlur={true}
-                    minLength={qntCharacters}
-                    onChange={handleInputChange}
-                    onKeyDown={(e) => setKey(e.key)}
-                    placeholder ="Search for people and friends"
-                />           
-            </Search>
-            {isLoading
-                        ? <FadingDots />
-                        : users?.length === 0 && value?.length > 3
-                            ? <NoUser>{NoUserYetMessage}</NoUser>
-                            : error === true
-                                ? <NoUser>{ServerErrorMessage}</NoUser>
-                                : (
-                                    users?.map((user) =>
-                                        <DataUsers
-                                            key={user.id}                                           
-                                            name={user.name}
-                                            profilePic={user.image}
-                                            userId={user.id}
-                                        />
-                                    )
-                                )}
-        </>
-
-      
-    );  
+        <ContainerInputFindUser>
+            <InputFindUser >
+                <DebounceInput
+                    className="debounce-input"
+                    debounceTimeout={300}
+                    value={name}
+                    minLength={3}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Search for people and friends"
+                />
+                <SearchIcon />
+                <div className="list-users">
+                    {isLoading ?
+                        <Loader><LoadingFind /></Loader>
+                        :
+                        <>
+                            {list?.map((el, i) =>
+                                <div key={i} onClick={() => { handleClick(el.id) }}>
+                                    <Image src={el.image} alt={el.name} />
+                                    <NameList>{el.name}</NameList>
+                                </div>
+                            )}
+                        </>
+                    }
+                </div>
+            </InputFindUser>
+        </ContainerInputFindUser >
+    );
 }
+
+
