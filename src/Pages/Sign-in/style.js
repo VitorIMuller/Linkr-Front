@@ -9,6 +9,13 @@ const TopBar = styled.div`
     justify-content: center;
     align-items: center;
     background-color: #151515;
+    @media (min-width: 767px){
+        min-width: 65vw;
+        min-height: 100vh;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+    }
 `
 
 const Title = styled.div`
@@ -16,6 +23,9 @@ const Title = styled.div`
     font-weight: bold;
     color: #FFFFFF;
     font-family: 'Passion One', cursive;
+    @media (min-width: 767px){
+        font-size: 106px;
+    }
 
 `;
 
@@ -24,10 +34,17 @@ const SubTitle = styled.div`
     font-weight: bold;
     font-size: 23px;
     font-family: 'Oswald', sans-serif;
+    @media (min-width: 767px){
+        font-size: 43px;
+    }
 `
+
 const Container = styled.div`
-height: 100vh;
-background-color:#333333 ;
+    height: 100vh;
+    background-color:#333333 ;
+    @media (min-width: 767px){
+        display: flex;
+    }
 `
 const LowerBar = styled.div`
     background-color: #333333;
@@ -36,12 +53,31 @@ const LowerBar = styled.div`
 
     padding-top: 40px;
 
+    @media (min-width: 767px){
+        min-width: 35vw;
+        min-height: 100vh;
+        position: relative;
+        padding-top: 0;
+    }
+
+`
+const Components = styled.div`
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    @media (min-width: 767px){
+    }
 `
 const Form = styled.form`
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    @media (min-width: 767px){
+        position: relative;
+        top: 30%;
+        
+    }
 `;
 
 const StyledInput = styled.input`
@@ -88,6 +124,8 @@ justify-content: center;
 `
 
 
+
+
 export {
     Title,
     SubTitle,
@@ -98,5 +136,6 @@ export {
     StyledInput,
     StyledButton,
     StyledLink,
-    CenterLoader
+    CenterLoader,
+    Components
 }
