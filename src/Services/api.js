@@ -106,6 +106,21 @@ async function getTrendingHashtags(limit, token) {
     return promise;
 }
 
+async function getFollowStatus(loggedUser, userToVerify, token ) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/follows/${loggedUser}/${userToVerify}`, auth);
+
+    return promise;
+}
+
+async function handleFollow(loggedUser, userToHandle, token ) {
+    const auth = createHeaders(token);
+    const promise = await axios.post(`${BASE_URL}/follows/${loggedUser}/${userToHandle}`, {}, auth);
+
+    return promise;
+}
+
+
 const api = {
     signUp,
     signIn,
@@ -120,7 +135,8 @@ const api = {
     getUsernameLikes,
     getUsers,
     getTrendingHashtags,
-
+    getFollowStatus,
+    handleFollow
 }
 
 export default api;
