@@ -26,21 +26,17 @@ const PostBody = styled.div`
 `;
 
 const UserContainer = styled.div`
-        width: 87px;
+        width: 83px;
         display: flex;
         flex-direction: column;
         align-items: center;
 
         color: #FFF;
-
-        margin-left: -15px;
-
-        @media (max-width: 610px) {
-            width: 70px;
-        }
 `;
 
 const UserPicture = styled.div`
+    padding-bottom: 10px;
+    
     & > * {
         width: 50px;
         height: 50px;
@@ -49,6 +45,8 @@ const UserPicture = styled.div`
     }
 
     @media (max-width: 610px) {
+        padding-bottom: 2px;
+        
         & > * {
             width: 40px;
             height: 40px;
@@ -57,7 +55,7 @@ const UserPicture = styled.div`
 `;
 
 const TextContainer = styled.div`
-    width: calc(100% - 55px);
+    width: calc(100% - 87px);
     
     display: flex;
     flex-direction: column;

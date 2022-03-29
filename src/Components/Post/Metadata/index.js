@@ -5,9 +5,9 @@ export default function Metadata({ url, postId, title, description, image }) {
     return (
         <MetadataContainer>
             <TextContainer>
-                <UrlTitle>{title}</UrlTitle>
+                <UrlTitle title={title}>{title}</UrlTitle>
                 <UrlDescription>{description}</UrlDescription>
-                <UrlLink>{url}</UrlLink>
+                <UrlLink title={url}>{url}</UrlLink>
             </TextContainer>
             <ImageContainer>
                 <UrlImage src={image} />
