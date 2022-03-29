@@ -21,7 +21,7 @@ export default function Post({ url, postId, title, description, image, message, 
 
     useEffect(() => {
         if (isEditing) {
-          inputRef.current.focus();
+            inputRef.current.focus();
         }
     }, [isEditing]);
 
@@ -31,26 +31,26 @@ export default function Post({ url, postId, title, description, image, message, 
     }
 
     function editPost(e) {
-        e.preventDefault();      
+        e.preventDefault();
         const body = {
-            url: url, 
-            userMessage: textToEdit 
+            url: url,
+            userMessage: textToEdit
         };
-        console.log (body);
+        console.log(body);
         api.editPost(body, postId, user.token)
-        .then(() => {
-            setIsEditing(!isEditing);
-            window.location.reload();
-        })
-        .catch( error => {
-            console.log(error);
-            alert("Erro na tentativa de edição")
-        });
+            .then(() => {
+                setIsEditing(!isEditing);
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+                alert("Erro na tentativa de edição")
+            });
     }
 
     function verifyEsc(e) {
-        if (e.key === 'Escape') 
-        toggleEdit();
+        if (e.key === 'Escape')
+            toggleEdit();
     }
 
     return (
@@ -65,7 +65,7 @@ export default function Post({ url, postId, title, description, image, message, 
             <TextContainer>
                 {userId === user.id && (
                     <IconContainer>
-                        <GoPencil className="edit" onClick={toggleEdit}/>
+                        <GoPencil className="edit" onClick={toggleEdit} />
                         <GoTrashcan className="trashcan" onClick={() => setDeleting(true)} />
                     </IconContainer>
                 )}
@@ -76,21 +76,20 @@ export default function Post({ url, postId, title, description, image, message, 
                     </ReactHashtag>}
                 </UserMessage>
                 <span>{
-                        isEditing &&
-                        (
-                            <form onSubmit={editPost} onKeyDown={verifyEsc}>
-                                <input
-                                    ref={inputRef}
-                                    value={textToEdit}
-                                    onChange={e => setTextToEdit(e.target.value)}
-                                    className = 'edit-input'
-                                >
-                                </input>
-                            </form>
-                        )
-                    }
+                    isEditing &&
+                    (
+                        <form onSubmit={editPost} onKeyDown={verifyEsc}>
+                            <input
+                                ref={inputRef}
+                                value={textToEdit}
+                                onChange={e => setTextToEdit(e.target.value)}
+                                className='edit-input'
+                            >
+                            </input>
+                        </form>
+                    )
+                }
                 </span>
-             
                 <MetadataContainer>
                     <a href={url} target="_blank" rel="noopener noreferrer">
                         <Metadata
