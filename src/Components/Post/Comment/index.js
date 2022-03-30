@@ -5,7 +5,7 @@ import ReactTooltip from "react-tooltip";
 import { AiOutlineComment } from "react-icons/ai";
 import { CommentContainer, CommentsQuantity } from "./style";
 
-export default function Comment({ postId, userId }) {
+export default function Comment({ postId, userId, setComments, comments }) {
 
     const [reload, setReload] = useState(false);
     const [totalComments, setTotalComments] = useState(0);
@@ -13,6 +13,8 @@ export default function Comment({ postId, userId }) {
 
     function handleComment() {
         setTotalComments(totalComments + 1);
+        setComments(!comments)
+
         setReload(!reload);
     }
 
