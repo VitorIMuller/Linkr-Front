@@ -48,6 +48,8 @@ const CommentsContent = styled.div`
     position: relative;
     top: -30px;
     z-index: 1;
+
+    
     
     @media (max-width: 610px) {
         width: 100%;

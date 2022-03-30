@@ -15,12 +15,14 @@ import api from "../../Services/api";
 import Comments from "../Comments";
 
 export default function Post({ url, postId, title, description, image, message, name, profilePic, userId }) {
+
     const { hashtagRedirect, user } = useAuth();
     const [isDeleting, setDeleting] = useState(false);
 
     const [isEditing, setIsEditing] = useState(false);
     const [textToEdit, setTextToEdit] = useState(message);
     const [comments, setComments] = useState(false);
+    const [totalComments, setTotalComments] = useState(0)
 
     const inputRef = useRef(null);
 
@@ -34,6 +36,19 @@ export default function Post({ url, postId, title, description, image, message, 
         setTextToEdit(message);
         setIsEditing(!isEditing);
     }
+
+    function counterComments() {
+        api.commentsCounter(postId, user?.token)
+            .then((res) => {
+                setTotalComments(res.data)
+            }).catch((error) => {
+                console.log(error)
+            })
+    }
+
+    useEffect(() => {
+        counterComments()
+    }, [])
 
     function editPost(e) {
         e.preventDefault();
@@ -67,7 +82,7 @@ export default function Post({ url, postId, title, description, image, message, 
                         <img src={profilePic ? profilePic : default_profile_pic} />
                     </UserPicture>
                     <LikeHeart postId={postId} />
-                    <Comment setComments={setComments} comments={comments} postId={postId} userId={userId} />
+                    <Comment setComments={setComments} comments={comments} postId={postId} userId={userId} token={user.token} totalComments={totalComments} />
                     <Repost postId={postId} userId={userId} />
                 </UserContainer>
                 <TextContainer>

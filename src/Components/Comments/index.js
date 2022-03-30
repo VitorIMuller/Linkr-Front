@@ -12,13 +12,13 @@ import {
 import { useState, useEffect } from "react"
 import api from "../../Services/api"
 import useAuth from "../../Hooks/useAuth"
-import CircularLoading from "../../Assets/CircularLoading.js";
 import Loading from "../../Assets/Loading"
-import listComments from "./listComments"
 
 
 
 function Comments({ postId, userId }) {
+
+
 
     const { user } = useAuth()
     const [text, setText] = useState()
@@ -40,7 +40,7 @@ function Comments({ postId, userId }) {
 
     function getComments() {
         setIsLoading(true)
-        api.getComments(user?.token, postId).then((res) => {
+        api.getComments(user?.token, postId, user?.id).then((res) => {
             setComments(res.data);
             setIsLoading(false)
         }).catch((error) => {
@@ -51,7 +51,6 @@ function Comments({ postId, userId }) {
     useEffect(() => {
         getComments()
     }, [])
-
 
     console.log(comments)
     return (
@@ -66,7 +65,14 @@ function Comments({ postId, userId }) {
                             <SeparateMessages>
                                 <User>
                                     <div className="username">{comment.username}</div>
-                                    <div className="follow"> • following</div>
+                                    <div className="follow">
+                                        {comment.userId === user.id ?
+                                            "• post’s author"
+                                            : comment.followedId ?
+                                                ""
+                                                : "• following"
+                                        }
+                                    </div>
                                 </User>
                                 <div className="coment">{comment.text}</div>
                             </SeparateMessages>
@@ -74,9 +80,8 @@ function Comments({ postId, userId }) {
                     </Comment>
                 )
             }
-
             <InputCommentContent>
-                <img src={defaultImage} />
+                <img src={user?.image} />
                 <InputComment
                     name="userComment"
                     placeholder="write a comment..."
