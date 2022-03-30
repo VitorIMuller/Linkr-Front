@@ -30,16 +30,6 @@ export default function Post({ url, postId, title, description, image, message, 
         }
     }, [isEditing]);
 
-
-    function toggleComment() {
-        setComments(!comments)
-        console.log(comments)
-    }
-
-    // useEffect(() => {
-    //     toggleComment()
-    // }, [setComments])
-
     function toggleEdit() {
         setTextToEdit(message);
         setIsEditing(!isEditing);
@@ -77,7 +67,7 @@ export default function Post({ url, postId, title, description, image, message, 
                         <img src={profilePic ? profilePic : default_profile_pic} />
                     </UserPicture>
                     <LikeHeart postId={postId} />
-                    <Comment onClick={toggleComment} setComments={setComments} comments={comments} />
+                    <Comment setComments={setComments} comments={comments} postId={postId} userId={userId} />
                     <Repost postId={postId} userId={userId} />
                 </UserContainer>
                 <TextContainer>
@@ -123,7 +113,7 @@ export default function Post({ url, postId, title, description, image, message, 
             </PostBody>
             {
                 comments &&
-                <Comments />
+                <Comments postId={postId} userId={userId} />
             }
         </>
     );

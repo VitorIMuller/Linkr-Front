@@ -127,6 +127,13 @@ async function handleFollow(loggedUser, userToHandle, token) {
     return promise;
 }
 
+async function createComment(token, text, postId, userId) {
+    const auth = createHeaders(token)
+    const body = { text, postId, userId }
+
+    const promise = await axios.post(`${BASE_URL}/comments`, body, auth)
+    return promise
+}
 
 const api = {
     signUp,
@@ -145,6 +152,7 @@ const api = {
     editPost,
     getFollowStatus,
     handleFollow,
+    createComment
 }
 
 export default api;
