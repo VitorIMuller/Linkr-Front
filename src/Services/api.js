@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "https://apilinkr.herokuapp.com";
-//const BASE_URL = "http://localhost:5000";
+//const BASE_URL = "https://apilinkr.herokuapp.com";
+const BASE_URL = "http://localhost:5000";
 
 function createHeaders(token) {
     return { headers: { Authorization: `Bearer ${token}` } };
@@ -134,6 +134,12 @@ async function createComment(token, text, postId, userId) {
     const promise = await axios.post(`${BASE_URL}/comments`, body, auth)
     return promise
 }
+async function getComments(token, postId) {
+    const auth = createHeaders(token);
+    console.log(postId)
+    const promise = await axios.get(`${BASE_URL}/comments/${postId}`, auth);
+    return promise;
+}
 
 const api = {
     signUp,
@@ -152,7 +158,8 @@ const api = {
     editPost,
     getFollowStatus,
     handleFollow,
-    createComment
+    createComment,
+    getComments
 }
 
 export default api;
