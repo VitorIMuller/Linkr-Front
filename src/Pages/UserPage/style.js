@@ -8,6 +8,8 @@ const TitleContainer = styled.p`
     margin-top: 53px;  
     margin-bottom: 31px;
 
+    word-break: break-all;
+
     font-size: 43px;
     font-weight: 700;
     line-height: 49px;
@@ -28,7 +30,7 @@ const TitleContainer = styled.p`
     }
 
     @media (min-width: 912px) {
-        width: 72%
+        width: 72%;
     }
 `
 const MainContainer = styled.main`
