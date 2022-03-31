@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "https://apilinkr.herokuapp.com";
-// const BASE_URL = "http://localhost:5000";
+//const BASE_URL = "http://localhost:5000";
 
 function createHeaders(token) {
     return { headers: { Authorization: `Bearer ${token}` } };
@@ -94,8 +94,6 @@ async function getUsers(infos, token) {
     const auth = createHeaders(token);
 
     const promise = await axios.get(`${BASE_URL}/users/search?characters=${infos}`, auth);
-    console.log(`API: ${infos}`);
-
 
     return promise;
 }
@@ -106,27 +104,59 @@ async function getTrendingHashtags(limit, token) {
     return promise;
 }
 
-async function editPost(body, postid, token){
+async function editPost(body, postid, token) {
     const auth = createHeaders(token);
-    
+
     const promise = await axios.put(`${BASE_URL}/posts/${postid}`, body, auth);
     return promise;
 }
 
-async function getFollowStatus(loggedUser, userToVerify, token ) {
+async function isFollowing(userId, token) {
     const auth = createHeaders(token);
-    const promise = await axios.get(`${BASE_URL}/follows/${loggedUser}/${userToVerify}`, auth);
+
+    const promise = await axios.get(`${BASE_URL}/following/${userId}`, auth);
+
+    return promise
+}
+
+async function getFollowStatus(userToVerify, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/follows/${userToVerify}`, auth);
 
     return promise;
 }
 
-async function handleFollow(loggedUser, userToHandle, token ) {
+async function handleFollow(userToHandle, token) {
     const auth = createHeaders(token);
-    const promise = await axios.post(`${BASE_URL}/follows/${loggedUser}/${userToHandle}`, {}, auth);
+    const promise = await axios.post(`${BASE_URL}/follows/${userToHandle}`, {}, auth);
 
     return promise;
 }
 
+async function createComment(token, text, postId, userId) {
+    const auth = createHeaders(token)
+    const body = { text, postId, userId }
+
+    const promise = await axios.post(`${BASE_URL}/comments`, body, auth)
+    return promise
+}
+async function getComments(token, postId) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/comments/${postId}`, auth);
+    return promise;
+}
+async function commentsCounter(postId, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/comments/counter/${postId}`, auth);
+    return promise;
+}
+async function getFollowed(name, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/users/follows?characters=${name}`, auth);
+
+    return promise;
+}
 
 const api = {
     signUp,
@@ -143,8 +173,13 @@ const api = {
     getUsers,
     getTrendingHashtags,
     editPost,
+    isFollowing,
     getFollowStatus,
     handleFollow,
+    createComment,
+    getComments,
+    commentsCounter,
+    getFollowed
 }
 
 export default api;

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const Heart = styled.div`
+const Repeat = styled.div`
     font-size: 25px;
     padding-top: 8px;
     padding-bottom: 5px;
@@ -13,27 +13,15 @@ const Heart = styled.div`
         filter: brightness(0.9);
         cursor: pointer;
     }
-
-    .liked {
-        color: red;
-    }
-
-    .liked:hover  {
-        filter: brightness(1.8);
-    }
-
-    .not-liked:hover  {
-        filter: brightness(1.8);
-    }
 `
 
-const LikesQuantity = styled.div`
+const RepostsQuantity = styled.div`
     font-size: 12px;
     font-weight: 400;
     line-height: 10.8px;
 `
 
 export {
-    Heart,
-    LikesQuantity
+    Repeat,
+    RepostsQuantity
 }

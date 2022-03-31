@@ -12,7 +12,7 @@ const PostBody = styled.div`
 
     background-color: #171717;
     font-family: "Lato", sans-serif;
-
+    z-index:5;
     @media (max-width: 610px) {
         width: 100%;
         border-radius: 0;
@@ -24,23 +24,45 @@ const PostBody = styled.div`
         width: 72%
     }
 `;
+const ContentPost = styled.div`
+width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 18px 17px;
+    margin-top: 16px;
+    border-radius: 16px;
+
+    z-index: 2;
+
+    background-color: #171717;
+    font-family: "Lato", sans-serif;
+
+@media (max-width: 610px) {
+        width: 100%;
+        border-radius: 0;
+
+        padding: 15px 9px;
+    }
+
+    @media (min-width: 912px) {
+        width: 72%
+    }
+`
 
 const UserContainer = styled.div`
-        width: 87px;
+        width: 83px;
         display: flex;
         flex-direction: column;
         align-items: center;
 
         color: #FFF;
-
-        margin-left: -15px;
-
-        @media (max-width: 610px) {
-            width: 70px;
-        }
 `;
 
 const UserPicture = styled.div`
+    padding-bottom: 10px;
+    
     & > * {
         width: 50px;
         height: 50px;
@@ -49,6 +71,8 @@ const UserPicture = styled.div`
     }
 
     @media (max-width: 610px) {
+        padding-bottom: 2px;
+        
         & > * {
             width: 40px;
             height: 40px;
@@ -57,7 +81,7 @@ const UserPicture = styled.div`
 `;
 
 const TextContainer = styled.div`
-    width: calc(100% - 55px);
+    width: calc(100% - 87px);
     
     display: flex;
     flex-direction: column;
@@ -175,5 +199,6 @@ export {
     UserName,
     UserMessage,
     MetadataContainer,
-    IconContainer
+    IconContainer,
+    ContentPost
 }
