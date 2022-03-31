@@ -94,8 +94,6 @@ async function getUsers(infos, token) {
     const auth = createHeaders(token);
 
     const promise = await axios.get(`${BASE_URL}/users/search?characters=${infos}`, auth);
-    console.log(`API: ${infos}`);
-
 
     return promise;
 }
@@ -135,6 +133,13 @@ async function handleFollow(userToHandle, token ) {
     return promise;
 }
 
+async function getFollowed(name, token){
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/users/follows?characters=${name}`, auth);
+
+    return promise; 
+}
 
 const api = {
     signUp,
@@ -154,6 +159,7 @@ const api = {
     isFollowing,
     getFollowStatus,
     handleFollow,
+    getFollowed,
 }
 
 export default api;
