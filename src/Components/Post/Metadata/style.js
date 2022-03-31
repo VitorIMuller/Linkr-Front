@@ -14,10 +14,11 @@ const MetadataContainer = styled.div`
 `;
 
 const TextContainer = styled.div`
-    width: 50%;
+    width: 60%;
 
     display: flex;
     flex-direction: column;
+    align-items: space-evenly; 
 
     padding: 24px 19px;
 
@@ -27,20 +28,18 @@ const TextContainer = styled.div`
     }
 `
 
-const UrlTitle = styled.div`
-    display: -webkit-box;
-    box-orient: vertical;
-    
+const UrlTitle = styled.h1`    
     padding-bottom: 5px;
     
-    font-size: 16px;
+    font-size: 1em;
     font-weight: 400;
     line-height: 19.2px;
     color: #CECECE;
 
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-clamp: 3;
+    white-space: nowrap;
 
     &:hover {
         cursor: pointer;
@@ -53,10 +52,7 @@ const UrlTitle = styled.div`
     }
 `
 
-const UrlDescription = styled.div`
-    display: -webkit-box;
-    box-orient: vertical;
-
+const UrlDescription = styled.span`
     padding-bottom: 13px;
 
     font-family: "Lato", sans-serif;
@@ -64,10 +60,10 @@ const UrlDescription = styled.div`
     font-weight: 400;
     line-height: 13.2px;
     color: #9B9595;
-
+    
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-clamp: 2;
 
     &:hover {
         cursor: pointer;
@@ -82,19 +78,17 @@ const UrlDescription = styled.div`
     }
 `
 
-const UrlLink = styled.div`
-    display: -webkit-box;
-    box-orient: vertical;
-
+const UrlLink = styled.span`
     font-family: "Lato", sans-serif;
     font-size: 11px;
     font-weight: 400;
     line-height: 13.2px;
     color: #CECECE;
 
+    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
-    line-clamp: 2;
+    white-space: nowrap;
 
     &:hover {
         cursor: pointer;
@@ -117,11 +111,18 @@ const UrlImage = styled.img`
         max-width: 115px;
         max-height: 115px;
     }
+
+    @media (max-width: 767px) {
+        max-height: 155px;
+    }
 `
 
 const ImageContainer = styled.div`
-    width: 50%;
+    width: 40%;
     height: 100%;
+
+    object-fit: cover;
+    object-position: center;
 
     cursor: pointer;
 

@@ -1,78 +1,151 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { DebounceInput } from "react-debounce-input";
-import { NoUser, Search } from "./style";
 import useAuth from "../../Hooks/useAuth";
-import DataUsers from "./Users";
-import FadingDots from "../../Assets/CircularLoading.js";
 import api from "../../Services/api";
+import { useNavigate } from "react-router-dom";
+import {
+    InputFindUser,
+    ContainerInputFindUser,
+    Image,
+    SearchIcon,
+    NameList,
+    Loader,
+    DotIcon
+} from "./style"
+import LoadingFind from "../../Assets/LoadingFind";
 
-export default function SearchUser(){
+export default function SearchUser() {
 
     const { user } = useAuth();
+    const navigate = useNavigate()
+    const [name, setName] = useState("");
+    const [list, setList] = useState([])
+    const [followed, setfollowed] = useState([])
 
-    const [value, setValue] = useState("");    
-    const [key, setKey] = useState(true);
-    const [users, setUsers] = useState([]);
     const [isLoading, setLoading] = useState(false);
-    const [error, setError] = useState(false); 
-    
-    const time = 300;
-    const qntCharacters = 3;
-    
-    const NoUserYetMessage = "No corresponding users";
-    const ServerErrorMessage = `An error occurred while trying to fetch the users , please refresh the page`;
-   
-    function handleInputChange(e) {
-           
-            setValue(e.target.value);
-            setLoading(true);
-            api.getUsers( value , user.token).then(res => {
 
-                setUsers(res.data);
+    let usersFollowed = [];
+    let users = [];
+    let searchedUsers = [];
+
+    function getUsers() {
+        if (name) {
+            setLoading(true)
+            api.getUsers(name, user.token).then(res => {
+                setList(res.data)
                 setLoading(false);
-    
             }).catch(error => {
-    
-                setLoading(false);
-                setError(true);
-    
                 console.log(error);
-            });
+                setLoading(false);
+            })
+        } else {
+            setList([])
+        }
+    }
+    useEffect(() => {
+        getUsers()
+    }, [name])
+
+    function getFollowed() {
+        if (name) {
+            api.getFollowed(name, user.token).then(res => {
+                setfollowed(res.data)
+                setLoading(false);
+            }).catch(error => {
+                console.log(error);
+                setLoading(false);
+            })
+        } else {
+            setfollowed([]);
+        }
+    }
+    useEffect(() => {
+        getFollowed();
+    }, [name])
+
+    function handleClick(id) {
+        navigate(`/user/${id}`)
+        setList([]);
+        setfollowed([]);
+        setName("");
     }
 
-    return (
-        <>
-            <Search >
-                <DebounceInput 
-                    
-                    debounceTimeout={time}
-                    value={value}
-                    forceNotifyByEnter={true}
-                    forceNotifyOnBlur={true}
-                    minLength={qntCharacters}
-                    onChange={handleInputChange}
-                    onKeyDown={(e) => setKey(e.key)}
-                    placeholder ="Search for people and friends"
-                />           
-            </Search>
-            {isLoading
-                        ? <FadingDots />
-                        : users?.length === 0 && value?.length > 3
-                            ? <NoUser>{NoUserYetMessage}</NoUser>
-                            : error === true
-                                ? <NoUser>{ServerErrorMessage}</NoUser>
-                                : (
-                                    users?.map((user) =>
-                                        <DataUsers
-                                            key={user.id}                                           
-                                            name={user.name}
-                                            profilePic={user.image}
-                                            userId={user.id}
-                                        />
-                                    )
-                                )}
-        </>
-
+    for (let i = 0; i < list.length; i++) {
+        const user = list[i];
+        for (let j = 0; j < followed.length; j++) {
+            const follows = followed[j];
+            if (user.id !== follows.id) {
+                usersFollowed.push(user);
+            }
+            else {               
+                users.push(user);
+            }
+        }
+    
+    }
       
-    );  
+    for (let i = 0; i < users.length; i++) {
+        const item = list[i];
+        usersFollowed.push(item);
+    }
+
+    const filteredArray = usersFollowed.filter(function(ele , pos){
+        return usersFollowed.indexOf(ele) == pos;
+    }) 
+
+    for (let i = 0; i < filteredArray.length; i++) {
+        const element = filteredArray[i];
+        if (!element) {
+        filteredArray.splice(i,1)
+        }
+    }
+
+    if (filteredArray.length === 0) {
+        searchedUsers = list;
+    }else{
+        searchedUsers = filteredArray;
+    }
+    
+    return (
+        <ContainerInputFindUser>
+            <InputFindUser >
+                <DebounceInput
+                    className="debounce-input"
+                    debounceTimeout={300}
+                    value={name}
+                    minLength={3}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Search for people and friends"
+                />
+                <SearchIcon />
+                <div className="list-users">
+                    {isLoading ?
+                        <Loader><LoadingFind height={30} width={30} /></Loader>
+                        :
+                        <>
+                            {searchedUsers.map((el, i) =>
+                                <div key={i} onClick={() => { handleClick(el.id) }}>
+                                    <Image src={el.image} alt={el.name} />
+                                    <NameList>
+                                        {el.name}
+                                            {followed?.map((fl) =>
+                                                fl.id === el.id ?                                            
+                                                    <>
+                                                        <DotIcon/>  <p>following</p>
+                                                    </>
+                                                :
+                                                ""                                        
+                                            )}
+                                    </NameList>
+                                </div>
+                            )}
+                            
+                        </>
+                    }
+                </div>
+            </InputFindUser>
+        </ContainerInputFindUser >
+    );
 }
+
+

@@ -90,18 +90,70 @@ async function getPostByHashtag(token, hashtag) {
     return promise;
 }
 
-async function getUsers(characters, token) {
+async function getUsers(infos, token) {
     const auth = createHeaders(token);
-    if (characters < 3) return [];
 
-    const promise = await axios.get(`${BASE_URL}/users/search?characters=${characters}`, auth);
-    console.log(`API: ${characters}`);
+    const promise = await axios.get(`${BASE_URL}/users/search?characters=${infos}`, auth);
 
     return promise;
 }
 async function getTrendingHashtags(limit, token) {
     const auth = createHeaders(token);
     const promise = await axios.get(`${BASE_URL}/trending/${limit}`, auth);
+
+    return promise;
+}
+
+async function editPost(body, postid, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.put(`${BASE_URL}/posts/${postid}`, body, auth);
+    return promise;
+}
+
+async function isFollowing(userId, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/following/${userId}`, auth);
+
+    return promise
+}
+
+async function getFollowStatus(userToVerify, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/follows/${userToVerify}`, auth);
+
+    return promise;
+}
+
+async function handleFollow(userToHandle, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.post(`${BASE_URL}/follows/${userToHandle}`, {}, auth);
+
+    return promise;
+}
+
+async function createComment(token, text, postId, userId) {
+    const auth = createHeaders(token)
+    const body = { text, postId, userId }
+
+    const promise = await axios.post(`${BASE_URL}/comments`, body, auth)
+    return promise
+}
+async function getComments(token, postId) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/comments/${postId}`, auth);
+    return promise;
+}
+async function commentsCounter(postId, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/comments/counter/${postId}`, auth);
+    return promise;
+}
+async function getFollowed(name, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/users/follows?characters=${name}`, auth);
 
     return promise;
 }
@@ -120,7 +172,14 @@ const api = {
     getUsernameLikes,
     getUsers,
     getTrendingHashtags,
-
+    editPost,
+    isFollowing,
+    getFollowStatus,
+    handleFollow,
+    createComment,
+    getComments,
+    commentsCounter,
+    getFollowed
 }
 
 export default api;

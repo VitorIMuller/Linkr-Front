@@ -1,12 +1,14 @@
 import styled from "styled-components"
 
-const TitleContainer = styled.div`
+const TitleContainer = styled.p`
     width: 90%;
 
     text-align: left;
 
     margin-top: 53px;  
     margin-bottom: 43px;
+
+    word-break: break-all;
 
     font-size: 43px;
     font-weight: 700;
@@ -27,7 +29,7 @@ const TitleContainer = styled.div`
     }
 
     @media (min-width: 912px) {
-        width: 72%
+        width: 72%;
     }
 `
 const MainContainer = styled.main`
@@ -50,6 +52,12 @@ const LeftWrapper = styled.div`
     align-items: flex-end;
 
     background-color: #333333;
+
+    padding-bottom: 100px;
+
+    &> div:first-of-type{
+        margin-top: 0;
+    }
 
     @media (max-width: 767px) {
         width: 100%;
