@@ -32,8 +32,14 @@ export default function Timeline() {
         });
 
         api.getPost(user?.token).then(res => {
+            const { posts } = res.data;
+            const { reposts } = res.data;
 
-            setPosts(res.data);
+            setPosts(posts);
+
+            console.log(posts);
+            console.log(reposts);
+
             setLoading(false);
 
         }).catch(error => {
@@ -68,9 +74,9 @@ export default function Timeline() {
                                         : error === true
                                             ? <NoPost>{ServerErrorMessage}</NoPost>
                                             : (
-                                                posts?.map((post) =>
+                                                posts?.map((post, index) =>
                                                     <Post
-                                                        key={post.id}
+                                                        key={index}
                                                         postId={post.id}
                                                         url={post.url}
                                                         title={post.urlTitle}
@@ -80,6 +86,8 @@ export default function Timeline() {
                                                         name={post.name}
                                                         profilePic={post.profilePic}
                                                         userId={post.userId}
+                                                        repostCount={post.repostCount}
+
                                                     />
                                                 )
                                             )}

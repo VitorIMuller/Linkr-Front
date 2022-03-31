@@ -13,7 +13,7 @@ import Repost from "./Repost";
 import Comment from "./Comment";
 import api from "../../Services/api";
 
-export default function Post({ url, postId, title, description, image, message, name, profilePic, userId }) {
+export default function Post({ url, postId, title, description, image, message, name, profilePic, userId, repostCount }) {
     const { hashtagRedirect, user } = useAuth();
     const [isDeleting, setDeleting] = useState(false);
 
@@ -65,7 +65,7 @@ export default function Post({ url, postId, title, description, image, message, 
                 </UserPicture>
                 <LikeHeart postId={postId} />
                 <Comment postId={postId} userId={userId} />
-                <Repost postId={postId} userId={userId} />
+                <Repost repostCount={repostCount} postId={postId} />
             </UserContainer>
             <TextContainer>
                 {userId === user.id && (

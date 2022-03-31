@@ -135,6 +135,13 @@ async function handleFollow(loggedUser, userToHandle, token) {
     return promise;
 }
 
+async function repost(postId, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.post(`${BASE_URL}/posts/${postId}/repost`, null, auth);
+
+    return promise;
+}
+
 
 const api = {
     signUp,
@@ -154,6 +161,7 @@ const api = {
     isFollowing,
     getFollowStatus,
     handleFollow,
+    repost,
 }
 
 export default api;
