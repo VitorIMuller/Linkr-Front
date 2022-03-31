@@ -13,7 +13,7 @@ import Repost from "./Repost";
 import Comment from "./Comment";
 import api from "../../Services/api";
 
-export default function Post({ url, postId, title, description, image, message, name, profilePic, userId, repostCount }) {
+export default function Post({ url, postId, title, description, image, message, name, profilePic, userId, repostCount, reload, setReload }) {
     const { hashtagRedirect, user } = useAuth();
     const [isDeleting, setDeleting] = useState(false);
 
@@ -26,7 +26,7 @@ export default function Post({ url, postId, title, description, image, message, 
         if (isEditing) {
             inputRef.current.focus();
         }
-    }, [isEditing]);
+    }, [isEditing, reload]);
 
     function toggleEdit() {
         setTextToEdit(message);
@@ -63,7 +63,7 @@ export default function Post({ url, postId, title, description, image, message, 
                 <UserPicture>
                     <img src={profilePic ? profilePic : default_profile_pic} />
                 </UserPicture>
-                <LikeHeart postId={postId} />
+                <LikeHeart postId={postId} reload={reload} setReload={setReload} />
                 <Comment postId={postId} userId={userId} />
                 <Repost repostCount={repostCount} postId={postId} />
             </UserContainer>

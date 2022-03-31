@@ -19,6 +19,7 @@ export default function Timeline() {
     const NoPostsYet = `No posts found from your friends`;
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
     const [isFollowing, setFollowing] = useState(false);
+    const [reload, setReload] = useState(false);
 
     function fetchPosts() {
 
@@ -35,9 +36,12 @@ export default function Timeline() {
             const { posts } = res.data;
             const { reposts } = res.data;
 
+            reposts.map(repost => {
+                posts.push(repost);
+            })
+
             setPosts(posts);
 
-            console.log(posts);
             console.log(reposts);
 
             setLoading(false);
@@ -87,7 +91,8 @@ export default function Timeline() {
                                                         profilePic={post.profilePic}
                                                         userId={post.userId}
                                                         repostCount={post.repostCount}
-
+                                                        reload={reload}
+                                                        setReload={setReload}
                                                     />
                                                 )
                                             )}
