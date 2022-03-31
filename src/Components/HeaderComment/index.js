@@ -10,11 +10,10 @@ import {
 
 export default function HeaderComment({ comment }) {
     const { user } = useAuth()
-    console.log(comment.userId)
     const [followedId, setFollowedId] = useState(false)
 
     function verifyFollow() {
-        api.getFollowStatus(user?.id, comment.userId, user?.token).then((res) => {
+        api.getFollowStatus(comment.userId, user.token).then((res) => {
             setFollowedId(res.data)
         })
     }

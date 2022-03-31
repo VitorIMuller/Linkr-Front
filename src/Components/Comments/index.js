@@ -53,14 +53,13 @@ function Comments({ postId, userId }) {
         getComments()
     }, [])
 
-    console.log(comments)
     return (
         <CommentsContent>
             {isLoading ?
                 <Loading />
                 :
                 comments?.map((comment) =>
-                    <Comment>
+                    <Comment key={comment.id}>
                         <CommentContent>
                             <img src={comment.image} />
                             <SeparateMessages>
