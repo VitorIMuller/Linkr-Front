@@ -15,7 +15,7 @@ export default function FollowButton({ children }) {
     setIsLoading(true);
     if (user.id == userId) return setFollowStatus(false);
 
-    api.getFollowStatus(user.id, userId, user.token)
+    api.getFollowStatus(userId, user.token)
       .then( res => {
         setFollowStatus(res.data);
         setIsLoading(false);
@@ -26,7 +26,7 @@ export default function FollowButton({ children }) {
   function handleFollow() {
     setIsLoading(true);
 
-    api.handleFollow(user.id, userId, user.token)
+    api.handleFollow(userId, user.token)
       .then(()=> {
         setFollowStatus(!followStatus);
         setIsLoading(false);

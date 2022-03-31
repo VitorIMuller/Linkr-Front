@@ -113,16 +113,16 @@ async function editPost(body, postid, token){
     return promise;
 }
 
-async function getFollowStatus(loggedUser, userToVerify, token ) {
+async function getFollowStatus(userToVerify, token ) {
     const auth = createHeaders(token);
-    const promise = await axios.get(`${BASE_URL}/follows/${loggedUser}/${userToVerify}`, auth);
+    const promise = await axios.get(`${BASE_URL}/follows/${userToVerify}`, auth);
 
     return promise;
 }
 
-async function handleFollow(loggedUser, userToHandle, token ) {
+async function handleFollow(userToHandle, token ) {
     const auth = createHeaders(token);
-    const promise = await axios.post(`${BASE_URL}/follows/${loggedUser}/${userToHandle}`, {}, auth);
+    const promise = await axios.post(`${BASE_URL}/follows/${userToHandle}`, {}, auth);
 
     return promise;
 }
