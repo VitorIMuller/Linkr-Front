@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { AiOutlineSearch } from "react-icons/ai"
+import { BsDot } from "react-icons/bs"
 
 const Image = styled.img`
                     width: 40px;
@@ -11,6 +12,13 @@ const SearchIcon = styled(AiOutlineSearch)`
     right: 10px;
     font-size: 25px;
     position: absolute;
+    color: #C6C6C6;
+`;
+const DotIcon = styled(BsDot)`
+    /* top: 9px;
+    right: 10px;
+    font-size: 25px;
+    position: absolute; */
     color: #C6C6C6;
 `;
 const ContainerInputFindUser = styled.div`
@@ -83,6 +91,10 @@ const InputFindUser = styled.div`
         color: #515151;
         cursor: pointer;
         }
+
+        p {
+            color: #C6C6C6
+        }
     }
 `;
 
@@ -102,5 +114,6 @@ export {
     Image,
     SearchIcon,
     NameList,
-    Loader
+    Loader,
+    DotIcon
 };

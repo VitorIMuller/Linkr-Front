@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import api from '../../Services/api';
 import LoadingFind from '../../Assets/LoadingFind';
+import Swal from 'sweetalert2';
 
 export default function FollowButton({ children }) {
     const { user } = useAuth();
@@ -31,7 +32,14 @@ export default function FollowButton({ children }) {
         setFollowStatus(!followStatus);
         setIsLoading(false);
       })
-      .catch( err => console.log(err))
+      .catch( err => {
+        console.log(err);
+        Swal.fire({
+          icon: 'error',
+          width: 400,
+          text: 'não foi possível executar a operação'
+        })
+      })
   }
   
   useEffect(getFollowStatus, []);

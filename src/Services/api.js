@@ -94,8 +94,6 @@ async function getUsers(infos, token) {
     const auth = createHeaders(token);
 
     const promise = await axios.get(`${BASE_URL}/users/search?characters=${infos}`, auth);
-    console.log(`API: ${infos}`);
-
 
     return promise;
 }
@@ -142,6 +140,30 @@ async function repost(postId, token) {
     return promise;
 }
 
+async function createComment(token, text, postId, userId) {
+    const auth = createHeaders(token)
+    const body = { text, postId, userId }
+
+    const promise = await axios.post(`${BASE_URL}/comments`, body, auth)
+    return promise
+}
+async function getComments(token, postId) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/comments/${postId}`, auth);
+    return promise;
+}
+async function commentsCounter(postId, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/comments/counter/${postId}`, auth);
+    return promise;
+}
+async function getFollowed(name, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/users/follows?characters=${name}`, auth);
+
+    return promise;
+}
 
 const api = {
     signUp,
@@ -162,6 +184,10 @@ const api = {
     getFollowStatus,
     handleFollow,
     repost,
+    createComment,
+    getComments,
+    commentsCounter,
+    getFollowed
 }
 
 export default api;

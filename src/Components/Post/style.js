@@ -12,7 +12,7 @@ const PostBody = styled.div`
 
     background-color: #171717;
     font-family: "Lato", sans-serif;
-
+    z-index:5;
     @media (max-width: 610px) {
         width: 100%;
         border-radius: 0;
@@ -24,6 +24,32 @@ const PostBody = styled.div`
         width: 72%
     }
 `;
+const ContentPost = styled.div`
+width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 18px 17px;
+    margin-top: 16px;
+    border-radius: 16px;
+
+    z-index: 2;
+
+    background-color: #171717;
+    font-family: "Lato", sans-serif;
+
+@media (max-width: 610px) {
+        width: 100%;
+        border-radius: 0;
+
+        padding: 15px 9px;
+    }
+
+    @media (min-width: 912px) {
+        width: 72%
+    }
+`
 
 const UserContainer = styled.div`
         width: 83px;
@@ -173,5 +199,6 @@ export {
     UserName,
     UserMessage,
     MetadataContainer,
-    IconContainer
+    IconContainer,
+    ContentPost
 }
