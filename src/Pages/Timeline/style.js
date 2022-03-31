@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 const MainContainer = styled.main`
     width: 100%;
-    height: 100%;
+    min-height: 100vh;
 
     display: flex;
     margin-top: 72px;
     
     background-color: #333333;
     font-family: 'Oswald', sans-serif;
-`
+`;
 
 const LeftWrapper = styled.div`
     width: 60%;
@@ -23,7 +23,8 @@ const LeftWrapper = styled.div`
     @media (max-width: 767px) {
         width: 100%;
     }
-`
+`;
+
 const RightWrapper = styled.div`
     width: 40%;
     padding-left: 25px;
@@ -37,7 +38,8 @@ const RightWrapper = styled.div`
     @media (max-width: 767px) { //fits on smallest tablet
         display: none;
     }
-`
+`;
+
 const TimelineContainer = styled.div`
     width: 100%;
 
@@ -76,11 +78,11 @@ const TitleContainer = styled.div`
     @media (min-width: 912px) {
         width: 72%
     }
-`
+`;
 
 const NoPost = styled.div`
-    width: 60%;
-    
+    width: 90%;
+
     justify-content: center;
     text-align: center;
 
@@ -96,6 +98,10 @@ const NoPost = styled.div`
 
         font-size: 25px;
         padding-top: 100px;
+    }
+
+    @media (min-width: 912px) {
+        width: 72%
     }
 `;
 
