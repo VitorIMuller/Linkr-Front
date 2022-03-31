@@ -1,5 +1,4 @@
-import { useState } from "react"
-import { useEffect } from "react/cjs/react.development"
+import { useState, useEffect } from "react"
 import useAuth from "../../Hooks/useAuth"
 import api from "../../Services/api"
 import {
@@ -21,7 +20,7 @@ export default function HeaderComment({ comment }) {
     }
     useEffect(() => {
         verifyFollow()
-    }, [comment])
+    }, [])
 
     return (
         <User>

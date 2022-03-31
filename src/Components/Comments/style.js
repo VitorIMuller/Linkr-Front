@@ -55,8 +55,8 @@ const CommentsContent = styled.div`
         width: 100%;
         border-radius: 0;
 
-        padding: 15px 9px;
-    }
+        padding-top: 50px
+        }
 
     @media (min-width: 912px) {
         width: 72%
