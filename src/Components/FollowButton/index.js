@@ -36,6 +36,7 @@ export default function FollowButton({ children }) {
         console.log(err);
         Swal.fire({
           icon: 'error',
+          width: 400,
           text: 'não foi possível executar a operação'
         })
       })
