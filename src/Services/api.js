@@ -116,7 +116,7 @@ async function editPost(body, postid, token) {
 async function isFollowing(userId, token) {
     const auth = createHeaders(token);
 
-    const promise = await axios.get(`${BASE_URL}/follows/${userId}`, auth);
+    const promise = await axios.get(`${BASE_URL}/following/${userId}`, auth);
 
     return promise
 }
