@@ -7,7 +7,10 @@ import LikeHeart from "./LikeHeart";
 import Metadata from "./Metadata";
 import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
 import { GoPencil, GoTrashcan } from "react-icons/go";
+import { AiOutlineComment, AiOutlineRetweet } from "react-icons/ai";
 import DeletePost from "../Delete";
+import Repost from "./Repost";
+import Comment from "./Comment";
 import api from "../../Services/api";
 
 export default function Post({ url, postId, title, description, image, message, name, profilePic, userId }) {
@@ -21,7 +24,7 @@ export default function Post({ url, postId, title, description, image, message, 
 
     useEffect(() => {
         if (isEditing) {
-          inputRef.current.focus();
+            inputRef.current.focus();
         }
     }, [isEditing]);
 
@@ -31,26 +34,26 @@ export default function Post({ url, postId, title, description, image, message, 
     }
 
     function editPost(e) {
-        e.preventDefault();      
+        e.preventDefault();
         const body = {
-            url: url, 
-            userMessage: textToEdit 
+            url: url,
+            userMessage: textToEdit
         };
-        console.log (body);
+        console.log(body);
         api.editPost(body, postId, user.token)
-        .then(() => {
-            setIsEditing(!isEditing);
-            window.location.reload();
-        })
-        .catch( error => {
-            console.log(error);
-            alert("Erro na tentativa de edição")
-        });
+            .then(() => {
+                setIsEditing(!isEditing);
+                window.location.reload();
+            })
+            .catch(error => {
+                console.log(error);
+                alert("Erro na tentativa de edição")
+            });
     }
 
     function verifyEsc(e) {
-        if (e.key === 'Escape') 
-        toggleEdit();
+        if (e.key === 'Escape')
+            toggleEdit();
     }
 
     return (
@@ -61,11 +64,13 @@ export default function Post({ url, postId, title, description, image, message, 
                     <img src={profilePic ? profilePic : default_profile_pic} />
                 </UserPicture>
                 <LikeHeart postId={postId} />
+                <Comment postId={postId} userId={userId} />
+                <Repost postId={postId} userId={userId} />
             </UserContainer>
             <TextContainer>
                 {userId === user.id && (
                     <IconContainer>
-                        <GoPencil className="edit" onClick={toggleEdit}/>
+                        <GoPencil className="edit" onClick={toggleEdit} />
                         <GoTrashcan className="trashcan" onClick={() => setDeleting(true)} />
                     </IconContainer>
                 )}
@@ -76,21 +81,21 @@ export default function Post({ url, postId, title, description, image, message, 
                     </ReactHashtag>}
                 </UserMessage>
                 <span>{
-                        isEditing &&
-                        (
-                            <form onSubmit={editPost} onKeyDown={verifyEsc}>
-                                <input
-                                    ref={inputRef}
-                                    value={textToEdit}
-                                    onChange={e => setTextToEdit(e.target.value)}
-                                    className = 'edit-input'
-                                >
-                                </input>
-                            </form>
-                        )
-                    }
+                    isEditing &&
+                    (
+                        <form onSubmit={editPost} onKeyDown={verifyEsc}>
+                            <input
+                                ref={inputRef}
+                                value={textToEdit}
+                                onChange={e => setTextToEdit(e.target.value)}
+                                className='edit-input'
+                            >
+                            </input>
+                        </form>
+                    )
+                }
                 </span>
-             
+
                 <MetadataContainer>
                     <a href={url} target="_blank" rel="noopener noreferrer">
                         <Metadata

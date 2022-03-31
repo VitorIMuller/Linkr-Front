@@ -120,7 +120,7 @@ export default function SearchUser() {
                 <SearchIcon />
                 <div className="list-users">
                     {isLoading ?
-                        <Loader><LoadingFind /></Loader>
+                        <Loader><LoadingFind height={30} width={30} /></Loader>
                         :
                         <>
                             {searchedUsers.map((el, i) =>

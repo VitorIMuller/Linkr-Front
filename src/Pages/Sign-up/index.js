@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { CenterLoader, Title, SubTitle, TopBar, Container, LowerBar, StyledInput, Form, StyledButton, StyledLink } from "../Sign-in/style"
+import { CenterLoader, Title, SubTitle, TopBar, LowerBar, StyledInput, Container, Form, StyledButton, StyledLink } from "../Sign-in/style"
 import Loading from "../../Assets/Loading"
 import api from "../../Services/api"
 
@@ -87,6 +87,7 @@ function SignUp() {
                 </Form>
             </LowerBar>
         </Container>
+
     )
 }
 export default SignUp
