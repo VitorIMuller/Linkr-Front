@@ -13,6 +13,7 @@ import { useState, useEffect } from "react"
 import api from "../../Services/api"
 import useAuth from "../../Hooks/useAuth"
 import Loading from "../../Assets/Loading"
+import HeaderComment from "../HeaderComment"
 
 
 
@@ -63,17 +64,7 @@ function Comments({ postId, userId }) {
                         <CommentContent>
                             <img src={comment.image} />
                             <SeparateMessages>
-                                <User>
-                                    <div className="username">{comment.username}</div>
-                                    <div className="follow">
-                                        {comment.userId === user.id ?
-                                            "• post’s author"
-                                            : comment.followedId ?
-                                                ""
-                                                : "• following"
-                                        }
-                                    </div>
-                                </User>
+                                <HeaderComment comment={comment} />
                                 <div className="coment">{comment.text}</div>
                             </SeparateMessages>
                         </CommentContent>
