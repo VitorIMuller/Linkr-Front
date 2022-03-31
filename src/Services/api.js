@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const BASE_URL = "https://apilinkr.herokuapp.com";
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://apilinkr.herokuapp.com";
+//const BASE_URL = "http://localhost:5000";
 
 function createHeaders(token) {
     return { headers: { Authorization: `Bearer ${token}` } };
@@ -116,21 +116,21 @@ async function editPost(body, postid, token) {
 async function isFollowing(userId, token) {
     const auth = createHeaders(token);
 
-    const promise = await axios.get(`${BASE_URL}/follows/${userId}`, auth);
+    const promise = await axios.get(`${BASE_URL}/following/${userId}`, auth);
 
     return promise
 }
 
-async function getFollowStatus(loggedUser, userToVerify, token) {
+async function getFollowStatus(userToVerify, token) {
     const auth = createHeaders(token);
-    const promise = await axios.get(`${BASE_URL}/follows/${loggedUser}/${userToVerify}`, auth);
+    const promise = await axios.get(`${BASE_URL}/follows/${userToVerify}`, auth);
 
     return promise;
 }
 
-async function handleFollow(loggedUser, userToHandle, token) {
+async function handleFollow(userToHandle, token ) {
     const auth = createHeaders(token);
-    const promise = await axios.post(`${BASE_URL}/follows/${loggedUser}/${userToHandle}`, {}, auth);
+    const promise = await axios.post(`${BASE_URL}/follows/${userToHandle}`, {}, auth);
 
     return promise;
 }
