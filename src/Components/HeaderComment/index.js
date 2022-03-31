@@ -13,13 +13,13 @@ export default function HeaderComment({ comment }) {
     const [followedId, setFollowedId] = useState(false)
 
     function verifyFollow() {
-        api.getFollowStatus(comment.userId, user.token).then((res) => {
+        api.getFollowStatus(comment.userId, user?.token).then((res) => {
             setFollowedId(res.data)
         })
     }
     useEffect(() => {
         verifyFollow()
-    }, [])
+    }, [comment])
 
     return (
         <User>
