@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Post, PostForm, PostUserInfo, PostUrl, PostDescription, ButtonPublish } from './style.js';
 import api from '../../Services/api.js';
 import useAuth from "../../Hooks/useAuth";
+import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 export default function Publish() {
 
@@ -20,9 +22,11 @@ export default function Publish() {
       window.location.reload();
     }
     catch (error) {
-      console.log(error);
-      alert(`              Houve um erro ao publicar seu link 
-              ${error}`);
+      Swal.fire({
+        icon: 'error',
+        title: "Couldn't publish the post",
+        text: "An error occured while publishing the post. Please, try again.",
+      });
       window.location.reload();
     }
   }
@@ -34,7 +38,9 @@ export default function Publish() {
   return (
     <Post>
       <PostUserInfo>
-        <img src={user?.image} alt="avatar" />
+        <Link to={`/user/${user?.id}`}>
+          <img src={user?.image} alt="avatar" />
+        </Link>
       </PostUserInfo>
       <PostForm onSubmit={handleSubmit} >
         <h2>What are you going to share today?</h2>

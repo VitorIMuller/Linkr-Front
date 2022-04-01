@@ -9,11 +9,13 @@ import { Buttons, LoadingContainer, NoButton, Title, YesButton } from '../../Del
 import CircularLoading from '../../../Assets/CircularLoading';
 import api from "../../../Services/api";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
-export default function Repost({ postId, repostCount, reload, setReload }) {
+export default function Repost({ postId, reload, setReload }) {
 
     const { user } = useAuth();
 
+    const [repostCount, setRepostCount] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [isReposting, setReposting] = useState(false);
 
@@ -23,13 +25,27 @@ export default function Repost({ postId, repostCount, reload, setReload }) {
             await api.reposts(postId, user?.token);
             setReposting(false);
             setReload(!reload);
+            Swal.fire({
+                icon: 'success',
+                title: "Successfully reposted!",
+                text: "Wait a few seconds or reload the page",
+            });
         } catch (error) {
-            console.log(error);
             setLoading(false);
             setReposting(false);
-            alert("An error occured while reposting. Please, try again.");
+            Swal.fire({
+                icon: 'error',
+                title: "Repost failed",
+                text: `${error.response.data}`,
+            });
         }
     }
+
+    useEffect(() => {
+        api.getTotalReposts(postId, user?.token).then(res => {
+            setRepostCount(res.data);
+        });
+    }, [postId, user?.token, repostCount, reload]);
 
     const customStyles = {
         content: {
@@ -44,8 +60,10 @@ export default function Repost({ postId, repostCount, reload, setReload }) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            zIndex: '10'
         },
+        overlay: {
+            zIndex: 1000
+        }
     };
 
     Modal.setAppElement('.root');
