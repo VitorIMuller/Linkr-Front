@@ -4,11 +4,10 @@ import { Link } from "react-router-dom";
 const TopBar = styled.div`
     min-width: 100vw;
     min-height: 175px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-color: #151515;
+    position: relative;
+    padding-left: 20%;
+    padding-bottom: 50%;
     @media (min-width: 767px){
         min-width: 65vw;
         min-height: 100vh;
@@ -23,6 +22,7 @@ const Title = styled.div`
     font-weight: bold;
     color: #FFFFFF;
     font-family: 'Passion One', cursive;
+    
     @media (min-width: 767px){
         font-size: 106px;
     }
@@ -63,9 +63,14 @@ const LowerBar = styled.div`
 `
 const Components = styled.div`
     position: absolute;
-    top: 30%;
-    left: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     @media (min-width: 767px){
+        padding-top: 35%;
+        display: flex;
+        align-items: flex-start;
     }
 `
 const Form = styled.form`
