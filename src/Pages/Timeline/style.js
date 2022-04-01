@@ -49,9 +49,40 @@ const TimelineContainer = styled.div`
 
     padding-bottom: 100px;
 
+    .infinite-scroll {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .loader {
+        display: flex;
+        justify-content: center;
+
+        color: #FFF;
+    }
+
+    @media (max-width: 610px) {
+        width: 100%;
+    }
+
     @media (max-width: 767px) {
         width: 100%;
         align-items: center;
+
+        .infinite-scroll{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    @media (min-width: 910px) {
+        .infinite-scroll{
+            width: 72%;
+        }
     }
 `;
 
@@ -160,6 +191,7 @@ const Reloader = styled.div`
         width: 72%
     }
 `
+
 
 export {
     TitleContainer,

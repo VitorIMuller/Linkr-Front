@@ -6,4 +6,4 @@ export { default as HeaderComment } from './HeaderComment';
 export { default as Post } from './Post';
 export { default as Publish } from './Publish';
 export { default as Trends } from './Trends';
-export { default as UserSearch } from './UserSearch';
+export { default as SearchUser } from './UserSearch';

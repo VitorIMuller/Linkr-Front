@@ -10,7 +10,7 @@ export default function Metadata({ url, postId, title, description, image }) {
                 <UrlLink title={url}>{url}</UrlLink>
             </TextContainer>
             <ImageContainer>
-                <UrlImage src={image} />
+                <UrlImage src={image} alt="post_image" />
             </ImageContainer>
         </MetadataContainer>
     );

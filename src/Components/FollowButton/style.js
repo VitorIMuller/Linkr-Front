@@ -7,6 +7,7 @@ const Follow = styled.button`
   display: ${({showIt}) => showIt ? 'none' : 'false'};
   justify-content: center;
   align-items: center;
+  
   background-color : ${({follows, disabled})=> disabled ? 'grey' : follows ? '#FFF' : '#1877F2' };
   color : ${({follows})=> follows ? '#1877F2' : '#FFF' };
   border: none;
@@ -21,13 +22,13 @@ const Follow = styled.button`
 
   cursor: ${({disabled})=> disabled ? 'not-allowed' : 'pointer' };
 
-  position: absolute;
+  /* position: absolute;
   top: 76px;
   right: calc(40vw - 72%);
 
   @media (max-width: 767px) {
     right: calc(40vw - 90%);
-  }
+  } */
 `
 
 export {

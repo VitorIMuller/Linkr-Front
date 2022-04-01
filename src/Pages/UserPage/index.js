@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { LoadingContainer, NoPost } from "../Timeline/style";
-import { MainContainer, TitleContainer, LeftWrapper, RightWrapper } from "./style";
+import { MainContainer, TitleContainer, LeftWrapper, RightWrapper, UserTitle } from "./style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
@@ -18,6 +18,7 @@ export default function UserPage() {
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [reload, setReload] = useState(false);
+    const [userInfo, setUserInfo] = useState();
 
     const NoPostYetMessage = "There are no posts yet";
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
@@ -38,20 +39,33 @@ export default function UserPage() {
             console.log(error);
         });
     }
+
+    useEffect(() => {
+        api.getUserInfo(userId, user?.token).then(res => {
+            setUserInfo(res.data);
+        })
+    }, []);
+
     window.scrollTo(0, 0);
-    useEffect(fetchPosts, [userId, user?.token, reload]);
+
+    useEffect(fetchPosts, [userId, user?.token]);
 
     return (
         <>
             <Header />
+            {
+                isLoading
+                    ? ""
+                    : <TitleContainer>
+                        <UserTitle>
+                            <div><img src={userInfo?.image} alt='profile picture for user page' /></div>
+                            <span>{`${userInfo?.name}'s posts`}</span>
+                        </UserTitle>
+                        <FollowButton />
+                    </TitleContainer>
+            }
             <MainContainer>
                 <LeftWrapper>
-                    {isLoading ? "" :
-                        <TitleContainer>
-                            <div><img src={posts[0]?.profilePic} alt='profile picture for user page' /></div>
-                            <span>{`${posts[0]?.username}'s posts`}</span>
-                        </TitleContainer>
-                    }
                     {
                         isLoading
                             ? <LoadingContainer> <CircularLoading /> </LoadingContainer>
@@ -82,7 +96,6 @@ export default function UserPage() {
                     }
                 </LeftWrapper>
                 <RightWrapper>
-                    <FollowButton />
                     <Trends />
                 </RightWrapper>
             </MainContainer >
