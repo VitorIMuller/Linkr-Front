@@ -107,20 +107,8 @@ const InputFindUser = styled.div`
         p {
             color: #C6C6C6
         }
-        /* @media (min-width: 767px) {
         
-        
-        ${props => props.type === 'mobile' && "padding-top: 0;"}
-        ${props => props.type === 'mobile' && "z-index: 1;"}
-        ${props => props.type === 'mobile' && "top: 45px;"}
-        
-        
-        
-        
-     
-        
-        }
-    } */
+    } 
 `;
 
 const NameList = styled.div`
