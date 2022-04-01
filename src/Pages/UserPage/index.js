@@ -46,8 +46,6 @@ export default function UserPage() {
         })
     }, []);
 
-    console.log(userInfo)
-
     window.scrollTo(0, 0);
 
     useEffect(fetchPosts, [userId, user?.token]);

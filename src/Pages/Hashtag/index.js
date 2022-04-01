@@ -28,7 +28,6 @@ export default function HashtagPage() {
         setLoading(true);
         api.getPostByHashtag(user?.token, hashtag).then(res => {
             setPosts(res.data);
-            console.log(res.data);
             setLoading(false);
 
         }).catch(error => {
