@@ -23,7 +23,6 @@ export default function Timeline() {
     const [offset, setOffSet] = useState(0);
     const [lastPostTime, setLastPostTime] = useState();
 
-    let repostCount = 0;
 
     function fetchPosts() {
 
@@ -37,10 +36,10 @@ export default function Timeline() {
         });
 
         api.getPost(user?.token, offset).then(res => {
-            console.log(res.data.posts);
-            setPosts(res.data.posts);
-            res.data && setLastPostTime(res.data.posts[0]?.time);
-            setOffSet(offset+res.data.posts.length);
+            console.log(res.data);
+            setPosts(res.data);
+            res.data && setLastPostTime(res.data[0]?.time);
+            setOffSet(offset+res.data.length);
             setLoading(false);
             
 
@@ -55,7 +54,7 @@ export default function Timeline() {
 
     function getNewPosts() {
         api.getPost(user?.token, 0)
-            .then(res => verifyNewPosts(res.data.posts))
+            .then(res => verifyNewPosts(res.data))
             .catch(error => console.log(error))
     }
 
@@ -100,24 +99,22 @@ export default function Timeline() {
                                         : error === true
                                             ? <NoPost>{ServerErrorMessage}</NoPost>
                                             : (
-                                                posts?.posts?.map((post, index) =>
+                                                posts?.map((post, index) =>
                                                     <Post
                                                         key={index}
-                                                        postId={post.id}
-                                                        url={post.url}
-                                                        title={post.urlTitle}
-                                                        description={post.urlDescription}
-                                                        image={post.urlImage}
-                                                        message={post.userMessage}
-                                                        name={post.name}
-                                                        profilePic={post.profilePic}
-                                                        userId={post.userId}
-                                                        repostCount={posts.repostsCount.map(repost =>
-                                                            repost.postId === post.id ? repostCount = repost.count : false
-                                                        ) ? repostCount : 0}
+                                                        postId={post?.id}
+                                                        url={post?.url}
+                                                        title={post?.urlTitle}
+                                                        description={post?.urlDescription}
+                                                        image={post?.urlImage}
+                                                        message={post?.userMessage}
+                                                        name={post?.name}
+                                                        profilePic={post?.profilePic}
+                                                        userId={post?.userId}
+                                                        repostCount={post?.repostCount}
+                                                        repostedBy={post?.repostedBy}
                                                         reload={reload}
                                                         setReload={setReload}
-                                                        repostedBy={post?.repostedBy}
                                                     />
                                                 )
                                             )}

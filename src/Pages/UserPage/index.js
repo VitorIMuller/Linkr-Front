@@ -17,6 +17,7 @@ export default function UserPage() {
     const [posts, setPosts] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [reload, setReload] = useState(false);
 
     const NoPostYetMessage = "There are no posts yet";
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
@@ -38,8 +39,7 @@ export default function UserPage() {
         });
     }
     window.scrollTo(0, 0);
-    
-    useEffect(fetchPosts, [userId, user?.token]);
+    useEffect(fetchPosts, [userId, user?.token, reload]);
 
     return (
         <>
@@ -48,7 +48,7 @@ export default function UserPage() {
                 <LeftWrapper>
                     {isLoading ? "" :
                         <TitleContainer>
-                            <div><img src={posts[0]?.profilePic}></img></div>
+                            <div><img src={posts[0]?.profilePic} alt='profile picture for user page' /></div>
                             <span>{`${posts[0]?.username}'s posts`}</span>
                         </TitleContainer>
                     }
@@ -61,19 +61,21 @@ export default function UserPage() {
                                     ? <NoPost>{ServerErrorMessage}</NoPost>
                                     :
                                     (
-                                        posts?.map((post) =>
+                                        posts?.map((post, index) =>
                                             <Post
-                                                key={post.id}
-                                                postId={post.id}
-                                                url={post.url}
-                                                title={post.urlTitle}
-                                                description={post.urlDescription}
-                                                image={post.urlImage}
-                                                message={post.userMessage}
+                                                key={index}
+                                                postId={post?.id}
+                                                url={post?.url}
+                                                title={post?.urlTitle}
+                                                description={post?.urlDescription}
+                                                image={post?.urlImage}
+                                                message={post?.userMessage}
                                                 name={post?.username}
                                                 profilePic={post?.profilePic}
                                                 userId={post?.userId}
-                                                repostCount={post.repostCount}
+                                                repostCount={post?.repostCount}
+                                                reload={reload}
+                                                setReload={setReload}
                                             />
                                         )
                                     )
