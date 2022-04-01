@@ -36,7 +36,7 @@ export default function LikeHeart({ postId, reload, setReload }) {
             setLike(res.data);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [postId, user?.token, setLike, reload]);
+    }, [postId, user?.token, like, reload]);
 
     function tooltipNaming(names) {
         const { ownUserLiked, likes } = names[names.length - 1];

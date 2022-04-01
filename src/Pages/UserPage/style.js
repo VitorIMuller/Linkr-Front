@@ -42,6 +42,8 @@ const UserTitle = styled.div`
     display: flex;
     justify-content: flex-start;
     align-items: center;
+
+    font-family: 'Oswald', sans-serif;
 `
 
 const MainContainer = styled.main`

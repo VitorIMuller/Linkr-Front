@@ -165,6 +165,22 @@ async function getFollowed(name, token) {
     return promise;
 }
 
+async function getTotalReposts(postId, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/posts/reposts/${postId}/total`, auth);
+
+    return promise;
+}
+
+async function getUserInfo(userId, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/users/userInfo/${userId}`, auth);
+
+    return promise;
+}
+
 const api = {
     signUp,
     signIn,
@@ -187,7 +203,9 @@ const api = {
     createComment,
     getComments,
     commentsCounter,
-    getFollowed
+    getFollowed,
+    getTotalReposts,
+    getUserInfo
 }
 
 export default api;

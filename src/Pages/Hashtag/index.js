@@ -28,7 +28,6 @@ export default function HashtagPage() {
         setLoading(true);
         api.getPostByHashtag(user?.token, hashtag).then(res => {
             setPosts(res.data);
-            console.log(res.data);
             setLoading(false);
 
         }).catch(error => {
@@ -41,7 +40,7 @@ export default function HashtagPage() {
     }
     window.scrollTo(0, 0);
 
-    useEffect(fetchPosts, [user, location.pathname, reload]);
+    useEffect(fetchPosts, [user, location.pathname]);
 
     return (
         <>
