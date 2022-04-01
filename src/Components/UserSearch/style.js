@@ -27,15 +27,26 @@ const ContainerInputFindUser = styled.div`
     align-items: center;
     justify-content: center;
 
+    @media screen and (min-width: 767px) {
+        /* display: none; */
+       ${props => props.type === 'mobile' && 'display: none;'}
+        
+    }
+    
+
     @media screen and (max-width: 767px) {
-        display: none;
+        /* display: none; */
+       ${props => props.type === 'mobile'? 'width: 100%;': 'display: none;'}
+
+       padding: 10px;
+        
     }
 `;
 const InputFindUser = styled.div`
     width: 100%;
     height: 45px;
     position: relative;
-
+   
     .debounce-input {
         width: 100%;
         height: 45px;
@@ -56,6 +67,7 @@ const InputFindUser = styled.div`
         
         ::placeholder {
         color: #C6C6C6;
+       
         }
     }
     
@@ -95,7 +107,8 @@ const InputFindUser = styled.div`
         p {
             color: #C6C6C6
         }
-    }
+        
+    } 
 `;
 
 const NameList = styled.div`

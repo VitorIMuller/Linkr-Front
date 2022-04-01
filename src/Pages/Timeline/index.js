@@ -105,9 +105,10 @@ export default function Timeline() {
             <MainContainer>
                 <LeftWrapper>
                     <TimelineContainer>
-                        <TitleContainer>
+                        <SearchUser type='mobile'/>
+                        <TitleContainer >
                             timeline
-                        </TitleContainer>
+                        </TitleContainer >
                         <Publish />
                         {newPosts?.length !== 0
                             && <Reloader onClick={() => loadNewPosts()}>
