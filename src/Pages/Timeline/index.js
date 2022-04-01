@@ -36,7 +36,11 @@ export default function Timeline() {
         });
 
         api.getPost(user?.token, offset).then(res => {
+
+            console.log(res.data);
+
             setPosts(res.data);
+
             setLoading(false);
 
         }).catch(error => {
