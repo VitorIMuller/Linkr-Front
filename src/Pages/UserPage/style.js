@@ -1,18 +1,23 @@
 import styled from "styled-components"
 
-const TitleContainer = styled.p`
-    width: 90%;
+const TitleContainer = styled.div`
+    width: 100%;
+    height: 154px;
     display: flex;
-    text-align: left;
+    align-items: center;
+    justify-content: space-between;
 
-    margin-top: 53px;  
-    margin-bottom: 31px;
+    margin-top: 72px;
+    padding-left: 7%;
+    padding-right: 4%;
 
     word-break: break-all;
+    background-color: #333333;
 
     font-size: 43px;
     font-weight: 700;
     line-height: 49px;
+    text-align: left;
     color: #FFF;
     
     img{
@@ -24,21 +29,28 @@ const TitleContainer = styled.p`
 
     @media (max-width: 610px) {
         font-size: 33px;
-
-        margin: 19px 0;
         padding-left: 17px;
+        padding-right: 17px;
     }
 
     @media (min-width: 912px) {
-        width: 72%;
+        padding-left: 20%;
+        padding-right: 10%;
     }
 `
+const UserTitle = styled.div`
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    font-family: 'Oswald', sans-serif;
+`
+
 const MainContainer = styled.main`
     width: 100%;
     min-height: 100vh;
 
     display: flex;
-    margin-top: 72px;
     
     background-color: #333333;
     font-family: 'Oswald', sans-serif;
@@ -107,6 +119,7 @@ const RightWrapper = styled.div`
 
 export {
     TitleContainer,
+    UserTitle,
     MainContainer,
     LeftWrapper,
     RightWrapper,

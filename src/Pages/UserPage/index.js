@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { LoadingContainer, NoPost } from "../Timeline/style";
-import { MainContainer, TitleContainer, LeftWrapper, RightWrapper } from "./style";
+import { MainContainer, TitleContainer, LeftWrapper, RightWrapper, UserTitle } from "./style";
 import Post from "../../Components/Post";
 import useAuth from "../../Hooks/useAuth";
 import Header from "../../Components/Header";
@@ -42,7 +42,6 @@ export default function UserPage() {
 
     useEffect(() => {
         api.getUserInfo(userId, user?.token).then(res => {
-            console.log(res.data);
             setUserInfo(res.data);
         })
     }, []);
@@ -56,14 +55,19 @@ export default function UserPage() {
     return (
         <>
             <Header />
-            <MainContainer>
-                <LeftWrapper>
-                    {isLoading ? "" :
-                        <TitleContainer>
+            {
+                isLoading
+                    ? ""
+                    : <TitleContainer>
+                        <UserTitle>
                             <div><img src={userInfo?.image} alt='profile picture for user page' /></div>
                             <span>{`${userInfo?.name}'s posts`}</span>
-                        </TitleContainer>
-                    }
+                        </UserTitle>
+                        <FollowButton />
+                    </TitleContainer>
+            }
+            <MainContainer>
+                <LeftWrapper>
                     {
                         isLoading
                             ? <LoadingContainer> <CircularLoading /> </LoadingContainer>
@@ -94,7 +98,6 @@ export default function UserPage() {
                     }
                 </LeftWrapper>
                 <RightWrapper>
-                    <FollowButton />
                     <Trends />
                 </RightWrapper>
             </MainContainer >
