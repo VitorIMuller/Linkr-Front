@@ -27,11 +27,11 @@ async function createPost(body, token) {
     return promise;
 }
 
-async function getPost(token) {
+async function getPost(token, offset) {
     const auth = createHeaders(token);
 
-    const render_limit = 20;
-    const promise = await axios.get(`${BASE_URL}/posts/${render_limit}`, auth);
+    const render_limit = 10;
+    const promise = await axios.get(`${BASE_URL}/posts/get/${render_limit}/${offset}`, auth);
 
     return promise;
 }
@@ -107,7 +107,7 @@ async function getTrendingHashtags(limit, token) {
 async function editPost(body, postid, token) {
     const auth = createHeaders(token);
 
-    const promise = await axios.put(`${BASE_URL}/posts/${postid}`, body, auth);
+    const promise = await axios.put(`${BASE_URL}/posts/update/${postid}`, body, auth);
     return promise;
 }
 
@@ -129,6 +129,13 @@ async function getFollowStatus(userToVerify, token) {
 async function handleFollow(userToHandle, token) {
     const auth = createHeaders(token);
     const promise = await axios.post(`${BASE_URL}/follows/${userToHandle}`, {}, auth);
+
+    return promise;
+}
+
+async function reposts(postId, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.post(`${BASE_URL}/posts/reposts/${postId}`, null, auth);
 
     return promise;
 }
@@ -176,6 +183,7 @@ const api = {
     isFollowing,
     getFollowStatus,
     handleFollow,
+    reposts,
     createComment,
     getComments,
     commentsCounter,

@@ -17,6 +17,7 @@ export default function HashtagPage() {
     const [posts, setPosts] = useState([]);
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [reload, setReload] = useState(false);
 
     const NoPostYetMessage = "There are no posts yet";
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
@@ -27,6 +28,7 @@ export default function HashtagPage() {
         setLoading(true);
         api.getPostByHashtag(user?.token, hashtag).then(res => {
             setPosts(res.data);
+            console.log(res.data);
             setLoading(false);
 
         }).catch(error => {
@@ -39,7 +41,7 @@ export default function HashtagPage() {
     }
     window.scrollTo(0, 0);
 
-    useEffect(fetchPosts, [user, location.pathname]);
+    useEffect(fetchPosts, [user, location.pathname, reload]);
 
     return (
         <>
@@ -59,18 +61,22 @@ export default function HashtagPage() {
                             : error === true
                                 ? <NoPost>{ServerErrorMessage}</NoPost>
                                 : (
-                                    posts?.map((post) =>
+                                    posts?.map((post, index) =>
                                         <Post
-                                            key={post.id}
-                                            postId={post.id}
-                                            url={post.url}
-                                            title={post.urlTitle}
-                                            description={post.urlDescription}
-                                            image={post.urlImage}
-                                            message={post.userMessage}
+                                            key={index}
+                                            postId={post?.id}
+                                            url={post?.url}
+                                            title={post?.urlTitle}
+                                            description={post?.urlDescription}
+                                            image={post?.urlImage}
+                                            message={post?.userMessage}
                                             name={post?.name}
                                             profilePic={post?.image}
                                             userId={post?.userId}
+                                            repostCount={post?.repostCount}
+                                            repostedBy={post?.repostedBy}
+                                            reload={reload}
+                                            setReload={setReload}
                                         />
                                     )
                                 )}

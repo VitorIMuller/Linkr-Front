@@ -3,7 +3,7 @@ import { useState } from 'react'
 import useAuth from '../../Hooks/useAuth';
 import api from '../../Services/api';
 import CircularLoading from '../../Assets/CircularLoading';
-import { Buttons, LoadingContainer, NoButton, Title, YesButton } from './style';
+import { Buttons, LoadingContainer, ModalContainer, NoButton, Title, YesButton } from './style';
 
 const customStyles = {
     content: {
@@ -18,6 +18,7 @@ const customStyles = {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+        zIndex: '10'
     },
 };
 
@@ -44,22 +45,24 @@ export default function DeletePost({ isDeleting, setDeleting, postId }) {
     }
 
     return (
-        <Modal isOpen={isDeleting} onRequestClose={() => { if (!isLoading) setDeleting(false) }} style={customStyles}>
-            {isLoading
-                ?
-                <LoadingContainer>
-                    <CircularLoading />
-                </LoadingContainer>
-                :
-                <>
-                    <Title>Are you sure you want <br /> to delete this post?</Title>
-                    <Buttons>
-                        <NoButton onClick={() => setDeleting(false)}>No, go back</NoButton>
-                        <YesButton onClick={deletePost}>Yes, delete it</YesButton>
-                    </Buttons>
-                </>
-            }
-        </Modal>
+        <ModalContainer>
+            <Modal isOpen={isDeleting} onRequestClose={() => { if (!isLoading) setDeleting(false) }} style={customStyles}>
+                {isLoading
+                    ?
+                    <LoadingContainer>
+                        <CircularLoading />
+                    </LoadingContainer>
+                    :
+                    <>
+                        <Title>Are you sure you want <br /> to delete this post?</Title>
+                        <Buttons>
+                            <NoButton onClick={() => setDeleting(false)}>No, go back</NoButton>
+                            <YesButton onClick={deletePost}>Yes, delete it</YesButton>
+                        </Buttons>
+                    </>
+                }
+            </Modal>
+        </ModalContainer>
     );
 }
 

@@ -7,12 +7,13 @@ const PostBody = styled.div`
     display: flex;
 
     padding: 18px 17px;
-    margin-top: 16px;
     border-radius: 16px;
 
     background-color: #171717;
     font-family: "Lato", sans-serif;
-    z-index:5;
+    
+    ${props => props.repostedBy ? '' : 'margin-top: 16px;'}
+
     @media (max-width: 610px) {
         width: 100%;
         border-radius: 0;
@@ -24,32 +25,6 @@ const PostBody = styled.div`
         width: 72%
     }
 `;
-const ContentPost = styled.div`
-width: 90%;
-
-    display: flex;
-    flex-direction: column;
-
-    padding: 18px 17px;
-    margin-top: 16px;
-    border-radius: 16px;
-
-    z-index: 2;
-
-    background-color: #171717;
-    font-family: "Lato", sans-serif;
-
-@media (max-width: 610px) {
-        width: 100%;
-        border-radius: 0;
-
-        padding: 15px 9px;
-    }
-
-    @media (min-width: 912px) {
-        width: 72%
-    }
-`
 
 const UserContainer = styled.div`
         width: 83px;
@@ -191,6 +166,54 @@ const MetadataContainer = styled.div`
     }
 `;
 
+const RepostedBy = styled.div`
+    width: 72%;
+
+    display: flex;
+    align-items: center;
+
+    color: #FFF;
+    background-color: #1E1E1E;
+    border-radius: 16px;
+
+    margin-top: 16px;
+    margin-bottom: -30px;
+    
+    padding-bottom: 30px;
+    padding-left: 13px;
+
+    span {
+        margin: 11px;
+
+        font-family: 'Lato';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    a {
+        all: unset;
+        padding-left: 3px;
+    }
+
+    strong {
+        font-size: 13px;
+        font-weight: 700;
+
+        padding-left: 3px;
+    }
+
+    @media (max-width: 610px) {
+        width: 100% !important;
+        border-radius: 0;
+    }
+
+    @media (max-width: 912px) {
+        width: 90%
+    }
+`
+
 export {
     PostBody,
     UserContainer,
@@ -200,5 +223,5 @@ export {
     UserMessage,
     MetadataContainer,
     IconContainer,
-    ContentPost
+    RepostedBy
 }

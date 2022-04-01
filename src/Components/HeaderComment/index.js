@@ -6,7 +6,6 @@ import {
 
 } from "./style"
 
-
 export default function HeaderComment({ comment }) {
     const { user } = useAuth()
     const [followedId, setFollowedId] = useState(false)
@@ -18,6 +17,7 @@ export default function HeaderComment({ comment }) {
             console.log(error)
         })
     }
+
     useEffect(() => {
         verifyFollow()
     }, [])
@@ -26,7 +26,7 @@ export default function HeaderComment({ comment }) {
         <User>
             <div className="username">{comment.username}</div>
             <div className="follow">
-                {comment.userId === user.id ?
+                {comment.userId === user?.id ?
                     "• post’s author"
                     : followedId === true ?
                         "• following"

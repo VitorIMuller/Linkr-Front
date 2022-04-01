@@ -126,6 +126,41 @@ const LoadingContainer = styled.div`
     }
 `;
 
+const Reloader = styled.div`
+    width: 90%;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1877F2;
+
+    border: none;
+    border-radius: 16px;
+    margin-top: 40px;
+    cursor: pointer;
+
+    color: #fff;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+
+    &>span{
+        margin-right: 14px;
+    }
+
+    @media (max-width: 610px) {
+        width: 100%;
+        border-radius: 0px;
+    }
+
+    @media (min-width: 912px) {
+        width: 72%
+    }
+`
+
 export {
     TitleContainer,
     MainContainer,
@@ -134,4 +169,5 @@ export {
     LeftWrapper,
     RightWrapper,
     LoadingContainer,
+    Reloader
 }

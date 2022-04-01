@@ -18,9 +18,10 @@ const TextContainer = styled.div`
 
     display: flex;
     flex-direction: column;
-    align-items: space-evenly; 
 
-    padding: 24px 19px;
+    overflow: hidden;
+
+    padding: 20px 19px;
 
     @media (max-width: 610px) {
         width: calc(100% - 115px);
@@ -29,14 +30,15 @@ const TextContainer = styled.div`
 `
 
 const UrlTitle = styled.h1`    
-    padding-bottom: 5px;
-    
-    font-size: 1em;
+    height: 25px;
+
+    margin-bottom: 5px;
+
+    font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
     color: #CECECE;
 
-    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -53,15 +55,16 @@ const UrlTitle = styled.h1`
 `
 
 const UrlDescription = styled.span`
-    padding-bottom: 13px;
+    display: block;
+
+    margin-bottom: 13px;
 
     font-family: "Lato", sans-serif;
     font-size: 11px;
     font-weight: 400;
     line-height: 13.2px;
     color: #9B9595;
-    
-    max-width: 100%;
+
     overflow: hidden;
     text-overflow: ellipsis;
 
@@ -74,18 +77,22 @@ const UrlDescription = styled.span`
         font-size: 9px;
         line-height: 10.8px;
 
-        padding-bottom: 4px;
+        margin-bottom: 4px;
     }
 `
 
 const UrlLink = styled.span`
+    height: 15px;
+
+    display: flex;
+    align-items: center;
+    
     font-family: "Lato", sans-serif;
     font-size: 11px;
     font-weight: 400;
     line-height: 13.2px;
     color: #CECECE;
 
-    max-width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
