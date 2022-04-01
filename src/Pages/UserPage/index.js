@@ -18,6 +18,7 @@ export default function UserPage() {
     const [isLoading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [reload, setReload] = useState(false);
+    const [userInfo, setUserInfo] = useState();
 
     const NoPostYetMessage = "There are no posts yet";
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
@@ -38,8 +39,19 @@ export default function UserPage() {
             console.log(error);
         });
     }
+
+    useEffect(() => {
+        api.getUserInfo(userId, user?.token).then(res => {
+            console.log(res.data);
+            setUserInfo(res.data);
+        })
+    }, []);
+
+    console.log(userInfo)
+
     window.scrollTo(0, 0);
-    useEffect(fetchPosts, [userId, user?.token, reload]);
+
+    useEffect(fetchPosts, [userId, user?.token]);
 
     return (
         <>
@@ -48,8 +60,8 @@ export default function UserPage() {
                 <LeftWrapper>
                     {isLoading ? "" :
                         <TitleContainer>
-                            <div><img src={posts[0]?.profilePic} alt='profile picture for user page' /></div>
-                            <span>{`${posts[0]?.username}'s posts`}</span>
+                            <div><img src={userInfo?.image} alt='profile picture for user page' /></div>
+                            <span>{`${userInfo?.name}'s posts`}</span>
                         </TitleContainer>
                     }
                     {

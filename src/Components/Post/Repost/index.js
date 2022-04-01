@@ -11,10 +11,11 @@ import api from "../../../Services/api";
 import useAuth from "../../../Hooks/useAuth";
 import Swal from "sweetalert2";
 
-export default function Repost({ postId, repostCount, reload, setReload }) {
+export default function Repost({ postId, reload, setReload }) {
 
     const { user } = useAuth();
 
+    const [repostCount, setRepostCount] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [isReposting, setReposting] = useState(false);
 
@@ -39,6 +40,12 @@ export default function Repost({ postId, repostCount, reload, setReload }) {
             });
         }
     }
+
+    useEffect(() => {
+        api.getTotalReposts(postId, user?.token).then(res => {
+            setRepostCount(res.data);
+        });
+    }, [postId, user?.token, repostCount, reload]);
 
     const customStyles = {
         content: {

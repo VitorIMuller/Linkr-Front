@@ -41,7 +41,7 @@ export default function HashtagPage() {
     }
     window.scrollTo(0, 0);
 
-    useEffect(fetchPosts, [user, location.pathname, reload]);
+    useEffect(fetchPosts, [user, location.pathname]);
 
     return (
         <>
