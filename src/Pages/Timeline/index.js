@@ -22,6 +22,8 @@ export default function Timeline() {
     const NoPostsYet = `No posts found from your friends`;
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
 
+    const offset = 0;
+
     function fetchPosts() {
 
         setLoading(true);
@@ -33,7 +35,7 @@ export default function Timeline() {
             console.log(error);
         });
 
-        api.getPost(user?.token).then(res => {
+        api.getPost(user?.token, offset).then(res => {
             setPosts(res.data);
             setLoading(false);
 

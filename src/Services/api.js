@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const BASE_URL = "https://apilinkr.herokuapp.com";
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://apilinkr.herokuapp.com";
+//const BASE_URL = "http://localhost:5000";
 
 function createHeaders(token) {
     return { headers: { Authorization: `Bearer ${token}` } };
@@ -27,11 +27,11 @@ async function createPost(body, token) {
     return promise;
 }
 
-async function getPost(token) {
+async function getPost(token, offset) {
     const auth = createHeaders(token);
 
     const render_limit = 10;
-    const promise = await axios.get(`${BASE_URL}/posts/${render_limit}`, auth);
+    const promise = await axios.get(`${BASE_URL}/posts/${render_limit}/${offset}`, auth);
 
     return promise;
 }
