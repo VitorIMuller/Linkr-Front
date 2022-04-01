@@ -31,7 +31,7 @@ export default function SearchUser() {
     function getUsers() {
         if (name) {
             setLoading(true)
-            api.getUsers(name, user.token).then(res => {
+            api.getUsers(name, user?.token).then(res => {
                 setList(res.data)
                 setLoading(false);
             }).catch(error => {
@@ -48,7 +48,7 @@ export default function SearchUser() {
 
     function getFollowed() {
         if (name) {
-            api.getFollowed(name, user.token).then(res => {
+            api.getFollowed(name, user?.token).then(res => {
                 setfollowed(res.data)
                 setLoading(false);
             }).catch(error => {
@@ -74,7 +74,7 @@ export default function SearchUser() {
         const user = list[i];
         for (let j = 0; j < followed.length; j++) {
             const follows = followed[j];
-            if (user.id !== follows.id) {
+            if (user?.id !== follows.id) {
                 usersFollowed.push(user);
             }
             else {               

@@ -1,15 +1,12 @@
 import { useState, useEffect } from "react";
 import { MainContainer, TitleContainer, TimelineContainer, NoPost, LoadingContainer, LeftWrapper, RightWrapper, SearchContainer, Reloader } from "./style";
+import { useAuth, useInterval } from '../../Hooks'
+import { Publish, SearchUser, Header, Trends } from '../../Components'
 import Post from "../../Components/Post";
-import useAuth from "../../Hooks/useAuth";
-import useInterval from '../../Hooks/useInterval'
 import api from "../../Services/api";
-import Publish from "../../Components/Publish";
-import SearchUser from "../../Components/UserSearch";
 import CircularLoading from "../../Assets/CircularLoading.js";
-import Header from '../../Components/Header'
-import Trends from '../../Components/Trends'
 import { IoRepeatSharp as Icon } from 'react-icons/io5';
+
 
 export default function Timeline() {
     const { user } = useAuth();
@@ -23,9 +20,7 @@ export default function Timeline() {
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
     const [isFollowing, setFollowing] = useState(false);
     const [newPosts, setNewPosts] = useState([]);
-    const [olderPosts, setOlderPosts] = useState([]);
     const [offset, setOffSet] = useState(0);
-    const [loadNew, setLoadNew] = useState(false);
     const [lastPostTime, setLastPostTime] = useState();
 
     let repostCount = 0;
@@ -42,10 +37,10 @@ export default function Timeline() {
         });
 
         api.getPost(user?.token, offset).then(res => {
-
-            setPosts(res.data);
-            setLastPostTime(res.data.posts[0].time);
-            setOffSet(offset+res.data.length);
+            console.log(res.data.posts);
+            setPosts(res.data.posts);
+            res.data && setLastPostTime(res.data.posts[0]?.time);
+            setOffSet(offset+res.data.posts.length);
             setLoading(false);
             
 
@@ -67,15 +62,17 @@ export default function Timeline() {
     function verifyNewPosts(incomingPosts) {  
         const areAnyNew = incomingPosts.filter( post => post.time > lastPostTime);
         if(areAnyNew) {
-            setNewPosts(areAnyNew);
-            setLoadNew(true);
+            setLastPostTime(areAnyNew[areAnyNew.length-1]?.time);
+            setNewPosts(newPosts.concat(areAnyNew));
         }
         return
     }
 
-    useInterval(getNewPosts, 15000);
+    function loadNewPosts() {
+        setPosts(posts.concat(newPosts));
+    }
 
-    useEffect(() => setLoadNew(false), [loadNew]);
+    useInterval(getNewPosts, 15000);
     useEffect(fetchPosts, [user, reload]);
 
     return (
@@ -88,25 +85,10 @@ export default function Timeline() {
                             timeline
                         </TitleContainer>
                         <Publish />
-                        { newPosts.length !== 0 
-                            && <Reloader onClick = {()=> setLoadNew(true)}>
-                                   <span>{newPosts.length} new posts, load more! </span><Icon size="20px"/>
+                        { newPosts?.length !== 0 
+                            && <Reloader onClick = {()=> loadNewPosts()}>
+                                   <span>{newPosts?.length} new posts, load more! </span><Icon size="20px"/>
                                 </Reloader>
-                        }
-                        { loadNew &&
-                            newPosts?.map((post) => (
-                                <Post
-                                    key={post.id}
-                                    postId={post.id}
-                                    url={post.url}
-                                    title={post.urlTitle}
-                                    description={post.urlDescription}
-                                    image={post.urlImage}
-                                    message={post.userMessage}
-                                    name={post.name}
-                                    profilePic={post.profilePic}
-                                    userId={post.userId}
-                                />))    
                         }
                         {
                             isLoading

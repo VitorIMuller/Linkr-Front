@@ -26,7 +26,7 @@ export default function HeaderComment({ comment }) {
         <User>
             <div className="username">{comment.username}</div>
             <div className="follow">
-                {comment.userId === user.id ?
+                {comment.userId === user?.id ?
                     "• post’s author"
                     : followedId === true ?
                         "• following"
