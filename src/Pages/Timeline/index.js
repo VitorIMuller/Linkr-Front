@@ -36,9 +36,9 @@ export default function Timeline() {
         });
 
         api.getPost(user?.token, offset).then(res => {
-            console.log(res.data);
+
             setPosts(res.data);
-            res.data && setLastPostTime(res.data[0]?.time);
+            setLastPostTime(res.data[0]?.time);
             setOffSet(offset+res.data.length);
             setLoading(false);
             
@@ -53,22 +53,27 @@ export default function Timeline() {
     }
 
     function getNewPosts() {
+        console.log('console 02: getting more posts')
         api.getPost(user?.token, 0)
-            .then(res => verifyNewPosts(res.data))
+            .then(res => verifyNewPosts(res))
             .catch(error => console.log(error))
     }
 
-    function verifyNewPosts(incomingPosts) {  
+    function verifyNewPosts(res) { 
+        const incomingPosts = res.data; 
+
         const areAnyNew = incomingPosts.filter( post => post.time > lastPostTime);
+        
         if(areAnyNew) {
-            setLastPostTime(areAnyNew[areAnyNew.length-1]?.time);
-            setNewPosts(newPosts.concat(areAnyNew));
+            areAnyNew.length > 0 && setLastPostTime(areAnyNew[areAnyNew.length-1]?.time);
+            setNewPosts((newPosts.concat(areAnyNew).reverse()));
         }
         return
     }
 
     function loadNewPosts() {
-        setPosts(posts.concat(newPosts));
+        setPosts((posts.reverse().concat(newPosts)).reverse());
+        setNewPosts([]);
     }
 
     useInterval(getNewPosts, 15000);
@@ -98,7 +103,8 @@ export default function Timeline() {
                                         ? <NoPost>{NotFollowingMessage}</NoPost>
                                         : error === true
                                             ? <NoPost>{ServerErrorMessage}</NoPost>
-                                            : (
+                                            : 
+                                            ( 
                                                 posts?.map((post, index) =>
                                                     <Post
                                                         key={index}
@@ -117,7 +123,8 @@ export default function Timeline() {
                                                         setReload={setReload}
                                                     />
                                                 )
-                                            )}
+                                            )
+                                            }
                     </TimelineContainer>
                 </LeftWrapper>
                 <RightWrapper>
