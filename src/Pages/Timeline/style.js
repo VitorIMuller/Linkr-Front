@@ -49,6 +49,13 @@ const TimelineContainer = styled.div`
 
     padding-bottom: 100px;
 
+    .infinite-scroll{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
     @media (max-width: 767px) {
         width: 100%;
         align-items: center;
@@ -160,6 +167,7 @@ const Reloader = styled.div`
         width: 72%
     }
 `
+
 
 export {
     TitleContainer,

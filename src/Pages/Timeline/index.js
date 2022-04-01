@@ -6,6 +6,7 @@ import Post from "../../Components/Post";
 import api from "../../Services/api";
 import CircularLoading from "../../Assets/CircularLoading.js";
 import { IoRepeatSharp as Icon } from 'react-icons/io5';
+import InfiniteScroll from 'react-infinite-scroller';
 
 
 export default function Timeline() {
@@ -22,6 +23,8 @@ export default function Timeline() {
     const [newPosts, setNewPosts] = useState([]);
     const [offset, setOffSet] = useState(0);
     const [lastPostTime, setLastPostTime] = useState();
+    const [offsetScroll, setOffsetScroll] = useState(10);
+    const [hasMore, setHasMore] = useState(true);
 
 
     function fetchPosts() {
@@ -79,6 +82,23 @@ export default function Timeline() {
     useInterval(getNewPosts, 15000);
     useEffect(fetchPosts, [user, reload]);
 
+    const loadPosts = async () => {
+        const loadMorePosts = await api.getPost(user?.token, offsetScroll);
+        
+        return loadMorePosts;
+    }
+    
+    const loadFunc = async () => {
+        const {data: morePosts} = await loadPosts();
+
+        if (morePosts.length < 10) {
+          return setHasMore(false)
+        }
+       
+        setPosts(posts.concat(morePosts));
+        setOffsetScroll(offsetScroll + 10);
+    }
+
     return (
         <>
             <Header />
@@ -105,24 +125,32 @@ export default function Timeline() {
                                             ? <NoPost>{ServerErrorMessage}</NoPost>
                                             : 
                                             ( 
-                                                posts?.map((post, index) =>
-                                                    <Post
-                                                        key={index}
-                                                        postId={post?.id}
-                                                        url={post?.url}
-                                                        title={post?.urlTitle}
-                                                        description={post?.urlDescription}
-                                                        image={post?.urlImage}
-                                                        message={post?.userMessage}
-                                                        name={post?.name}
-                                                        profilePic={post?.profilePic}
-                                                        userId={post?.userId}
-                                                        repostCount={post?.repostCount}
-                                                        repostedBy={post?.repostedBy}
-                                                        reload={reload}
-                                                        setReload={setReload}
-                                                    />
-                                                )
+                                                <InfiniteScroll
+                                                    className='infinite-scroll'
+                                                    pageStart={0}
+                                                    loadMore={loadFunc}
+                                                    hasMore={hasMore}
+                                                    loader={<div className="loader" key={0}>Loading ...</div>}
+                                                >
+                                                    {posts?.map((post, index) =>
+                                                        <Post
+                                                            key={index}
+                                                            postId={post?.id}
+                                                            url={post?.url}
+                                                            title={post?.urlTitle}
+                                                            description={post?.urlDescription}
+                                                            image={post?.urlImage}
+                                                            message={post?.userMessage}
+                                                            name={post?.name}
+                                                            profilePic={post?.profilePic}
+                                                            userId={post?.userId}
+                                                            repostCount={post?.repostCount}
+                                                            repostedBy={post?.repostedBy}
+                                                            reload={reload}
+                                                            setReload={setReload}
+                                                        />
+                                                    )}
+                                                </InfiniteScroll>
                                             )
                                             }
                     </TimelineContainer>
