@@ -22,7 +22,7 @@ export default function Timeline() {
     const NoPostsYet = `No posts found from your friends`;
     const ServerErrorMessage = `An error occured while trying to fetch the posts, please refresh the page`;
 
-    let repostCount = 0;
+    const offset = 0;
 
     function fetchPosts() {
 
@@ -35,9 +35,8 @@ export default function Timeline() {
             console.log(error);
         });
 
-        api.getPost(user?.token).then(res => {
+        api.getPost(user?.token, offset).then(res => {
             setPosts(res.data);
-            console.log(res.data)
             setLoading(false);
 
         }).catch(error => {
@@ -71,24 +70,22 @@ export default function Timeline() {
                                         : error === true
                                             ? <NoPost>{ServerErrorMessage}</NoPost>
                                             : (
-                                                posts?.posts?.map((post, index) =>
+                                                posts?.map((post, index) =>
                                                     <Post
                                                         key={index}
-                                                        postId={post.id}
-                                                        url={post.url}
-                                                        title={post.urlTitle}
-                                                        description={post.urlDescription}
-                                                        image={post.urlImage}
-                                                        message={post.userMessage}
-                                                        name={post.name}
-                                                        profilePic={post.profilePic}
-                                                        userId={post.userId}
-                                                        repostCount={posts.repostsCount.map(repost =>
-                                                            repost.postId === post.id ? repostCount = repost.count : false
-                                                        ) ? repostCount : 0}
+                                                        postId={post?.id}
+                                                        url={post?.url}
+                                                        title={post?.urlTitle}
+                                                        description={post?.urlDescription}
+                                                        image={post?.urlImage}
+                                                        message={post?.userMessage}
+                                                        name={post?.name}
+                                                        profilePic={post?.profilePic}
+                                                        userId={post?.userId}
+                                                        repostCount={post?.repostCount}
+                                                        repostedBy={post?.repostedBy}
                                                         reload={reload}
                                                         setReload={setReload}
-                                                        repostedBy={post?.repostedBy}
                                                     />
                                                 )
                                             )}
