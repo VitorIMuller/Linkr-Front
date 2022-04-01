@@ -39,7 +39,7 @@ export default function Post({ url, postId, title, description, image, message, 
             url: url,
             userMessage: textToEdit
         };
-        console.log(body);
+        
         api.editPost(body, postId, user.token)
             .then(() => {
                 setIsEditing(!isEditing);

@@ -25,7 +25,7 @@ export default function SearchUser() {
         if (name) {
             setLoading(true)
             api.getUsers(name, user.token).then(res => {
-                console.log(res.data)
+                
                 setList(res.data)
                 setLoading(false);
             }).catch(error => {

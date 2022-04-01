@@ -15,7 +15,7 @@ export default function Publish(){
       
       try {
         const response = await api.createPost(formData, user.token);
-        console.log('response: ', response);
+        
         setLoading(false);
         setFormData({});
         window.location.reload();
@@ -35,7 +35,7 @@ export default function Publish(){
     return (
         <Post>
             <PostUserInfo>
-                <img src={user.image} alt="avatar" />
+                <img src={user?.image} alt="avatar" />
             </PostUserInfo>
             <PostForm  onSubmit={handleSubmit} >
             <h2>What are you going to share today?</h2>
