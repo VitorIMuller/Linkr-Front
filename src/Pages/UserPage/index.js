@@ -73,6 +73,7 @@ export default function UserPage() {
                                                 name={post?.username}
                                                 profilePic={post?.profilePic}
                                                 userId={post?.userId}
+                                                repostCount={post.repostCount}
                                             />
                                         )
                                     )

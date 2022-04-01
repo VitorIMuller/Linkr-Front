@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+const ModalContainer = styled.div`
+    display: flex;
+
+    z-index: 99;
+`;
+
 const LoadingContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -107,5 +113,6 @@ export {
     NoButton,
     YesButton,
     Buttons,
-    LoadingContainer
+    LoadingContainer,
+    ModalContainer
 }

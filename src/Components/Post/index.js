@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import { ContentPost, IconContainer, MetadataContainer, PostBody, TextContainer, UserContainer, UserMessage, UserName, UserPicture } from "./style";
+import { IconContainer, MetadataContainer, PostBody, TextContainer, UserContainer, UserMessage, UserName, UserPicture, RepostedBy } from "./style";
 import React, { useState, useEffect, useRef } from "react";
 import useAuth from '../../Hooks/useAuth';
 import ReactHashtag from "@mdnm/react-hashtag";
@@ -7,15 +7,14 @@ import LikeHeart from "./LikeHeart";
 import Metadata from "./Metadata";
 import default_profile_pic from "../../Assets/img/blank-profile-picture.png"
 import { GoPencil, GoTrashcan } from "react-icons/go";
-import { AiOutlineComment, AiOutlineRetweet } from "react-icons/ai";
+import { AiOutlineRetweet } from "react-icons/ai";
 import DeletePost from "../Delete";
 import Repost from "./Repost";
 import Comment from "./Comment";
 import api from "../../Services/api";
 import Comments from "../Comments";
 
-export default function Post({ url, postId, title, description, image, message, name, profilePic, userId }) {
-
+export default function Post({ url, postId, title, description, image, message, name, profilePic, userId, repostCount, reload, setReload, repostedBy }) {
     const { hashtagRedirect, user } = useAuth();
     const [isDeleting, setDeleting] = useState(false);
 
@@ -30,7 +29,7 @@ export default function Post({ url, postId, title, description, image, message, 
         if (isEditing) {
             inputRef.current.focus();
         }
-    }, [isEditing]);
+    }, [isEditing, reload]);
 
     function toggleEdit() {
         setTextToEdit(message);
@@ -75,15 +74,26 @@ export default function Post({ url, postId, title, description, image, message, 
 
     return (
         <>
-            <PostBody>
+            {repostedBy &&
+                <RepostedBy >
+                    <AiOutlineRetweet size={22} />
+                    <span>
+                        Re-posted by
+                        {/* <a href='' > */}
+                        <strong>{repostedBy === user.name ? 'you' : repostedBy}</strong>
+                        {/* </a> */}
+                    </span>
+                </RepostedBy>
+            }
+            <PostBody repostedBy={repostedBy}>
                 {isDeleting && <DeletePost isDeleting={isDeleting} setDeleting={setDeleting} postId={postId}></DeletePost>}
                 <UserContainer>
                     <UserPicture>
                         <img src={profilePic ? profilePic : default_profile_pic} />
                     </UserPicture>
-                    <LikeHeart postId={postId} />
+                    <LikeHeart postId={postId} reload={reload} setReload={setReload} />
                     <Comment setComments={setComments} comments={comments} postId={postId} userId={userId} token={user.token} totalComments={totalComments} />
-                    <Repost postId={postId} userId={userId} />
+                    <Repost postId={postId} userId={userId} repostCount={repostCount} reload={reload} setReload={setReload} />
                 </UserContainer>
                 <TextContainer>
                     {userId === user.id && (

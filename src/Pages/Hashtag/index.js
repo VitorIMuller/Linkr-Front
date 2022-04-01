@@ -71,6 +71,7 @@ export default function HashtagPage() {
                                             name={post?.name}
                                             profilePic={post?.image}
                                             userId={post?.userId}
+                                            repostCount={post.repostCount}
                                         />
                                     )
                                 )}

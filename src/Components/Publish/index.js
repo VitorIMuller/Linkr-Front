@@ -14,7 +14,7 @@ export default function Publish() {
     setLoading(true);
 
     try {
-      const response = await api.createPost(formData, user.token);
+      await api.createPost(formData, user.token);
       setLoading(false);
       setFormData({});
       window.location.reload();

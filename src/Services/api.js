@@ -30,7 +30,7 @@ async function createPost(body, token) {
 async function getPost(token) {
     const auth = createHeaders(token);
 
-    const render_limit = 20;
+    const render_limit = 10;
     const promise = await axios.get(`${BASE_URL}/posts/${render_limit}`, auth);
 
     return promise;
@@ -133,6 +133,13 @@ async function handleFollow(userToHandle, token) {
     return promise;
 }
 
+async function reposts(postId, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.post(`${BASE_URL}/posts/${postId}/reposts`, null, auth);
+
+    return promise;
+}
+
 async function createComment(token, text, postId, userId) {
     const auth = createHeaders(token)
     const body = { text, postId, userId }
@@ -176,6 +183,7 @@ const api = {
     isFollowing,
     getFollowStatus,
     handleFollow,
+    reposts,
     createComment,
     getComments,
     commentsCounter,
