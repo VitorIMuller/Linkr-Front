@@ -32,7 +32,7 @@ export default function LikeHeart({ postId, reload, setReload }) {
             tooltipNaming(res.data);
         })
 
-        api.getUsersLikes(postId, user.token).then(res => {
+        api.getUsersLikes(postId, user?.token).then(res => {
             setLike(res.data);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps

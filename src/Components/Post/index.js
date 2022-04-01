@@ -55,7 +55,7 @@ export default function Post({ url, postId, title, description, image, message, 
             url: url,
             userMessage: textToEdit
         };
-        console.log(body);
+        
         api.editPost(body, postId, user.token)
             .then(() => {
                 setIsEditing(!isEditing);
@@ -80,7 +80,7 @@ export default function Post({ url, postId, title, description, image, message, 
                     <span>
                         Re-posted by
                         {/* <a href='' > */}
-                        <strong>{repostedBy === user.name ? 'you' : repostedBy}</strong>
+                        <strong>{repostedBy === user?.name ? 'you' : repostedBy}</strong>
                         {/* </a> */}
                     </span>
                 </RepostedBy>
@@ -92,11 +92,11 @@ export default function Post({ url, postId, title, description, image, message, 
                         <img src={profilePic ? profilePic : default_profile_pic} />
                     </UserPicture>
                     <LikeHeart postId={postId} reload={reload} setReload={setReload} />
-                    <Comment setComments={setComments} comments={comments} postId={postId} userId={userId} token={user.token} totalComments={totalComments} />
+                    <Comment setComments={setComments} comments={comments} postId={postId} userId={userId} token={user?.token} totalComments={totalComments} />
                     <Repost postId={postId} userId={userId} repostCount={repostCount} reload={reload} setReload={setReload} />
                 </UserContainer>
                 <TextContainer>
-                    {userId === user.id && (
+                    {userId === user?.id && (
                         <IconContainer>
                             <GoPencil className="edit" onClick={toggleEdit} />
                             <GoTrashcan className="trashcan" onClick={() => setDeleting(true)} />
