@@ -14,7 +14,7 @@ import {
 } from "./style"
 import LoadingFind from "../../Assets/LoadingFind";
 
-export default function SearchUser() {
+export default function SearchUser({type}) {
 
     const { user } = useAuth();
     const navigate = useNavigate()
@@ -107,7 +107,7 @@ export default function SearchUser() {
     }
     
     return (
-        <ContainerInputFindUser>
+        <ContainerInputFindUser type={type} >
             <InputFindUser >
                 <DebounceInput
                     className="debounce-input"
