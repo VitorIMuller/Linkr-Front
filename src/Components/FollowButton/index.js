@@ -14,7 +14,7 @@ export default function FollowButton({ children }) {
 
   function getFollowStatus() {
     setIsLoading(true);
-    if (user?.id === userId) return setFollowStatus(false);
+    if (user?.id == userId) return setFollowStatus(false);
 
     api.getFollowStatus(userId, user?.token)
       .then(res => {
@@ -46,7 +46,7 @@ export default function FollowButton({ children }) {
 
   return (
     <Follow
-      showIt={user?.id === userId}
+      showIt={user?.id == userId}
       disabled={isLoading}
       follows={followStatus}
       onClick={() => handleFollow()}
