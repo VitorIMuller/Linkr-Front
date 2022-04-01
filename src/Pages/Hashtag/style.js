@@ -63,6 +63,14 @@ const LeftWrapper = styled.div`
         width: 100%;
         align-items: center;
     }
+
+    @media (min-width: 912px) {
+        width: 72% !important;
+
+        & > * {
+            width: 72%;
+        }
+    }
 `
 const RightWrapper = styled.div`
     width: 40%;

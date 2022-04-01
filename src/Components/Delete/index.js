@@ -4,6 +4,7 @@ import useAuth from '../../Hooks/useAuth';
 import api from '../../Services/api';
 import CircularLoading from '../../Assets/CircularLoading';
 import { Buttons, LoadingContainer, ModalContainer, NoButton, Title, YesButton } from './style';
+import Swal from 'sweetalert2';
 
 const customStyles = {
     content: {
@@ -17,9 +18,11 @@ const customStyles = {
         borderRadius: '50px',
         display: 'flex',
         flexDirection: 'column',
-        alignItems: 'center',
-        zIndex: '10'
+        alignItems: 'center'
     },
+    overlay: {
+        zIndex: 1000
+    }
 };
 
 Modal.setAppElement('.root');
@@ -40,13 +43,17 @@ export default function DeletePost({ isDeleting, setDeleting, postId }) {
             console.log(error);
             setLoading(false);
             setDeleting(false);
-            alert("An error occured while deleting the post. Please, try again.");
+            Swal.fire({
+                icon: 'error',
+                title: "Couldn't delete post",
+                text: "An error occured while deleting the post. Please, try again.",
+            });
         }
     }
 
     return (
         <ModalContainer>
-            <Modal isOpen={isDeleting} onRequestClose={() => { if (!isLoading) setDeleting(false) }} style={customStyles}>
+            <Modal isOpen={isDeleting} onRequestClose={() => { if (!isLoading) setDeleting(false) }} style={customStyles} zIndex={5}>
                 {isLoading
                     ?
                     <LoadingContainer>

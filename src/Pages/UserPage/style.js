@@ -42,6 +42,7 @@ const MainContainer = styled.main`
     
     background-color: #333333;
     font-family: 'Oswald', sans-serif;
+    
 `
 
 const UserContainer = styled.div`
@@ -77,6 +78,14 @@ const LeftWrapper = styled.div`
     @media (max-width: 767px) {
         width: 100%;
         align-items: center;
+    }
+
+    @media (min-width: 912px) {
+        width: 72% !important;
+
+        & > * {
+            width: 72%;
+        }
     }
 `
 const RightWrapper = styled.div`

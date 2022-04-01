@@ -73,12 +73,13 @@ function Comments({ postId, userId }) {
             <InputCommentContent>
                 <img src={user?.image} />
                 <InputComment
+                    id="userComment"
                     name="userComment"
                     placeholder="write a comment..."
                     type="text"
                     onChange={handleInputChange}
                 />
-                <button className="ioioSend" onClick={handlePostComment} ><IoIosSend size="20px" /></button>
+                <button id="commentButton" className="ioioSend" onClick={handlePostComment} ><IoIosSend size="20px" /></button>
             </InputCommentContent>
         </CommentsContent>
     )

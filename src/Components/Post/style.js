@@ -11,6 +11,9 @@ const PostBody = styled.div`
 
     background-color: #171717;
     font-family: "Lato", sans-serif;
+
+    position: relative;
+    z-index: 2;
     
     ${props => props.repostedBy ? '' : 'margin-top: 16px;'}
 
@@ -22,7 +25,7 @@ const PostBody = styled.div`
     }
 
     @media (min-width: 912px) {
-        width: 72%
+        width: 100%
     }
 `;
 
@@ -33,6 +36,8 @@ const UserContainer = styled.div`
         align-items: center;
 
         color: #FFF;
+
+        margin-left: -10px;
 `;
 
 const UserPicture = styled.div`
@@ -168,10 +173,18 @@ const MetadataContainer = styled.div`
 `;
 
 const RepostedBy = styled.div`
-    width: 72%;
+    width: 100%;
 
     display: flex;
     align-items: center;
+
+    text-align: center;
+
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 13px;
 
     color: #FFF;
     background-color: #1E1E1E;
@@ -180,22 +193,21 @@ const RepostedBy = styled.div`
     margin-top: 16px;
     margin-bottom: -30px;
     
-    padding-bottom: 30px;
+    padding-top: 5px;
+    padding-bottom: 35px;
     padding-left: 13px;
-
-    span {
-        margin: 11px;
-
-        font-family: 'Lato';
-        font-style: normal;
-        font-weight: 400;
-        font-size: 11px;
-        line-height: 13px;
+    
+    svg {
+        padding-right: 5px;
     }
 
     a {
         all: unset;
-        padding-left: 3px;
+
+        display: flex;
+        align-items: center;
+
+        cursor: pointer;
     }
 
     strong {
@@ -203,6 +215,10 @@ const RepostedBy = styled.div`
         font-weight: 700;
 
         padding-left: 3px;
+    }
+
+    strong:hover {
+        text-decoration: underline;
     }
 
     @media (max-width: 610px) {

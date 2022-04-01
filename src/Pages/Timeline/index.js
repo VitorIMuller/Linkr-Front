@@ -42,9 +42,9 @@ export default function Timeline() {
 
             setPosts(res.data);
             setLastPostTime(res.data[0]?.time);
-            setOffSet(offset+res.data.length);
+            setOffSet(offset + res.data.length);
             setLoading(false);
-            
+
 
         }).catch(error => {
 
@@ -62,13 +62,13 @@ export default function Timeline() {
             .catch(error => console.log(error))
     }
 
-    function verifyNewPosts(res) { 
-        const incomingPosts = res.data; 
+    function verifyNewPosts(res) {
+        const incomingPosts = res.data;
 
-        const areAnyNew = incomingPosts.filter( post => post.time > lastPostTime);
-        
-        if(areAnyNew) {
-            areAnyNew.length > 0 && setLastPostTime(areAnyNew[areAnyNew.length-1]?.time);
+        const areAnyNew = incomingPosts.filter(post => post.time > lastPostTime);
+
+        if (areAnyNew) {
+            areAnyNew.length > 0 && setLastPostTime(areAnyNew[areAnyNew.length - 1]?.time);
             setNewPosts((newPosts.concat(areAnyNew).reverse()));
         }
         return
@@ -80,21 +80,21 @@ export default function Timeline() {
     }
 
     useInterval(getNewPosts, 15000);
-    useEffect(fetchPosts, [user, reload]);
+    useEffect(fetchPosts, [user]);
 
     const loadPosts = async () => {
         const loadMorePosts = await api.getPost(user?.token, offsetScroll);
-        
+
         return loadMorePosts;
     }
-    
+
     const loadFunc = async () => {
-        const {data: morePosts} = await loadPosts();
+        const { data: morePosts } = await loadPosts();
 
         if (morePosts.length < 10) {
-          return setHasMore(false)
+            return setHasMore(false)
         }
-       
+
         setPosts(posts.concat(morePosts));
         setOffsetScroll(offsetScroll + 10);
     }
@@ -109,10 +109,10 @@ export default function Timeline() {
                             timeline
                         </TitleContainer>
                         <Publish />
-                        { newPosts?.length !== 0 
-                            && <Reloader onClick = {()=> loadNewPosts()}>
-                                   <span>{newPosts?.length} new posts, load more! </span><Icon size="20px"/>
-                                </Reloader>
+                        {newPosts?.length !== 0
+                            && <Reloader onClick={() => loadNewPosts()}>
+                                <span>{newPosts?.length} new posts, load more! </span><Icon size="20px" />
+                            </Reloader>
                         }
                         {
                             isLoading
@@ -123,8 +123,8 @@ export default function Timeline() {
                                         ? <NoPost>{NotFollowingMessage}</NoPost>
                                         : error === true
                                             ? <NoPost>{ServerErrorMessage}</NoPost>
-                                            : 
-                                            ( 
+                                            :
+                                            (
                                                 <InfiniteScroll
                                                     className='infinite-scroll'
                                                     pageStart={0}
@@ -146,13 +146,14 @@ export default function Timeline() {
                                                             userId={post?.userId}
                                                             repostCount={post?.repostCount}
                                                             repostedBy={post?.repostedBy}
+                                                            repostedById={post?.repostedById}
                                                             reload={reload}
                                                             setReload={setReload}
                                                         />
                                                     )}
                                                 </InfiniteScroll>
                                             )
-                                            }
+                        }
                     </TimelineContainer>
                 </LeftWrapper>
                 <RightWrapper>
