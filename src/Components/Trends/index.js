@@ -15,7 +15,7 @@ export default function Trends() {
     const limit = 10;
     setLoading(true);
     intervalKey && clearInterval(intervalKey);
-    api.getTrendingHashtags(limit, user.token).then(res => {
+    api.getTrendingHashtags(limit, user?.token).then(res => {
       setTrending(res.data);
       setLoading(false);
     }).catch(error => {

@@ -8,11 +8,10 @@ import api from "../../../Services/api";
 import { IoHeartOutline, IoHeart } from 'react-icons/io5'
 import { Heart, LikesQuantity } from "./style";
 
-export default function LikeHeart({ postId }) {
+export default function LikeHeart({ postId, reload, setReload }) {
     // eslint-disable-next-line no-unused-vars
     const { user } = useAuth();
     const [like, setLike] = useState(false);
-    const [reload, setReload] = useState(false);
     const [totalLikes, setTotalLikes] = useState(0);
     const [toolTip, setToolTip] = useState([]);
 
@@ -33,7 +32,7 @@ export default function LikeHeart({ postId }) {
             tooltipNaming(res.data);
         })
 
-        api.getUsersLikes(postId, user.token).then(res => {
+        api.getUsersLikes(postId, user?.token).then(res => {
             setLike(res.data);
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps

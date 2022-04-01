@@ -31,7 +31,7 @@ function Comments({ postId, userId }) {
     }
 
     function handlePostComment() {
-        api.createComment(user?.token, text, postId, user.id).then(() => {
+        api.createComment(user?.token, text, postId, user?.id).then(() => {
             setText("")
             window.location.reload()
         }).catch((error) => {
