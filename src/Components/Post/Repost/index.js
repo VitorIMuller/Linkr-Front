@@ -9,6 +9,7 @@ import { Buttons, LoadingContainer, NoButton, Title, YesButton } from '../../Del
 import CircularLoading from '../../../Assets/CircularLoading';
 import api from "../../../Services/api";
 import useAuth from "../../../Hooks/useAuth";
+import Swal from "sweetalert2";
 
 export default function Repost({ postId, repostCount, reload, setReload }) {
 
@@ -24,10 +25,13 @@ export default function Repost({ postId, repostCount, reload, setReload }) {
             setReposting(false);
             setReload(!reload);
         } catch (error) {
-            console.log(error);
             setLoading(false);
             setReposting(false);
-            alert("An error occured while reposting. Please, try again.");
+            Swal.fire({
+                icon: 'error',
+                title: "Couldn't Re-post",
+                text: `${error.response.data}`,
+            });
         }
     }
 
@@ -44,8 +48,10 @@ export default function Repost({ postId, repostCount, reload, setReload }) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            zIndex: '10'
         },
+        overlay: {
+            zIndex: 1000
+        }
     };
 
     Modal.setAppElement('.root');

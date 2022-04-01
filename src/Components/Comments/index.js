@@ -31,7 +31,7 @@ function Comments({ postId, userId }) {
     }
 
     function handlePostComment() {
-        api.createComment(user?.token, text, postId, user.id).then(() => {
+        api.createComment(user?.token, text, postId, user?.id).then(() => {
             setText("")
             window.location.reload()
         }).catch((error) => {
@@ -53,6 +53,14 @@ function Comments({ postId, userId }) {
         getComments()
     }, [])
 
+    let input = document.getElementById("userComment");
+    input.addEventListener("keyup", function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+            document.getElementById("commentButton").click();
+        }
+    });
+
     return (
         <CommentsContent>
             {isLoading ?
@@ -73,12 +81,13 @@ function Comments({ postId, userId }) {
             <InputCommentContent>
                 <img src={user?.image} />
                 <InputComment
+                    id="userComment"
                     name="userComment"
                     placeholder="write a comment..."
                     type="text"
                     onChange={handleInputChange}
                 />
-                <button className="ioioSend" onClick={handlePostComment} ><IoIosSend size="20px" /></button>
+                <button id="commentButton" className="ioioSend" onClick={handlePostComment} ><IoIosSend size="20px" /></button>
             </InputCommentContent>
         </CommentsContent>
     )

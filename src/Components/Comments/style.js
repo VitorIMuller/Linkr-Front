@@ -30,6 +30,8 @@ img{
     right: 10px;
     top: 10px;
     color: white;
+
+    cursor: pointer;
 }
 `
 
@@ -40,17 +42,16 @@ const CommentsContent = styled.div`
 
     padding: 0 17px;
     padding-top: 50px;
+    margin-top: -25px;
 
     border-radius: 16px;
 
     background-color: #1E1E1E;
     font-family: "Lato", sans-serif;
-    position: relative;
-    top: -30px;
-    z-index: 1;
 
-    
-    
+    position: relative;
+    z-index: 0;
+
     @media (max-width: 610px) {
         width: 100%;
         border-radius: 0;

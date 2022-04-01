@@ -48,7 +48,7 @@ export default function UserPage() {
                 <LeftWrapper>
                     {isLoading ? "" :
                         <TitleContainer>
-                            <div><img src={posts[0]?.profilePic}></img></div>
+                            <div><img src={posts[0]?.profilePic} alt='profile picture for user page' /></div>
                             <span>{`${posts[0]?.username}'s posts`}</span>
                         </TitleContainer>
                     }
