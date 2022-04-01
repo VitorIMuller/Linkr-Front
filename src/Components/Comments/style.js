@@ -57,10 +57,10 @@ const CommentsContent = styled.div`
         border-radius: 0;
 
         padding-top: 50px
-        }
+    }
 
     @media (min-width: 912px) {
-        width: 72%
+        width: 100%
     }
 `
 

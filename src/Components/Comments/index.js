@@ -53,14 +53,6 @@ function Comments({ postId, userId }) {
         getComments()
     }, [])
 
-    let input = document.getElementById("userComment");
-    input.addEventListener("keyup", function (event) {
-        if (event.keyCode === 13) {
-            event.preventDefault();
-            document.getElementById("commentButton").click();
-        }
-    });
-
     return (
         <CommentsContent>
             {isLoading ?

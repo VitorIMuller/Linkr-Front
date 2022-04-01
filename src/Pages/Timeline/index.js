@@ -80,7 +80,7 @@ export default function Timeline() {
     }
 
     useInterval(getNewPosts, 15000);
-    useEffect(fetchPosts, [user, reload]);
+    useEffect(fetchPosts, [user]);
 
     const loadPosts = async () => {
         const loadMorePosts = await api.getPost(user?.token, offsetScroll);
