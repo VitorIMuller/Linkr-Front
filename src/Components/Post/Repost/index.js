@@ -24,12 +24,17 @@ export default function Repost({ postId, repostCount, reload, setReload }) {
             await api.reposts(postId, user?.token);
             setReposting(false);
             setReload(!reload);
+            Swal.fire({
+                icon: 'success',
+                title: "Successfully reposted!",
+                text: "Wait a few seconds or reload the page",
+            });
         } catch (error) {
             setLoading(false);
             setReposting(false);
             Swal.fire({
                 icon: 'error',
-                title: "Couldn't Re-post",
+                title: "Repost failed",
                 text: `${error.response.data}`,
             });
         }
