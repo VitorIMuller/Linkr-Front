@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { CenterLoader, Title, SubTitle, TopBar, LowerBar, StyledInput, Container, Form, StyledButton, StyledLink } from "../Sign-in/style"
+import { CenterLoader, Title, SubTitle, TopBar, LowerBar, StyledInput, Container, Form, StyledButton, StyledLink, Components } from "../Sign-in/style"
 import Loading from "../../Assets/Loading"
 import api from "../../Services/api"
 
@@ -44,9 +44,11 @@ function SignUp() {
     return (
         <Container>
             <TopBar>
-                <Title>linkr</Title>
-                <SubTitle>save, share and discover<br />
-                    the best links on the web</SubTitle>
+                <Components>
+                    <Title>linkr</Title>
+                    <SubTitle>save, share and discover<br />
+                        the best links on the web</SubTitle>
+                </Components>
             </TopBar>
             <LowerBar>
                 <Form onSubmit={handleSignUp}>
