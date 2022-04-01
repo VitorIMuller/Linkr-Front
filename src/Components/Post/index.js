@@ -103,7 +103,7 @@ export default function Post({ url, postId, title, description, image, message, 
                         </IconContainer>
                     )}
                     <UserName to={`/user/${userId}`} className="username-post">{name}</UserName>
-                    <UserMessage>
+                    <UserMessage editing={isEditing}>
                         {<ReactHashtag onHashtagClick={value => hashtagRedirect(value)}>
                             {message}
                         </ReactHashtag>}
