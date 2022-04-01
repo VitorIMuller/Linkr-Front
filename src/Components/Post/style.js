@@ -154,6 +154,7 @@ const UserMessage = styled.div`
 
         cursor: pointer;
     }
+    ${props => props.editing && 'display: none;'}
 
     @media (max-width: 610px) {
         font-size: 15px;
