@@ -6,7 +6,6 @@ import {
 
 } from "./style"
 
-
 export default function HeaderComment({ comment }) {
     const { user } = useAuth()
     const [followedId, setFollowedId] = useState(false)
@@ -18,6 +17,7 @@ export default function HeaderComment({ comment }) {
             console.log(error)
         })
     }
+
     useEffect(() => {
         verifyFollow()
     }, [])

@@ -30,11 +30,11 @@ const TextContainer = styled.div`
 `
 
 const UrlTitle = styled.h1`    
-    height: 20%;
+    height: 25px;
 
-    padding-bottom: 5px;
+    margin-bottom: 5px;
 
-    font-size: 1em;
+    font-size: 16px;
     font-weight: 400;
     line-height: 19.2px;
     color: #CECECE;
@@ -55,9 +55,9 @@ const UrlTitle = styled.h1`
 `
 
 const UrlDescription = styled.span`
-    height: 60%;
+    display: block;
 
-    margin-bottom: 10px;
+    margin-bottom: 13px;
 
     font-family: "Lato", sans-serif;
     font-size: 11px;
@@ -82,7 +82,7 @@ const UrlDescription = styled.span`
 `
 
 const UrlLink = styled.span`
-    height: 20%;
+    height: 15px;
 
     display: flex;
     align-items: center;

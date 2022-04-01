@@ -10,21 +10,19 @@ import CircularLoading from '../../../Assets/CircularLoading';
 import api from "../../../Services/api";
 import useAuth from "../../../Hooks/useAuth";
 
-export default function Repost({ postId, repostCount }) {
+export default function Repost({ postId, repostCount, reload, setReload }) {
 
     const { user } = useAuth();
 
-    const [reload, setReload] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [isReposting, setReposting] = useState(false);
 
     async function handleRepost() {
 
         try {
-            await api.repost(postId, user?.token);
+            await api.reposts(postId, user?.token);
             setReposting(false);
             setReload(!reload);
-            window.location.reload();
         } catch (error) {
             console.log(error);
             setLoading(false);
@@ -46,6 +44,7 @@ export default function Repost({ postId, repostCount }) {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            zIndex: '10'
         },
     };
 

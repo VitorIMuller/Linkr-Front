@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-const TitleContainer = styled.p`
+const TitleContainer = styled.div`
     width: 90%;
     display: flex;
     text-align: left;
