@@ -126,9 +126,41 @@ async function getFollowStatus(userToVerify, token) {
     return promise;
 }
 
-async function handleFollow(userToHandle, token ) {
+async function handleFollow(userToHandle, token) {
     const auth = createHeaders(token);
     const promise = await axios.post(`${BASE_URL}/follows/${userToHandle}`, {}, auth);
+
+    return promise;
+}
+
+async function reposts(postId, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.post(`${BASE_URL}/posts/${postId}/reposts`, null, auth);
+
+    return promise;
+}
+
+async function createComment(token, text, postId, userId) {
+    const auth = createHeaders(token)
+    const body = { text, postId, userId }
+
+    const promise = await axios.post(`${BASE_URL}/comments`, body, auth)
+    return promise
+}
+async function getComments(token, postId) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/comments/${postId}`, auth);
+    return promise;
+}
+async function commentsCounter(postId, token) {
+    const auth = createHeaders(token);
+    const promise = await axios.get(`${BASE_URL}/comments/counter/${postId}`, auth);
+    return promise;
+}
+async function getFollowed(name, token) {
+    const auth = createHeaders(token);
+
+    const promise = await axios.get(`${BASE_URL}/users/follows?characters=${name}`, auth);
 
     return promise;
 }
@@ -151,6 +183,11 @@ const api = {
     isFollowing,
     getFollowStatus,
     handleFollow,
+    reposts,
+    createComment,
+    getComments,
+    commentsCounter,
+    getFollowed
 }
 
 export default api;
