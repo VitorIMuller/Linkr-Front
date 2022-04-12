@@ -28,8 +28,8 @@ This application has the following features:
   - ```Timeline``` - You can publish and see all the posts from the people you follow
   - ```Posts``` - Posts load progressively as the page is scrolled, it's possible to like, comment, repost, edit and delete a post
   - ```Hashtags``` - Posts can also have hashtags, with it creating trends with the most used hashtags in the last 24hrs
-  - ```Search``` - You can search for others currently registered on the app
-  - ```Follow / Unfollow``` - You can follow other users to see their posts and reposts
+  - ```Search``` - You can search for other users currently registered on the app
+  - ```Follow / Unfollow``` - You can follow other people to see their posts and reposts
   - ```Responsiveness``` - The app has reponsiveness to Desktop, Tablet and Mobile
 
 ## Built with
