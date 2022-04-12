@@ -1,74 +1,88 @@
-# Getting Started with Create React App
+# Linkr
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Linkr is a social network for sharing links! Enjoy and share some awesome materials you find about development!
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [About](#about)
+- [Built with](#built-with)
+- [How to run](#how-to-run)
+- [Authors](#authors)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+##### Obs: images to be posted
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<br />
 
-### `npm test`
+Try it out now <a href="https://linkr-front-five.vercel.app/" target="_blank" title="Linkr"><strong>*here*</strong></a>.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## About
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This application has the following features:
+  - ```Sign up``` - You are able to create a custom profile with an email, username and a picture-url from the web
+  - ```Sign in``` - After creating the account, it's possible to log in with an email and password
+  - ```Sign out``` - It is also possible to log out of the app
+  - ```Timeline``` - You can publish and see all the posts from the people you follow
+  - ```Posts``` - Posts load progressively as the page is scrolled, it's possible to like, comment, repost, edit and delete a post
+  - ```Hashtags``` - Posts can also have hashtags, with it creating trends with the most used hashtags in the last 24hrs
+  - ```Search``` - You can search for others currently registered on the app
+  - ```Follow / Unfollow``` - You can follow other users to see their posts and reposts
+  - ```Responsiveness``` - The app has reponsiveness to Desktop, Tablet and Mobile
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The app was developed with the following tools:
+ <p>
+   <img style='margin: 5px' src='https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E' title="JavaScript">
+   <img style='margin: 5px' src='https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white' title="HTML5">
+   <img style='margin: 5px' src='https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white' title="CSS3">
+   <img style='margin: 5px;' src='https://img.shields.io/badge/axios%20-%2320232a.svg?&style=for-the-badge&color=informational' title="Axios">
+   <img style='margin: 5px;' src="https://img.shields.io/badge/react-app%20-%2320232a.svg?&style=for-the-badge&color=60ddf9&logo=react&logoColor=%2361DAFB" title="React.js">
+   <img style='margin: 5px;' src="https://img.shields.io/badge/react_router%20-%2320232a.svg?&style=for-the-badge&logo=react&logoColor=%2361DAFB" title="React Router">
+   <img src="https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white" title="Styled Components">  
+</p>
+  
+  
+Workspace:
+<p>
+  <img style='margin: 5px;' src="https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white" title="VS Code">
+  <img style='margin: 5px;' src="https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white" title="Ubuntu">
+  <img style='margin: 5px;' src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" title="GitHub">
+  <img style='margin: 5px;' src="https://img.shields.io/badge/GIT-E44C30?style=for-the-badge&logo=git&logoColor=white" title="GIT">
+</p>
 
-### `npm run eject`
+## How to run
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+1. Clone this repository
+  ```bash
+  git clone https://github.com/VitorIMuller/Linkr-Front.git
+  ```
+2. Clone the Back-end repository (follow the instructions from there as well)
+  ```bash
+  git clone https://github.com/VitorIMuller/Linkr-Back.git
+  ```
+3. Go to the project directory
+  ```bash
+  cd Linkr-Front
+  ```
+4. Install dependencies
+  ```bash
+  npm or yarn install
+  ```
+5. Run the front-end in developer mode with
+  ```bash
+  npm start
+  ```
+6. Finally, access [http://localhost:3000](http://localhost:3000) on your favorite browser (unless it is Internet Explorer. In this case, review your life decisions) 
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  
+  - *The page will reload if you make edits.*
+  - *You will also see any lint errors in the console.*
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Authors
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-<<<<<<< HEAD
-=======
-# Linkr-Front
->>>>>>> 8862ae0a5cfe467c26decd3c7b0d068dd25a815c
+| [<img src="https://avatars.githubusercontent.com/VitorIMuller" width=150 title="VictorIMuller"><br><sub>Vitor Muller</sub>](https://github.com/VitorIMuller) |  [<img src="https://avatars.githubusercontent.com/Lucas-zz" width=150 title="Lucas-zz"><br><sub>Lucas Azzolini Vieira</sub>](https://github.com/Lucas-zz) |  [<img src="https://avatars.githubusercontent.com/amontheape" width=150 title="amontheape"><br><sub>Marcelo Canedo</sub></sub>](https://github.com/amontheape) |  [<img src="https://avatars.githubusercontent.com/damondias" width=150 title="damondias"><br><sub>Damon Dias</sub>](https://github.com/damondias) |  [<img src="https://avatars.githubusercontent.com/Dridr1" width=150 title="Dridr1"><br><sub>Adriano Fonseca</sub>](https://github.com/Dridr1) 
+| :---: | :---: | :---: | :---: | :---: |
