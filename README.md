@@ -5,7 +5,7 @@ Linkr is a social network for sharing links! Enjoy and share some awesome materi
 ## Table of contents
 
 - [Overview](#overview)
-  - [About](#about)
+- [About](#about)
 - [Built with](#built-with)
 - [How to run](#how-to-run)
 - [Authors](#authors)
